@@ -87,7 +87,7 @@ function Card({ item }: { item: Item }) {
 
 export function Highlights() {
   return (
-    <section id="why" className="border-t border-border py-24">
+    <section id="why" className="py-24">
       <div className="mx-auto max-w-[1440px] px-6">
         <div className="mx-auto mb-14 max-w-2xl text-center">
           <span className="inline-flex items-center gap-3 font-mono text-xs uppercase tracking-[0.18em] text-brand">

@@ -1,0 +1,750 @@
+<title>Niche Without Narrowing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
+
+<style>
+  /* ---------- tokens: light is the base state ---------- */
+  :root {
+    --ground:     #EFF3F1;
+    --surface:    #FFFFFF;
+    --surface-2:  #E4EBE8;
+    --ink:        #0F1D1C;
+    --muted:      #566866;
+    --line:       #CFDAD6;
+    --line-soft:  #E1E8E5;
+    --accent:     #0E7B87;
+    --accent-ink: #0B5B64;
+    --accent-soft:#DCEEF0;
+    --moss:       #3D5F33;
+    --moss-soft:  #E2EADD;
+    --alert:      #934123;
+    --alert-ink:  #8E3F22;
+    --alert-soft: #F4E4DC;
+
+    --shadow: 0 1px 2px rgba(15,29,28,.05), 0 8px 24px -12px rgba(15,29,28,.16);
+
+    --step--1: clamp(.78rem, .76rem + .1vw, .84rem);
+    --step-0:  clamp(1rem, .97rem + .16vw, 1.09rem);
+    --step-1:  clamp(1.2rem, 1.13rem + .34vw, 1.42rem);
+    --step-2:  clamp(1.5rem, 1.36rem + .66vw, 1.95rem);
+    --step-3:  clamp(1.95rem, 1.68rem + 1.3vw, 2.9rem);
+
+    --measure: 68ch;
+    --wide: 1120px;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground:     #0B1413;
+      --surface:    #121D1C;
+      --surface-2:  #1A2726;
+      --ink:        #E7EEEC;
+      --muted:      #94A6A3;
+      --line:       #2A3A38;
+      --line-soft:  #1E2C2B;
+      --accent:     #45C2CE;
+      --accent-ink: #7FD9E2;
+      --accent-soft:#0E2C30;
+      --moss:       #86B073;
+      --moss-soft:  #172514;
+      --alert:      #D97F5E;
+      --alert-ink:  #E9A184;
+      --alert-soft: #2A1710;
+      --shadow: 0 1px 2px rgba(0,0,0,.4), 0 10px 30px -14px rgba(0,0,0,.7);
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --ground:     #0B1413;
+    --surface:    #121D1C;
+    --surface-2:  #1A2726;
+    --ink:        #E7EEEC;
+    --muted:      #94A6A3;
+    --line:       #2A3A38;
+    --line-soft:  #1E2C2B;
+    --accent:     #45C2CE;
+    --accent-ink: #7FD9E2;
+    --accent-soft:#0E2C30;
+    --moss:       #86B073;
+    --moss-soft:  #172514;
+    --alert:      #D97F5E;
+    --alert-ink:  #E9A184;
+    --alert-soft: #2A1710;
+    --shadow: 0 1px 2px rgba(0,0,0,.4), 0 10px 30px -14px rgba(0,0,0,.7);
+  }
+
+  /* ---------- base ---------- */
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--ink);
+    font-family: "Source Serif 4", Georgia, "Times New Roman", serif;
+    font-size: var(--step-0);
+    line-height: 1.62;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: var(--wide);
+    margin-inline: auto;
+    padding: 0 clamp(1.1rem, 4vw, 2.5rem);
+  }
+
+  h1, h2, h3, .mono, .num {
+    font-family: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
+  }
+
+  h1, h2, h3 { text-wrap: balance; margin: 0; line-height: 1.12; letter-spacing: -.018em; }
+  h1 { font-size: var(--step-3); font-weight: 800; }
+  h2 { font-size: var(--step-2); font-weight: 700; }
+  h3 { font-size: var(--step-1); font-weight: 700; letter-spacing: -.01em; }
+
+  p, ul, ol { margin: 0; }
+  a { color: var(--accent-ink); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+  a:focus-visible, summary:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 3px;
+  }
+
+  .mono {
+    font-family: "IBM Plex Mono", ui-monospace, "SFMono-Regular", monospace;
+    font-size: var(--step--1);
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  .prose { max-width: var(--measure); display: flex; flex-direction: column; gap: 1.05rem; }
+  .prose ul, .prose ol { padding-left: 1.15rem; display: flex; flex-direction: column; gap: .5rem; }
+  .prose li::marker { color: var(--accent); }
+
+  strong { font-weight: 600; }
+  em.term { font-style: normal; font-family: "IBM Plex Mono", monospace; font-size: .92em; color: var(--accent-ink); }
+
+  /* ---------- masthead ---------- */
+  .masthead {
+    border-bottom: 1px solid var(--line);
+    background: var(--surface);
+  }
+  .masthead-inner {
+    padding-block: clamp(2.6rem, 7vw, 4.4rem) clamp(2rem, 5vw, 3rem);
+    display: flex; flex-direction: column; gap: 1.15rem;
+    max-width: var(--measure);
+  }
+  .masthead .mono { color: var(--accent-ink); }
+  .standfirst { font-size: var(--step-1); color: var(--muted); line-height: 1.45; }
+
+  .facts {
+    display: flex; flex-wrap: wrap; gap: .5rem;
+    margin-top: .35rem;
+  }
+  .fact {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: var(--step--1);
+    border: 1px solid var(--line);
+    background: var(--ground);
+    color: var(--muted);
+    padding: .3rem .6rem;
+    border-radius: 999px;
+  }
+
+  /* ---------- sections ---------- */
+  section { padding-block: clamp(2.5rem, 6vw, 4rem); border-bottom: 1px solid var(--line-soft); }
+  section:last-of-type { border-bottom: 0; }
+
+  .sec-head { display: flex; flex-direction: column; gap: .55rem; margin-bottom: 1.6rem; max-width: var(--measure); }
+  .sec-head .mono { color: var(--muted); }
+
+  /* ---------- phase list (a real sequence, so it is numbered) ---------- */
+  .phases { display: flex; flex-direction: column; gap: 1rem; margin-top: 1.6rem; }
+  .phase {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 1.3rem 1.4rem;
+    display: grid;
+    grid-template-columns: 2.6rem 1fr;
+    gap: 0 1.1rem;
+    box-shadow: var(--shadow);
+  }
+  .phase .num {
+    font-size: var(--step-1);
+    font-weight: 800;
+    color: var(--accent);
+    line-height: 1.1;
+    font-variant-numeric: tabular-nums;
+  }
+  .phase-body { display: flex; flex-direction: column; gap: .7rem; min-width: 0; }
+  .phase h3 { margin-bottom: .1rem; }
+  .phase ul { padding-left: 1.05rem; display: flex; flex-direction: column; gap: .45rem; margin: 0; }
+  .phase li::marker { color: var(--moss); }
+
+  /* ---------- callout ---------- */
+  .callout {
+    border: 1px solid var(--alert);
+    background: var(--alert-soft);
+    border-radius: 4px;
+    padding: 1.3rem 1.4rem;
+    display: flex; flex-direction: column; gap: .8rem;
+    margin-block: 1.4rem;
+  }
+  .callout .mono { color: var(--alert-ink); }
+  .callout p { max-width: var(--measure); }
+
+  .note {
+    border-left: 3px solid var(--accent);
+    background: var(--accent-soft);
+    padding: .9rem 1.1rem;
+    border-radius: 0 4px 4px 0;
+    margin-block: 1.2rem;
+    max-width: var(--measure);
+  }
+
+  /* ---------- tables ---------- */
+  .scroller { overflow-x: auto; margin-top: 1.4rem; border: 1px solid var(--line); border-radius: 4px; background: var(--surface); }
+  table { border-collapse: collapse; width: 100%; min-width: 640px; font-size: var(--step--1); }
+  th, td { text-align: left; padding: .72rem .9rem; border-bottom: 1px solid var(--line-soft); vertical-align: top; }
+  thead th {
+    font-family: "Bricolage Grotesque", sans-serif;
+    font-size: var(--step--1);
+    text-transform: uppercase;
+    letter-spacing: .07em;
+    color: var(--muted);
+    background: var(--surface-2);
+    border-bottom: 1px solid var(--line);
+    white-space: nowrap;
+  }
+  tbody tr:last-child td { border-bottom: 0; }
+  td.name { font-family: "IBM Plex Mono", monospace; font-weight: 500; color: var(--ink); white-space: nowrap; }
+  .tag {
+    display: inline-block;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: .72rem;
+    letter-spacing: .04em;
+    padding: .18rem .45rem;
+    border-radius: 3px;
+    border: 1px solid currentColor;
+    white-space: nowrap;
+  }
+  .tag.pick { color: var(--moss); }
+  .tag.ok   { color: var(--accent-ink); }
+  .tag.no   { color: var(--alert-ink); }
+
+  /* ---------- checklist ---------- */
+  .checks { list-style: none; padding: 0; margin-top: 1.4rem; display: flex; flex-direction: column; gap: .6rem; max-width: var(--measure); }
+  .checks li {
+    display: grid; grid-template-columns: 1.4rem 1fr; gap: .7rem;
+    background: var(--surface); border: 1px solid var(--line);
+    padding: .8rem .95rem; border-radius: 4px;
+  }
+  .checks li::before {
+    content: "";
+    width: 1.05rem; height: 1.05rem; margin-top: .28rem;
+    border: 1.5px solid var(--accent); border-radius: 3px;
+  }
+
+  footer { padding-block: 2.4rem 3.4rem; color: var(--muted); font-size: var(--step--1); }
+
+  @media (prefers-reduced-motion: no-preference) {
+    a { transition: color .15s ease; }
+  }
+</style>
+
+<header class="masthead">
+  <div class="wrap masthead-inner">
+    <p class="mono">Positioning &amp; search strategy</p>
+    <h1>Landscaping SEO Playbook</h1>
+    <p class="standfirst">
+      How to win landscaping and roofing work without shutting the door on e-commerce and
+      real estate — the domain, the page structure, and the order to do the SEO work in.
+    </p>
+    <div class="facts">
+      <span class="fact">Industries: landscaping · roofing · real estate · e-commerce</span>
+      <span class="fact">Markets: US · UK · AU · CA · IE · PT</span>
+      <span class="fact">Based: Pakistan</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- ============ POSITIONING ============ -->
+  <section>
+    <div class="sec-head">
+      <p class="mono">The rule everything else follows</p>
+      <h2>Niche the message, never the domain</h2>
+    </div>
+    <div class="prose">
+      <p>
+        Landscapers and roofers are the right thing to chase — they have money, they need websites, and
+        almost nobody good is competing for them. But you also build e-commerce stores, real-estate
+        sites, and general business sites, and that work pays too.
+      </p>
+      <p>
+        Those two facts look like they conflict. They do not, as long as each one sits in the right
+        place. <strong>The domain stays neutral; the pages get specific.</strong> A domain is permanent
+        and rides on every email you send — the moment it says <em class="term">landscaper</em>, a
+        real-estate client quietly decides you are not for them. A page costs nothing and can be as
+        narrow as you like.
+      </p>
+      <p>
+        Google ranks <em>pages</em>, not domains. A page about landscaping websites — landscaping
+        photos, landscaping case studies, landscaping words throughout — ranks for landscaping searches
+        whatever the domain says. That is where the entire niche advantage actually lives.
+      </p>
+    </div>
+
+    <div class="callout">
+      <p class="mono">Correction to earlier advice</p>
+      <p>
+        An earlier version of this page put industry names like <em class="term">landscaperleads.com</em>
+        at the top of the shortlist. <strong>That was written before e-commerce and real estate came
+        up, and it is the wrong call for you.</strong> Those names lock the whole business into one
+        trade. The neutral shortlist below replaces them.
+      </p>
+    </div>
+
+    <div class="note">
+      <p>
+        Still true from before: <strong>no country in the domain</strong>, and no country endings like
+        <em class="term">.co.uk</em> or <em class="term">.com.au</em>. Those tell Google the site serves
+        one country only, and that signal cannot be undone later. Plain <em class="term">.com</em>.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ DOMAINS ============ -->
+  <section>
+    <div class="sec-head">
+      <p class="mono">Shortlist</p>
+      <h2>Domain candidates</h2>
+      <p style="color:var(--muted)">
+        All neutral — nothing here ties you to one trade. I cannot check availability from here, so
+        check each on a registrar before deciding.
+      </p>
+    </div>
+
+    <h3 style="margin-top:1.6rem">Your name</h3>
+    <p style="color:var(--muted); max-width:var(--measure); margin-top:.5rem">
+      The safest option there is. Never goes out of date, never limits what you sell, and builds a
+      person people remember rather than a company they forget.
+    </p>
+    <div class="scroller">
+      <table>
+        <thead><tr><th>Domain</th><th>Why</th><th></th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="name">raoasif.com</td>
+            <td>Short, and easy to spell and say on a call with someone in Sydney or Toronto.</td>
+            <td><span class="tag pick">Top pick</span></td>
+          </tr>
+          <tr>
+            <td class="name">asifriyasat.com</td>
+            <td>Full name — the most formal and credible of the set.</td>
+            <td><span class="tag ok">Strong</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 style="margin-top:2.2rem">Studio names</h3>
+    <p style="color:var(--muted); max-width:var(--measure); margin-top:.5rem">
+      Pick one of these if you want the option of hiring people later without the business being named
+      after you.
+    </p>
+    <div class="scroller">
+      <table>
+        <thead><tr><th>Domain</th><th>Why</th><th>Watch out</th><th></th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="name">buildandrank.com</td>
+            <td>Names both services exactly — build the site, rank the site — with no industry attached. Fits a roofer and a Shopify store equally well.</td>
+            <td>Common construction; may be taken.</td>
+            <td><span class="tag pick">Top pick</span></td>
+          </tr>
+          <tr>
+            <td class="name">siteandscale.com</td>
+            <td>Alliterative, and suggests growth rather than just launch. Sounds like a studio.</td>
+            <td>A little abstract on its own.</td>
+            <td><span class="tag ok">Strong</span></td>
+          </tr>
+          <tr>
+            <td class="name">leadcraftstudio.com</td>
+            <td>Leads are what every one of your buyers actually wants, whatever their trade.</td>
+            <td>Longer to type and to say.</td>
+            <td><span class="tag ok">Good</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 style="margin-top:2.2rem">Rules for whichever you pick</h3>
+    <div class="prose" style="margin-top:.8rem">
+      <ul>
+        <li><strong>.com only.</strong> Your buyer is a roofer or an estate agent, not a developer — <em class="term">.dev</em> reads as "not a real company" to them.</li>
+        <li><strong>No industry word, no country word.</strong> Both are doors that close behind you.</li>
+        <li><strong>No hyphens, no numbers.</strong> They get lost the moment someone says the name aloud.</li>
+        <li><strong>Check it is not an existing trademark</strong> in your target countries.</li>
+        <li><strong>Buy 3+ years up front.</strong> Cheap, and it removes a renewal risk.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ INDUSTRY PAGES ============ -->
+  <section>
+    <div class="sec-head">
+      <p class="mono">Where the niche actually lives</p>
+      <h2>One site, one page per industry</h2>
+      <p style="color:var(--muted)">
+        This is the structure that lets you chase landscapers hard without ever turning away an
+        e-commerce job.
+      </p>
+    </div>
+
+    <div class="scroller">
+      <table>
+        <thead><tr><th>URL</th><th>Written for</th><th>Targets the phrase</th></tr></thead>
+        <tbody>
+          <tr><td class="name">/industries/landscaping/</td><td>Landscapers, garden designers</td><td>landscaping website design</td></tr>
+          <tr><td class="name">/industries/roofing/</td><td>Roofers and exterior trades</td><td>roofing website design</td></tr>
+          <tr><td class="name">/industries/real-estate/</td><td>Agents and brokers</td><td>real estate website design</td></tr>
+          <tr><td class="name">/industries/ecommerce/</td><td>Store owners</td><td>shopify store design</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="prose" style="margin-top:1.4rem">
+      <p>
+        Each page is written as though that trade is the only thing you do: their photos, their words,
+        their case studies, their objections. A landscaper landing on the landscaping page sees a
+        landscaping specialist — the roofing page is not in front of them and never crosses their mind.
+      </p>
+      <p>
+        Meanwhile every link any of those pages earns feeds the authority of the whole domain — the one
+        thing four separate niche sites could never do for each other.
+      </p>
+      <ul>
+        <li><strong>The home page stays broad</strong> — "websites and SEO for businesses that need leads" — because it has to catch everything the industry pages do not.</li>
+        <li><strong>Outreach is where you go narrow.</strong> Cold emails to landscapers link straight to the landscaping page, never to the home page.</li>
+        <li><strong>Add an industry only once you have a case study for it.</strong> A page with no proof converts nobody.</li>
+      </ul>
+    </div>
+
+    <div class="callout">
+      <p class="mono">Do not multiply industries by countries</p>
+      <p>
+        Four industries across five countries is twenty pages, and nobody writes twenty good ones.
+        Google reads the result as thin content and ranks none of them.
+      </p>
+      <p>
+        <strong>Industry pages first; country pages much later.</strong> You deliver remotely — a UK
+        landscaper hires you because the page speaks to landscapers, not because the URL contains
+        <em class="term">/uk/</em>. Industry pages carry far stronger buying intent and far weaker
+        competition. Only once one industry is genuinely producing work should you build out its
+        strongest market.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ GMB REALITY ============ -->
+  <section>
+    <div class="sec-head">
+      <p class="mono">Read this before you spend money</p>
+      <h2>Google Business Profile will not do what you are hoping</h2>
+    </div>
+
+    <div class="callout">
+      <p class="mono">The hard limit</p>
+      <p>
+        <strong>You cannot create a Google Business Profile for the USA, UK, Australia or Canada
+        while operating from Pakistan.</strong> A profile requires a real, verifiable address in that
+        country — Google verifies it by postcard, phone, or a video call where you show the premises
+        and your signage. There is no remote workaround.
+      </p>
+      <p>
+        People do try it with virtual offices, mailbox addresses, or a friend's home. Google finds
+        these — and the penalty is not a warning, it is <strong>permanent suspension</strong>, often
+        taking every other profile linked to the same Google account with it. It is not worth the risk
+        to a business you are trying to build.
+      </p>
+    </div>
+
+    <div class="prose">
+      <h3>So what is GBP actually for?</h3>
+      <p>
+        It is a <em>local</em> tool, not an international one. It puts a business in the map pack —
+        those three results with pins that show for "landscaper near me". It works on one radius
+        around one real address. It was never designed to help a business rank in six countries.
+      </p>
+      <p>
+        This matters for you in two different ways, so keep them separate:
+      </p>
+      <ul>
+        <li>
+          <strong>For your own business:</strong> create one profile at your real Pakistan address if you
+          want local work. For your international clients, GBP is irrelevant — you will reach them
+          through organic search, referrals, and outreach.
+        </li>
+        <li>
+          <strong>As a service you sell:</strong> this is the opportunity. Your landscaping clients
+          <em>do</em> have real addresses in their countries, and most have a neglected profile.
+          Optimising it is one of the highest-value things you can do for them — and you can do all of
+          it remotely, because you work on <em>their</em> verified profile, not yours.
+        </li>
+      </ul>
+    </div>
+
+    <h3 style="margin-top:2rem">GBP optimisation, as a service — what it involves</h3>
+    <div class="phases">
+      <article class="phase">
+        <span class="num">01</span>
+        <div class="phase-body">
+          <h3>Claim and verify</h3>
+          <p>Client claims the profile at their real address; you get manager access by invite. Never ask for their password.</p>
+        </div>
+      </article>
+      <article class="phase">
+        <span class="num">02</span>
+        <div class="phase-body">
+          <h3>Categories and service area</h3>
+          <ul>
+            <li>Primary category exactly right — <em class="term">Landscaper</em>, <em class="term">Lawn care service</em>, and <em class="term">Landscape designer</em> are different categories and rank differently.</li>
+            <li>Secondary categories for everything else they do.</li>
+            <li>Service-area businesses hide the street address and list the towns they cover.</li>
+          </ul>
+        </div>
+      </article>
+      <article class="phase">
+        <span class="num">03</span>
+        <div class="phase-body">
+          <h3>Complete every field</h3>
+          <p>Hours, service list with prices, description, attributes, booking link. Completeness is a ranking factor and most competitors stop at half.</p>
+        </div>
+      </article>
+      <article class="phase">
+        <span class="num">04</span>
+        <div class="phase-body">
+          <h3>Photos, constantly</h3>
+          <p>Before-and-after shots of real jobs, geotagged, added weekly. Landscaping is visual — this is where the category is won and where most profiles are dead.</p>
+        </div>
+      </article>
+      <article class="phase">
+        <span class="num">05</span>
+        <div class="phase-body">
+          <h3>Reviews, systematically</h3>
+          <p>A request sent the day a job finishes, a short link, and a reply to every single review. Volume, recency and replies all count.</p>
+        </div>
+      </article>
+      <article class="phase">
+        <span class="num">06</span>
+        <div class="phase-body">
+          <h3>Posts and consistency</h3>
+          <p>Weekly posts of finished jobs and seasonal offers. Then make sure the name, address and phone number match exactly everywhere else online — inconsistency is the most common thing holding these profiles back.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ THE PLAYBOOK ============ -->
+  <section>
+    <div class="sec-head">
+      <p class="mono">The work, in order</p>
+      <h2>Six phases from empty domain to international rankings</h2>
+      <p style="color:var(--muted)">
+        The order matters — each phase depends on the one above it. Skipping to content before the
+        architecture is right means rewriting it later.
+      </p>
+    </div>
+
+    <div class="phases">
+      <article class="phase">
+        <span class="num">01</span>
+        <div class="phase-body">
+          <h3>Foundation</h3>
+          <ul>
+            <li>Buy the <em class="term">.com</em>. Point it at Vercel — the build you already have is Next.js, which is genuinely fast out of the box.</li>
+            <li>HTTPS, one canonical version of the site (pick <em class="term">www</em> or not, redirect the other).</li>
+            <li>Core Web Vitals green on mobile. You are already ahead here; most landscaping-agency sites are WordPress bloat.</li>
+            <li><em class="term">Organization</em> and <em class="term">Person</em> schema — you have this in <em class="term">lib/schema.ts</em> already.</li>
+            <li>Google Search Console and Bing Webmaster Tools verified, sitemap submitted.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="phase">
+        <span class="num">02</span>
+        <div class="phase-body">
+          <h3>Architecture, for when countries come later</h3>
+          <p>
+            Build the industry pages first. When you do add countries, there are three ways to
+            structure it and only one is sensible for a team of one:
+          </p>
+          <ul>
+            <li><strong>Country domains</strong> (<em class="term">site.co.uk</em>, <em class="term">site.com.au</em>) — strongest geo signal, but you are buying, hosting and building authority for six separate sites. Far too much for one person.</li>
+            <li><strong>Subdomains</strong> (<em class="term">uk.site.com</em>) — Google often treats them as separate sites, so authority does not flow well. Skip.</li>
+            <li><strong>Subfolders</strong> (<em class="term">site.com/uk/</em>) — <strong>this is your answer.</strong> One domain, one pool of authority, every country benefiting from every link you earn.</li>
+          </ul>
+          <p>
+            Then add <em class="term">hreflang</em> tags so Google shows the right page to the right country.
+            Every page lists every version of itself including itself, plus an <em class="term">x-default</em>
+            for everyone else. Get these reciprocal or they are ignored.
+          </p>
+          <p style="color:var(--muted)">
+            Note: the old country-targeting setting in Search Console was retired. Hreflang and your
+            content are the signals now.
+          </p>
+        </div>
+      </article>
+
+      <article class="phase">
+        <span class="num">03</span>
+        <div class="phase-body">
+          <h3>Keyword research, per market</h3>
+          <p>
+            This is where most people targeting several countries fail: <strong>they research once, in
+            American English, and publish it everywhere.</strong> The words genuinely differ — see the
+            table below. A UK landscaper searching "turf laying" will not find a page written about "sod
+            installation".
+          </p>
+          <ul>
+            <li>Run research separately per country in your tool of choice; set the location, not just the language.</li>
+            <li>Target the buying phrases, not the vague ones: <em class="term">landscaping website design</em>, <em class="term">SEO for landscapers</em>, <em class="term">landscaper lead generation</em>.</li>
+            <li>Then go one level narrower, where nobody is competing: <em class="term">lawn care website design</em>, <em class="term">hardscaping SEO</em>, <em class="term">garden design website</em>.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="phase">
+        <span class="num">04</span>
+        <div class="phase-body">
+          <h3>Content that earns the ranking</h3>
+          <ul>
+            <li><strong>Money pages</strong> — one per service, written for landscapers specifically. Not "web development" but "landscaping websites that book jobs".</li>
+            <li><strong>Country pages</strong> — <em class="term">/uk/</em>, <em class="term">/au/</em>, <em class="term">/us/</em>, each in that market's vocabulary, currency, and spelling. These must be genuinely different pages, not one page with the country name swapped, or they are thin content.</li>
+            <li><strong>Proof</strong> — case studies with real numbers. "Rankings went from page 4 to position 2, enquiries tripled" beats any amount of description.</li>
+            <li><strong>Helpful articles</strong> that your buyer actually searches: how much a landscaping website should cost, how to get more quote requests, why their site gets no traffic.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="phase">
+        <span class="num">05</span>
+        <div class="phase-body">
+          <h3>Authority, country by country</h3>
+          <p>
+            Links from a country's own sites are what make Google trust you there. Nothing else
+            substitutes.
+          </p>
+          <ul>
+            <li>Landscaping trade publications and blogs — write for them, per country.</li>
+            <li>Trade association and supplier directories in each market.</li>
+            <li>Your own clients' sites: a tasteful credit link in their footer, from a real business in that country. This compounds — it is the most valuable link source you have.</li>
+            <li>Podcasts and YouTube channels aimed at landscapers.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="phase">
+        <span class="num">06</span>
+        <div class="phase-body">
+          <h3>Measure and iterate</h3>
+          <ul>
+            <li>Search Console filtered <strong>by country</strong> — one market can be climbing while another stalls, and the average hides it.</li>
+            <li>Track enquiries, not rankings. Rankings are a means; booked calls are the goal.</li>
+            <li>Every quarter: refresh the pages sitting at positions 5–15. Moving those is far cheaper than new content.</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ VOCABULARY ============ -->
+  <section>
+    <div class="sec-head">
+      <p class="mono">Reference</p>
+      <h2>The same job, four different words</h2>
+      <p style="color:var(--muted)">
+        For when you reach country pages. Use the local term or the local searcher never finds the
+        page — and never publish one page with the country name swapped.
+      </p>
+    </div>
+
+    <div class="scroller">
+      <table>
+        <thead>
+          <tr><th>United States</th><th>United Kingdom</th><th>Australia</th><th>Canada</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Landscaper</td><td>Landscape gardener</td><td>Landscaper</td><td>Landscaper</td></tr>
+          <tr><td>Sod</td><td>Turf</td><td>Turf</td><td>Sod</td></tr>
+          <tr><td>Yard / backyard</td><td>Garden</td><td>Backyard / garden</td><td>Yard / backyard</td></tr>
+          <tr><td>Pavers</td><td>Block paving</td><td>Pavers</td><td>Interlock / interlocking</td></tr>
+          <tr><td>Hardscaping</td><td>Hard landscaping</td><td>Hardscaping</td><td>Hardscaping</td></tr>
+          <tr><td>Lawn care</td><td>Lawn treatment</td><td>Lawn care / mowing</td><td>Lawn care</td></tr>
+          <tr><td>Fall cleanup</td><td>Autumn tidy-up</td><td>—</td><td>Fall cleanup + snow removal</td></tr>
+          <tr><td>Landscape design</td><td>Garden design</td><td>Landscape design</td><td>Landscape design</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note" style="margin-top:1.6rem">
+      <p>
+        Spelling follows the same rule: <em class="term">landscaping color</em> in the US,
+        <em class="term">colour</em> in the UK, AU, CA and IE. Prices in the local currency. Phone
+        numbers in the local format. These small things are what make a page read as local rather than
+        translated.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ EUROPE ============ -->
+  <section>
+    <div class="sec-head">
+      <p class="mono">One decision to make</p>
+      <h2>Portugal and the rest of Europe</h2>
+    </div>
+    <div class="prose">
+      <p>
+        Everything above assumes English. Portugal is a different problem: the landscaping businesses
+        there search in Portuguese — <em class="term">paisagismo</em>, <em class="term">jardinagem</em>,
+        <em class="term">criação de sites</em> — and machine-translated pages rank badly and read worse to
+        a native speaker.
+      </p>
+      <p>My honest advice: <strong>leave Portugal until the English markets are working.</strong> Reasons:</p>
+      <ul>
+        <li>Four English markets (US, UK, AU, CA) are already a large amount of work, and they share one language.</li>
+        <li>A Portuguese section needs a real translator and someone who can answer enquiries in Portuguese. Without that, the leads go nowhere.</li>
+        <li>Ireland is the easy European win — English-speaking, and shares most UK terminology.</li>
+      </ul>
+      <p>
+        When you do add it, it is another subfolder — <em class="term">/pt/</em> — with
+        <em class="term">hreflang="pt-PT"</em>, professionally translated, not auto-generated.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ THIS WEEK ============ -->
+  <section>
+    <div class="sec-head">
+      <p class="mono">Next</p>
+      <h2>What to do this week</h2>
+    </div>
+    <ul class="checks">
+      <li>Check availability for <span class="mono" style="text-transform:none;letter-spacing:0">raoasif.com</span> and <span class="mono" style="text-transform:none;letter-spacing:0">buildandrank.com</span>. Buy the better one for 3 years.</li>
+      <li>Point the new domain at the build, pick one canonical version, submit the sitemap in Search Console.</li>
+      <li>Write the landscaping industry page properly — their photos, their words, one real case study. This is the template every other industry page copies.</li>
+      <li>Rewrite two past projects as case studies with real numbers: rankings before and after, enquiries before and after.</li>
+      <li>Ask your existing clients for a footer credit link. Free, and the most valuable links available to you.</li>
+      <li>Leave country pages, hreflang and Portugal alone for now. They are phase two and they will still be there.</li>
+    </ul>
+  </section>
+
+</main>
+
+<footer class="wrap">
+  <p>Written for Rao Asif Riyasat · strategy notes, revise as the markets respond.</p>
+</footer>

@@ -1,0 +1,16 @@
+/* Trust ticker for the renovation page — scoped .sc-*, loops one copy of the list. */
+.sc-track {
+  display: flex;
+  width: max-content;
+  animation: sc-scroll 38s linear infinite;
+}
+@keyframes sc-scroll {
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sc-track {
+    animation: none;
+  }
+}

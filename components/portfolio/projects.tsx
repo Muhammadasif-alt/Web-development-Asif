@@ -9,7 +9,7 @@ export function Projects() {
   const featured = PROJECTS.slice(0, 6);
 
   return (
-    <section id="work" className="border-t border-border py-24">
+    <section id="work" className="py-24">
       <div className="mx-auto max-w-[1440px] px-6">
         <div className="mb-14 flex flex-wrap items-end justify-between gap-6">
           <div className="max-w-2xl">

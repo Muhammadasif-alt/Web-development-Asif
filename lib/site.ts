@@ -11,12 +11,22 @@ export const SITE = {
   url: SITE_URL,
   name: "Asif.dev",
   personName: "Rao Asif Riyasat",
-  jobTitle: "Freelance Web Developer & SEO Specialist",
+  jobTitle: "Full-Stack Web Developer",
   email: "raoasifriyasat@gmail.com",
   phone: "+923088663440",
   description:
-    "I build fast, SEO-ready websites and stores in WordPress, Shopify and Next.js that rank on Google and turn clicks into clients. Freelance, worldwide, replies in 24h.",
+    "Full-stack developer building web apps, online stores, and business sites. MERN stack, WordPress, and Shopify — fast, SEO-ready builds that convert and scale. Freelance, worldwide, replies in 24h.",
   ogImage: `${SITE_URL}/og.jpg`,
 } as const;
+
+/** Public profiles. Rendered in the footer and emitted as schema `sameAs`. */
+export const SOCIALS = [
+  { label: "GitHub", href: "https://github.com/Muhammadasif-alt" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/ranaasifriyasat" },
+  { label: "Facebook", href: "https://www.facebook.com/AsifRao440" },
+  { label: "Instagram", href: "https://www.instagram.com/raodeveloper/" },
+] as const;
+
+export const SOCIAL_URLS = SOCIALS.map((s) => s.href);
 
 export const abs = (path: string) => `${SITE_URL}${path.startsWith("/") ? path : `/${path}`}`;

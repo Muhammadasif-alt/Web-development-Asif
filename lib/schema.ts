@@ -1,4 +1,4 @@
-import { SITE, abs } from "@/lib/site";
+import { SITE, SOCIAL_URLS, abs } from "@/lib/site";
 
 const PERSON_ID = `${SITE.url}/#person`;
 const BUSINESS_ID = `${SITE.url}/#business`;
@@ -16,15 +16,21 @@ export const personSchema = () => ({
   email: `mailto:${SITE.email}`,
   telephone: SITE.phone,
   description: SITE.description,
+  sameAs: SOCIAL_URLS,
   knowsAbout: [
-    "Web Development",
-    "Search Engine Optimization",
+    "Web Application Development",
+    "Mobile App Development",
+    "MERN Stack",
+    "React",
+    "React Native",
+    "Node.js",
+    "Next.js",
     "WordPress",
     "Shopify",
     "WooCommerce",
-    "Next.js",
-    "Core Web Vitals",
     "E-commerce",
+    "Search Engine Optimization",
+    "Core Web Vitals",
   ],
 });
 
@@ -42,11 +48,14 @@ export const businessSchema = () => ({
   founder: { "@id": PERSON_ID },
   areaServed: "Worldwide",
   availableLanguage: ["English", "Urdu"],
+  sameAs: SOCIAL_URLS,
   priceRange: "$$",
   serviceType: [
+    "Web Application Development",
+    "Mobile App Development",
+    "E-commerce and Automation",
     "Web Development",
     "Marketing and SEO",
-    "E-commerce and Automation",
     "Support and Maintenance",
   ],
 });

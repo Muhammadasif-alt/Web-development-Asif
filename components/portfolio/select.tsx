@@ -42,7 +42,7 @@ export function Select({ value, onChange, options, placeholder, id, invalid }: S
         onClick={() => setOpen((o) => !o)}
         aria-haspopup="listbox"
         aria-expanded={open}
-        className={`flex h-10 w-full items-center justify-between gap-2 rounded-md border bg-transparent px-3 py-2 text-sm shadow-xs outline-none transition-[color,box-shadow] focus-visible:ring-[3px] focus-visible:ring-ring/50 ${
+        className={`flex h-10 w-full items-center justify-between gap-2 rounded-md border bg-transparent px-3 py-2 text-sm outline-none transition-[color,box-shadow] focus-visible:ring-[3px] focus-visible:ring-ring/50 ${
           invalid ? "border-destructive/70" : "border-input focus-visible:border-ring"
         } ${value ? "text-foreground" : "text-muted-foreground"}`}
       >
@@ -55,7 +55,7 @@ export function Select({ value, onChange, options, placeholder, id, invalid }: S
       {open && (
         <div
           role="listbox"
-          className="absolute z-50 mt-2 max-h-64 w-full overflow-auto rounded-xl border border-border bg-popover p-1.5 shadow-xl shadow-black/30"
+          className="absolute z-50 mt-2 max-h-64 w-full overflow-auto rounded-xl border border-border bg-popover p-1.5"
         >
           {options.map((opt) => {
             const selected = opt === value;

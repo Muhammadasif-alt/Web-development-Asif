@@ -1,27 +1,86 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, Check, Code2, Megaphone, ShoppingBag, Settings } from "lucide-react";
+import {
+  ArrowRight,
+  Check,
+  Code2,
+  LayoutDashboard,
+  Megaphone,
+  ShoppingBag,
+  Settings,
+  Smartphone,
+  Search,
+  PenTool,
+  Hammer,
+  Gauge,
+  Rocket,
+  LifeBuoy,
+} from "lucide-react";
 import { HireHero } from "@/components/portfolio/hire-hero";
 import { HireFooter } from "@/components/portfolio/hire-footer";
+import { ProcessTimeline, type ProcessStep } from "@/components/portfolio/process-timeline";
 import { JsonLd } from "@/components/seo/json-ld";
 import { faqSchema, breadcrumbSchema, businessSchema } from "@/lib/schema";
+import { IntroSplit } from "@/components/portfolio/intro-split";
 
 export const metadata: Metadata = {
   title: "Web Development and SEO Services | Asif.dev",
   description:
-    "Web development, SEO, e-commerce, and Meta ads for growing businesses. WordPress, Shopify, Laravel, and Next.js builds that rank and convert. Fixed quotes, 24h replies.",
+    "Web app development, e-commerce, websites, and SEO for growing businesses. MERN stack, Next.js, WordPress, and Shopify builds that convert and scale. Fixed quotes, 24h replies.",
   alternates: { canonical: "/services" },
   openGraph: {
     images: ["/og.jpg"],
     title: "Web Development and SEO Services",
     description:
-      "Web development, SEO, e-commerce, and Meta ads for growing businesses. WordPress, Shopify, Laravel, and Next.js builds that rank and convert. Fixed quotes, 24h replies.",
+      "Web app development, e-commerce, websites, and SEO for growing businesses. MERN stack, Next.js, WordPress, and Shopify builds that convert and scale. Fixed quotes, 24h replies.",
   },
 };
 
 const SERVICES = [
   {
     num: "01",
+    icon: LayoutDashboard,
+    title: "Web App Development",
+    short: "Custom platforms with logins, data, and real business logic behind them.",
+    body: "When an off-the-shelf tool gets you to eighty percent and stops, the last twenty percent is a custom app. I build that on the MERN stack and Next.js — role-based dashboards, SaaS products with subscriptions, internal tools, and the APIs that tie them to whatever you already use.",
+    included: [
+      "Admin dashboards with roles and permissions",
+      "Multi-tenant SaaS platforms with Stripe billing",
+      "Internal tools, CRMs, and workflow apps",
+      "Booking and scheduling systems",
+      "Customer portals and self-serve accounts",
+      "REST APIs and third-party integrations",
+      "Authentication, JWT, and access control",
+      "Takeover and rescue of half-finished builds",
+    ],
+    best: "Businesses whose process has outgrown spreadsheets and generic SaaS tools.",
+    result: "Software shaped around how you actually work, that you own outright.",
+    cta: "Get a quote",
+    detailHref: "/services/web-apps",
+  },
+  {
+    num: "02",
+    icon: Smartphone,
+    title: "Mobile App Development",
+    short: "One React Native codebase that ships to both the App Store and Google Play.",
+    body: "Building separately for iOS and Android means paying twice and shipping twice as slowly. React Native gives both stores a genuinely native feel from one codebase, and because I build the web side too, your app can share the same API, database, and admin panel as your platform instead of duplicating logic in two places.",
+    included: [
+      "Cross-platform iOS and Android builds",
+      "Shared backend and API with your web app",
+      "Push notifications, targeted and scheduled",
+      "Offline-first caching and sync",
+      "Camera, location, biometrics, and deep links",
+      "In-app payments and subscriptions",
+      "App Store and Play Store submission",
+      "Progressive Web Apps when an app is overkill",
+    ],
+    best: "Businesses that need repeat daily use, push notifications, or device features on a phone.",
+    result: "Your product on both stores, built once and updated in one place.",
+    cta: "Get a quote",
+    detailHref: "/services/mobile-apps",
+  },
+  {
+    num: "03",
     icon: Code2,
     title: "Web Development",
     short: "Fast, SEO-ready websites and web apps, built on the right stack for your goals.",
@@ -44,7 +103,7 @@ const SERVICES = [
     detailHref: "/services/web-development",
   },
   {
-    num: "02",
+    num: "04",
     icon: Megaphone,
     title: "Marketing and SEO",
     short: "Get found on Google and turn that traffic into leads.",
@@ -65,7 +124,7 @@ const SERVICES = [
     detailHref: "/services/marketing",
   },
   {
-    num: "03",
+    num: "05",
     icon: ShoppingBag,
     title: "E-commerce and Automation",
     short: "Sell more and let the busywork run itself.",
@@ -85,7 +144,7 @@ const SERVICES = [
     detailHref: "/services/ecommerce",
   },
   {
-    num: "04",
+    num: "06",
     icon: Settings,
     title: "Support and Maintenance",
     short: "Keep your site fast, secure, and always online.",
@@ -106,6 +165,8 @@ const SERVICES = [
 ];
 
 const WHICH = [
+  { q: "I need a custom app, dashboard, or SaaS tool.", a: "Start with Web App Development." },
+  { q: "I need an iOS and Android app.", a: "Start with Mobile App Development." },
   { q: "I need a new website or store.", a: "Start with Web Development or E-commerce." },
   { q: "I have a site but no one finds it.", a: "Start with Marketing and SEO." },
   { q: "My site is slow or breaking.", a: "Start with Support and Maintenance." },
@@ -120,13 +181,13 @@ const PRICING = [
   { t: "Free consultation first.", d: "We talk before you pay anything, with no obligation." },
 ];
 
-const PROCESS = [
-  { n: "01", title: "Discover", desc: "We talk about your goals, audience, and what success looks like. You get a clear plan and a fixed quote.", img: "/process/01.webp" },
-  { n: "02", title: "Design", desc: "I map the structure and design a clean, on-brand layout built to convert, not just look nice.", img: "/process/02.webp" },
-  { n: "03", title: "Build", desc: "I develop your site on the right stack with clean, semantic, SEO-ready code.", img: "/process/03.webp" },
-  { n: "04", title: "Optimise", desc: "Speed, Core Web Vitals, meta tags, and schema are tuned before anything goes live.", img: "/process/04.webp" },
-  { n: "05", title: "Launch", desc: "We go live with testing across devices and browsers. Everything checked, nothing left to chance.", img: "/process/05.webp" },
-  { n: "06", title: "Support", desc: "Ongoing care plans keep your site fast, secure, and improving over time.", img: "/process/06.webp" },
+const PROCESS: ProcessStep[] = [
+  { icon: Search, title: "Discover", desc: "We talk about your goals, audience, and what success looks like. You get a clear plan and a fixed quote." },
+  { icon: PenTool, title: "Design", desc: "I map the structure and design a clean, on-brand layout built to convert, not just look nice." },
+  { icon: Hammer, title: "Build", desc: "I develop your site on the right stack with clean, semantic, SEO-ready code." },
+  { icon: Gauge, title: "Optimise", desc: "Speed, Core Web Vitals, meta tags, and schema are tuned before anything goes live." },
+  { icon: Rocket, title: "Launch", desc: "We go live with testing across devices and browsers. Everything checked, nothing left to chance." },
+  { icon: LifeBuoy, title: "Support", desc: "Ongoing care plans keep your site fast, secure, and improving over time." },
 ];
 
 const STACK_GROUPS = [
@@ -161,8 +222,8 @@ const FAQS = [
 
 function Eyebrow({ children }: { children: React.ReactNode }) {
   return (
-    <p className="inline-flex items-center gap-2.5 text-xs font-bold uppercase tracking-[0.2em] text-[#ff5a1e]">
-      <span className="h-2 w-2 rounded-full bg-[#ff5a1e]" />
+    <p className="inline-flex items-center gap-2.5 text-xs font-bold uppercase tracking-[0.2em] text-[#1a6b3d]">
+      <span className="h-2 w-2 rounded-full bg-[#1a6b3d]" />
       {children}
     </p>
   );
@@ -182,6 +243,12 @@ export default function ServicesPage() {
         ]}
       />
       <HireHero
+        form={{
+          heading: "Get a Custom Proposal",
+          subheading: "Tell me which service you need and I will scope it with a fixed quote.",
+          source: "Services page",
+        }}
+        bgImage="/cta-workspace.png"
         small="What I Do"
         title="Web Dev & SEO Services"
         taglineTitle="Everything your site needs to launch, rank, and grow."
@@ -190,27 +257,23 @@ export default function ServicesPage() {
         secondaryCta={{ label: "See my work", href: "/projects" }}
       />
 
-      <main className="bg-[#0a0a0a] text-white">
+      <main className="bg-background text-foreground">
         {/* ===== 2. POSITIONING INTRO ===== */}
-        <section className="border-b border-white/10 px-6 py-20 lg:px-10 lg:py-24">
-          <div className="mx-auto max-w-3xl text-center">
-            <Eyebrow>How I Work</Eyebrow>
-            <h2 className="mt-5 text-3xl font-extrabold tracking-tight sm:text-4xl">
-              The right tool for the job, <span className="text-[#ff5a1e]">every time</span>
-            </h2>
-            <p className="mt-6 text-base leading-relaxed text-white/70 sm:text-lg">
-              Most freelancers sell you one stack and force your project to fit it. I do the opposite.
-              I pick the platform and approach that fit your goals, your budget, and your timeline,
-              then build it clean, fast, and SEO-ready from day one. Everything below is a service I
-              deliver end to end, so you deal with one person from the first message to launch and
-              beyond.
-            </p>
-            <p className="mx-auto mt-6 max-w-xl rounded-2xl border border-white/10 bg-white/[0.03] px-6 py-4 text-sm text-white/70">
-              Not sure what you need? Jump to &quot;Which service is right for you&quot; below, or just
-              message me and I will point you the right way.
-            </p>
-          </div>
-        </section>
+        <IntroSplit
+          eyebrow="How I Work"
+          heading="The right tool for the job, every time"
+          body={[
+            "Most freelancers sell you one stack and force your project to fit it. I do the opposite. I pick the platform and approach that fit your goals, your budget, and your timeline, then build it clean, fast, and SEO-ready from day one.",
+            "Everything below is a service I deliver end to end, so you deal with one person from the first message to launch and beyond.",
+          ]}
+          image="/desk-code.png"
+          reverse
+        >
+          <p className="mt-6 rounded-2xl border border-border bg-card px-6 py-4 text-sm text-muted-foreground">
+            Not sure what you need? Jump to &quot;Which service is right for you&quot; below, or just
+            message me and I will point you the right way.
+          </p>
+        </IntroSplit>
 
         {/* ===== 3-6. SERVICE PILLARS ===== */}
         <section className="px-6 py-20 lg:px-10 lg:py-24">
@@ -220,40 +283,40 @@ export default function ServicesPage() {
               return (
                 <div
                   key={s.num}
-                  className="grid gap-8 rounded-3xl border border-white/10 bg-white/[0.03] p-8 lg:grid-cols-2 lg:gap-12 lg:p-10"
+                  className="grid gap-8 rounded-3xl border border-border bg-card p-8 lg:grid-cols-2 lg:gap-12 lg:p-10"
                 >
                   {/* left */}
                   <div>
                     <div className="flex items-center gap-4">
-                      <span className="grid h-14 w-14 place-items-center rounded-xl border border-[#ff5a1e]/25 bg-[#ff5a1e]/10 text-[#ff5a1e]">
+                      <span className="grid h-14 w-14 place-items-center rounded-xl border border-[#1a6b3d]/25 bg-[#1a6b3d]/10 text-[#1a6b3d]">
                         <Icon className="h-7 w-7" strokeWidth={1.75} />
                       </span>
                       <Eyebrow>Service {s.num}</Eyebrow>
                     </div>
                     <h2 className="mt-5 text-3xl font-extrabold tracking-tight">{s.title}</h2>
-                    <p className="mt-3 text-lg font-semibold text-[#ff8a5e]">{s.short}</p>
-                    <p className="mt-4 text-sm leading-relaxed text-white/65">{s.body}</p>
+                    <p className="mt-3 text-lg font-semibold text-[#1a6b3d] dark:text-[#86e0a3]">{s.short}</p>
+                    <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{s.body}</p>
 
                     <div className="mt-6 space-y-3">
-                      <p className="text-sm text-white/70">
-                        <span className="font-semibold text-white">Best for:</span> {s.best}
+                      <p className="text-sm text-muted-foreground">
+                        <span className="font-semibold text-foreground">Best for:</span> {s.best}
                       </p>
-                      <p className="rounded-xl border border-[#ff5a1e]/25 bg-[#ff5a1e]/5 p-4 text-sm text-white/80">
-                        <span className="font-semibold text-[#ff5a1e]">Result you get:</span> {s.result}
+                      <p className="rounded-xl border border-[#1a6b3d]/25 bg-[#1a6b3d]/5 p-4 text-sm text-muted-foreground">
+                        <span className="font-semibold text-[#1a6b3d]">Result you get:</span> {s.result}
                       </p>
                     </div>
 
                     <div className="mt-6 flex flex-wrap gap-3">
                       <Link
                         href="/contact"
-                        className="group inline-flex items-center gap-2 rounded-full bg-[#ff5a1e] px-6 py-3 text-sm font-bold text-white transition-transform hover:scale-105"
+                        className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#15703a] to-[#4cb45a] px-6 py-3 text-sm font-bold text-white transition-transform hover:scale-105"
                       >
                         {s.cta}
                         <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
                       </Link>
                       <Link
                         href={s.detailHref}
-                        className="inline-flex items-center gap-2 rounded-full border border-white/25 px-6 py-3 text-sm font-bold text-white transition-colors hover:bg-white/10"
+                        className="inline-flex items-center gap-2 rounded-full border border-border px-6 py-3 text-sm font-bold text-foreground transition-colors hover:bg-foreground/10"
                       >
                         Learn more
                       </Link>
@@ -261,14 +324,14 @@ export default function ServicesPage() {
                   </div>
 
                   {/* right — what's included */}
-                  <div className="rounded-2xl border border-white/10 bg-black/40 p-6 lg:p-8">
-                    <h3 className="text-sm font-bold uppercase tracking-wider text-[#ff5a1e]">
+                  <div className="rounded-2xl border border-border bg-[var(--panel)]/40 p-6 lg:p-8">
+                    <h3 className="text-sm font-bold uppercase tracking-wider text-[#1a6b3d]">
                       What&apos;s included
                     </h3>
                     <ul className="mt-5 grid gap-3 sm:grid-cols-2">
                       {s.included.map((it) => (
-                        <li key={it} className="flex items-start gap-2 text-sm text-white/75">
-                          <Check className="mt-0.5 h-4 w-4 shrink-0 text-[#ff5a1e]" />
+                        <li key={it} className="flex items-start gap-2 text-sm text-muted-foreground">
+                          <Check className="mt-0.5 h-4 w-4 shrink-0 text-[#1a6b3d]" />
                           {it}
                         </li>
                       ))}
@@ -281,14 +344,14 @@ export default function ServicesPage() {
         </section>
 
         {/* ===== 7. WHICH SERVICE IS RIGHT FOR YOU ===== */}
-        <section className="border-t border-white/10 bg-black px-6 py-20 lg:px-10 lg:py-24">
+        <section className="bg-[var(--panel)] px-6 py-20 lg:px-10 lg:py-24">
           <div className="mx-auto max-w-3xl">
             <div className="text-center">
               <Eyebrow>Not Sure Where To Start</Eyebrow>
               <h2 className="mt-5 text-3xl font-extrabold tracking-tight sm:text-4xl">
                 Which service is right for you?
               </h2>
-              <p className="mt-4 text-white/65">
+              <p className="mt-4 text-muted-foreground">
                 Pick the line that sounds like you, and you will know where to begin.
               </p>
             </div>
@@ -296,21 +359,21 @@ export default function ServicesPage() {
               {WHICH.map((w) => (
                 <div
                   key={w.q}
-                  className="flex flex-col gap-1 rounded-2xl border border-white/10 bg-white/[0.03] p-5 sm:flex-row sm:items-center sm:justify-between sm:gap-6"
+                  className="flex flex-col gap-1 rounded-2xl border border-border bg-card p-5 sm:flex-row sm:items-center sm:justify-between sm:gap-6"
                 >
-                  <span className="font-semibold text-white">&quot;{w.q}&quot;</span>
-                  <span className="text-sm text-[#ff8a5e]">{w.a}</span>
+                  <span className="font-semibold text-foreground">&quot;{w.q}&quot;</span>
+                  <span className="text-sm text-[#1a6b3d] dark:text-[#86e0a3]">{w.a}</span>
                 </div>
               ))}
             </div>
-            <p className="mt-8 text-center text-white/65">
+            <p className="mt-8 text-center text-muted-foreground">
               Still unsure? Message me your goal and I will tell you honestly what you actually need,
               even if it is less than you asked for.
             </p>
             <div className="mt-6 text-center">
               <Link
                 href="/contact"
-                className="group inline-flex items-center gap-2 rounded-full bg-[#ff5a1e] px-7 py-3.5 text-sm font-bold text-white transition-transform hover:scale-105"
+                className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#15703a] to-[#4cb45a] px-7 py-3.5 text-sm font-bold text-white transition-transform hover:scale-105"
               >
                 Get a recommendation
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
@@ -320,93 +383,66 @@ export default function ServicesPage() {
         </section>
 
         {/* ===== 8. HOW PRICING WORKS ===== */}
-        <section className="border-t border-white/10 px-6 py-20 lg:px-10 lg:py-24">
+        <section className="px-6 py-20 lg:px-10 lg:py-24">
           <div className="mx-auto max-w-[1440px]">
             <div className="max-w-2xl">
               <Eyebrow>Simple and Honest</Eyebrow>
               <h2 className="mt-5 text-3xl font-extrabold tracking-tight sm:text-4xl">
                 How pricing works
               </h2>
-              <p className="mt-4 text-white/65">
+              <p className="mt-4 text-muted-foreground">
                 No hourly meters, no surprise invoices. Here is exactly how I quote every project.
               </p>
             </div>
             <div className="mt-12 grid gap-5 sm:grid-cols-2">
               {PRICING.map((p) => (
-                <div key={p.t} className="rounded-2xl border border-white/10 bg-white/[0.03] p-6">
+                <div key={p.t} className="rounded-2xl border border-border bg-card p-6">
                   <h3 className="text-lg font-bold">{p.t}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-white/60">{p.d}</p>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{p.d}</p>
                 </div>
               ))}
             </div>
-            <p className="mt-8 text-base font-semibold text-white/80">
+            <p className="mt-8 text-base font-semibold text-muted-foreground">
               You will always know the full cost before we begin.
             </p>
           </div>
         </section>
 
-        {/* ===== 9. MY PROCESS (image cards) ===== */}
-        <section className="relative overflow-hidden border-t border-[#ff5a1e]/25 bg-[#0a0604] px-6 py-20 lg:px-10 lg:py-28">
-          <div className="pointer-events-none absolute -top-32 left-1/2 h-80 w-[700px] -translate-x-1/2 rounded-full bg-[#ff5a1e]/15 blur-[120px]" />
-          <div className="relative mx-auto max-w-[1440px]">
-            <div className="mx-auto max-w-2xl text-center">
-              <Eyebrow>How It Gets Done</Eyebrow>
-              <h2 className="mt-5 text-3xl font-extrabold tracking-tight sm:text-4xl">
-                A simple process, no surprises
-              </h2>
-            </div>
-            <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {PROCESS.map((p) => (
-                <article
-                  key={p.n}
-                  className="group flex flex-col rounded-3xl border border-[#ff5a1e]/35 bg-gradient-to-b from-[#1c0e08] to-[#0a0604] p-3 transition-all duration-300 hover:-translate-y-2 hover:border-[#ff5a1e] hover:shadow-[0_24px_70px_-20px_rgba(255,90,30,0.55)]"
-                >
-                  <div className="overflow-hidden rounded-2xl">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={p.img}
-                      alt=""
-                      loading="lazy"
-                      className="aspect-[4/3] w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
-                  </div>
-                  <div className="relative px-3 pb-6 pt-9">
-                    <span className="absolute -top-5 left-3 grid h-11 w-11 place-items-center rounded-full bg-[#ff5a1e] text-lg font-extrabold text-white shadow-lg shadow-[#ff5a1e]/40">
-                      {p.n}
-                    </span>
-                    <h3 className="text-lg font-bold text-white">{p.title}</h3>
-                    <p className="mt-2 text-sm leading-relaxed text-white/70">{p.desc}</p>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
+        {/* ===== 9. MY PROCESS ===== */}
+        <ProcessTimeline
+          eyebrow="How It Gets Done"
+          title="A 6-Step Process That Removes the"
+          titleAccent="Surprises From Your Build"
+          intro="Every project follows the same disciplined process. You always know what stage we are in, what is being done, and why. No black box, no guessing."
+          steps={PROCESS}
+          footnote="One point of contact from the first message to launch and beyond."
+          cta={{ label: "Start your project", href: "/contact" }}
+        />
 
         {/* ===== 10. TECH STACK ===== */}
-        <section className="border-t border-white/10 px-6 py-20 lg:px-10 lg:py-24">
+        <section className="px-6 py-20 lg:px-10 lg:py-24">
           <div className="mx-auto max-w-[1440px]">
             <div className="max-w-2xl">
               <Eyebrow>Built To Scale</Eyebrow>
               <h2 className="mt-5 text-3xl font-extrabold tracking-tight sm:text-4xl">
                 The tools behind the results
               </h2>
-              <p className="mt-4 text-white/65">
+              <p className="mt-4 text-muted-foreground">
                 I work across the platforms that power the modern web, and recommend the best fit for
                 your project, not just the one I like most.
               </p>
             </div>
             <div className="mt-12 grid gap-6 lg:grid-cols-3">
               {STACK_GROUPS.map((g) => (
-                <div key={g.title} className="rounded-2xl border border-white/10 bg-white/[0.03] p-6">
-                  <h3 className="text-sm font-bold uppercase tracking-wider text-[#ff5a1e]">
+                <div key={g.title} className="rounded-2xl border border-border bg-card p-6">
+                  <h3 className="text-sm font-bold uppercase tracking-wider text-[#1a6b3d]">
                     {g.title}
                   </h3>
                   <div className="mt-4 flex flex-wrap gap-2">
                     {g.items.map((it) => (
                       <span
                         key={it}
-                        className="rounded-full border border-white/15 bg-white/[0.02] px-3 py-1.5 text-sm text-white/75"
+                        className="rounded-full border border-border bg-card px-3 py-1.5 text-sm text-muted-foreground"
                       >
                         {it}
                       </span>
@@ -419,7 +455,7 @@ export default function ServicesPage() {
         </section>
 
         {/* ===== 11. WHY WORK WITH ME ===== */}
-        <section className="border-t border-white/10 bg-black px-6 py-20 lg:px-10 lg:py-24">
+        <section className="bg-[var(--panel)] px-6 py-20 lg:px-10 lg:py-24">
           <div className="mx-auto grid max-w-[1440px] gap-12 lg:grid-cols-2 lg:gap-16">
             <div>
               <Eyebrow>Why Me</Eyebrow>
@@ -428,8 +464,8 @@ export default function ServicesPage() {
               </h2>
               <ul className="mt-8 space-y-4">
                 {WHY.map((w) => (
-                  <li key={w} className="flex items-start gap-3 text-white/75">
-                    <Check className="mt-0.5 h-5 w-5 shrink-0 text-[#ff5a1e]" />
+                  <li key={w} className="flex items-start gap-3 text-muted-foreground">
+                    <Check className="mt-0.5 h-5 w-5 shrink-0 text-[#1a6b3d]" />
                     <span>{w}</span>
                   </li>
                 ))}
@@ -439,10 +475,10 @@ export default function ServicesPage() {
               {WHY_STATS.map(([n, l]) => (
                 <div
                   key={l}
-                  className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 text-center"
+                  className="rounded-2xl border border-border bg-card p-6 text-center"
                 >
-                  <div className="text-3xl font-extrabold text-[#ff5a1e]">{n}</div>
-                  <div className="mt-1 text-xs text-white/55">{l}</div>
+                  <div className="text-3xl font-extrabold text-[#1a6b3d]">{n}</div>
+                  <div className="mt-1 text-xs text-muted-foreground">{l}</div>
                 </div>
               ))}
             </div>
@@ -450,7 +486,7 @@ export default function ServicesPage() {
         </section>
 
         {/* ===== 12. FAQ + CTA ===== */}
-        <section className="border-t border-white/10 px-6 py-20 lg:px-10 lg:py-24">
+        <section className="px-6 py-20 lg:px-10 lg:py-24">
           <div className="mx-auto max-w-3xl">
             <div className="text-center">
               <Eyebrow>Before You Ask</Eyebrow>
@@ -462,36 +498,36 @@ export default function ServicesPage() {
               {FAQS.map((f) => (
                 <details
                   key={f.q}
-                  className="group overflow-hidden rounded-xl border border-white/10 [&_summary::-webkit-details-marker]:hidden"
+                  className="group overflow-hidden rounded-xl border border-border [&_summary::-webkit-details-marker]:hidden"
                 >
-                  <summary className="flex cursor-pointer items-center justify-between gap-4 bg-[#141414] px-5 py-4 text-sm font-semibold text-white transition-colors group-open:bg-[#ff5a1e] sm:text-base">
+                  <summary className="flex cursor-pointer items-center justify-between gap-4 bg-card px-5 py-4 text-sm font-semibold text-foreground transition-colors group-open:bg-[#1a6b3d] group-open:text-white sm:text-base">
                     {f.q}
                     <span className="text-lg transition-transform group-open:rotate-45">+</span>
                   </summary>
-                  <div className="bg-black px-5 py-4 text-sm leading-relaxed text-white/85">{f.a}</div>
+                  <div className="bg-[var(--panel)] px-5 py-4 text-sm leading-relaxed text-muted-foreground">{f.a}</div>
                 </details>
               ))}
             </div>
 
-            <div className="mt-14 rounded-3xl border border-[#ff5a1e]/30 bg-gradient-to-b from-[#1c0e08] to-[#0a0604] p-10 text-center sm:p-14">
+            <div className="mt-14 rounded-3xl border border-[#1a6b3d]/30 bg-gradient-to-b from-[var(--panel-2)] to-[var(--panel)] p-10 text-center sm:p-14">
               <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl">
                 Not sure which service you need?
               </h2>
-              <p className="mx-auto mt-4 max-w-xl text-white/65">
+              <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
                 Tell me your goal and I will point you to the right one, with a clear plan and a fixed
                 quote. No obligation, just an honest next step.
               </p>
               <div className="mt-8 flex flex-wrap justify-center gap-3">
                 <Link
                   href="/contact"
-                  className="group inline-flex items-center gap-2.5 rounded-full bg-[#ff5a1e] px-8 py-4 text-sm font-bold text-white transition-transform hover:scale-105"
+                  className="group inline-flex items-center gap-2.5 rounded-full bg-gradient-to-r from-[#15703a] to-[#4cb45a] px-8 py-4 text-sm font-bold text-white transition-transform hover:scale-105"
                 >
                   Start your project
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
                 </Link>
                 <Link
                   href="/contact"
-                  className="inline-flex items-center gap-2 rounded-full border border-white/25 px-8 py-4 text-sm font-bold text-white transition-colors hover:bg-white/10"
+                  className="inline-flex items-center gap-2 rounded-full border border-border px-8 py-4 text-sm font-bold text-foreground transition-colors hover:bg-foreground/10"
                 >
                   Book a free consultation
                 </Link>

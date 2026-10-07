@@ -47,9 +47,12 @@ export const metadata: Metadata = {
   },
 };
 
-// The site is a single dark (orange) theme — force the dark class before paint,
-// overriding any stale light-theme value a visitor may still have in localStorage.
-const themeScript = `document.documentElement.classList.add('dark');`;
+/**
+ * Resolve the theme before first paint. Day is the default a first-time visitor
+ * lands on; a saved choice overrides it. Running this in <head> avoids the
+ * flash of the wrong theme a useEffect would produce.
+ */
+const themeScript = `(function(){try{var t=localStorage.getItem('theme')||'light';document.documentElement.classList.toggle('dark',t==='dark');}catch(e){}})();`;
 
 export default function RootLayout({
   children,
@@ -57,7 +60,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark h-full" suppressHydrationWarning>
+    <html lang="en" className="h-full" suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <link rel="preconnect" href="https://fonts.googleapis.com" />

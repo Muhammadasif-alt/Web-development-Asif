@@ -87,19 +87,18 @@ function Card({ item }: { item: Item }) {
 
 export function HireHighlights() {
   return (
-    <section className="relative overflow-hidden border-t border-white/10 bg-black px-6 py-20 text-white lg:px-10 lg:py-28">
-      <div className="pointer-events-none absolute -top-32 left-1/2 h-80 w-[700px] -translate-x-1/2 rounded-full bg-[#ff5a1e]/12 blur-[120px]" />
+    <section className="relative overflow-hidden bg-[var(--panel)] px-6 py-20 text-foreground lg:px-10 lg:py-28">
       <div className="relative mx-auto max-w-[1440px]">
         <div className="mx-auto mb-14 max-w-2xl text-center">
-          <span className="inline-flex items-center gap-3 font-mono text-xs uppercase tracking-[0.18em] text-[#ff5a1e]">
-            <span className="h-px w-8 bg-[#ff5a1e]" />
+          <span className="inline-flex items-center gap-3 font-mono text-xs uppercase tracking-[0.18em] text-[#1a6b3d]">
+            <span className="h-px w-8 bg-[#1a6b3d]" />
             What Drives Me
-            <span className="h-px w-8 bg-[#ff5a1e]" />
+            <span className="h-px w-8 bg-[#1a6b3d]" />
           </span>
           <h2 className="mt-5 text-3xl font-extrabold tracking-tight sm:text-4xl">
             The values behind every build
           </h2>
-          <p className="mt-4 text-white/65">
+          <p className="mt-4 text-muted-foreground">
             Hover any card to see what shapes the way I work.
           </p>
         </div>

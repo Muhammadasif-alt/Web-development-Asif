@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { SITE_URL } from "@/lib/site";
 import { POSTS } from "@/lib/blog-data";
 import { LOCATIONS } from "@/lib/locations-data";
+import { INDUSTRIES } from "@/lib/industries-data";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
@@ -9,6 +10,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages: { path: string; priority: number; freq: MetadataRoute.Sitemap[0]["changeFrequency"] }[] = [
     { path: "/", priority: 1.0, freq: "weekly" },
     { path: "/services", priority: 0.9, freq: "monthly" },
+    { path: "/industries", priority: 0.9, freq: "monthly" },
+    { path: "/services/web-apps", priority: 0.9, freq: "monthly" },
+    { path: "/services/mobile-apps", priority: 0.9, freq: "monthly" },
     { path: "/services/web-development", priority: 0.9, freq: "monthly" },
     { path: "/services/marketing", priority: 0.9, freq: "monthly" },
     { path: "/services/ecommerce", priority: 0.9, freq: "monthly" },
@@ -25,6 +29,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: now,
       changeFrequency: p.freq,
       priority: p.priority,
+    })),
+    ...INDUSTRIES.map((i) => ({
+      url: `${SITE_URL}/industries/${i.slug}`,
+      lastModified: now,
+      changeFrequency: "monthly" as const,
+      priority: 0.9,
     })),
     ...LOCATIONS.map((l) => ({
       url: `${SITE_URL}/${l.slug}`,

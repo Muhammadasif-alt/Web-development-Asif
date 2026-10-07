@@ -37,6 +37,8 @@ export const PROJECTS: Project[] = [
   { url: "https://mychildsroom.co.uk", title: "My Child's Room", tag: "E-commerce", desc: "Children's furniture and nursery store.", category: "E-commerce", stack: ["WooCommerce", "WordPress"] },
   { url: "https://baby-fair.co.uk", title: "Baby Fair", tag: "E-commerce", desc: "Baby products and nursery essentials store.", category: "E-commerce", stack: ["WooCommerce", "WordPress"] },
   { url: "https://jobsinusa.us", title: "Jobs in USA", tag: "Job Portal", desc: "Job listing and recruitment platform.", category: "Web Apps", stack: ["Next.js", "MERN"] },
+  { url: "https://jobgader.com", title: "JobGader", tag: "Job Portal", desc: "Jobs, internships and scholarships portal for students and graduates across 16 countries.", category: "Web Apps", stack: ["Next.js", "MERN"] },
+  { url: "https://emecgrp.com", title: "EMEC Group", tag: "Construction", desc: "Construction, mechanical and electrical group website with quick quote requests.", category: "Web Development", stack: ["WordPress", "Elementor"] },
 
   /* Singapore: team building, workshops, and retail */
   { url: "https://www.teamlabs.sg", title: "TeamLabs", tag: "Team Building", desc: "Team bonding and corporate activities company website in Singapore.", category: "Web Development", stack: ["WordPress", "Elementor"] },

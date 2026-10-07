@@ -24,7 +24,7 @@ const BUDGETS = [
 ];
 
 const fieldClass =
-  "h-12 w-full rounded-xl border border-white/15 bg-white/5 px-4 text-sm text-white outline-none transition-colors placeholder:text-white/40 focus:border-[#ff5a1e]";
+  "h-12 w-full rounded-xl border border-border bg-card px-4 text-sm text-foreground outline-none transition-colors placeholder:text-muted-foreground focus:border-[#1a6b3d]";
 
 type SelectProps = {
   value: string;
@@ -34,7 +34,7 @@ type SelectProps = {
   invalid?: boolean;
 };
 
-/* Custom orange-themed dropdown (replaces native <select>). */
+/* Custom brand-themed dropdown (replaces native <select>). */
 function OrangeSelect({ value, onChange, options, placeholder, invalid }: SelectProps) {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
@@ -62,20 +62,20 @@ function OrangeSelect({ value, onChange, options, placeholder, invalid }: Select
         onClick={() => setOpen((o) => !o)}
         aria-haspopup="listbox"
         aria-expanded={open}
-        className={`flex h-12 w-full items-center justify-between gap-2 rounded-xl border bg-white/5 px-4 text-sm outline-none transition-colors ${
-          invalid ? "border-red-500/70" : "border-white/15 focus:border-[#ff5a1e]"
-        } ${value ? "text-white" : "text-white/40"}`}
+        className={`flex h-12 w-full items-center justify-between gap-2 rounded-xl border bg-card px-4 text-sm outline-none transition-colors ${
+          invalid ? "border-red-500/70" : "border-border focus:border-[#1a6b3d]"
+        } ${value ? "text-foreground" : "text-muted-foreground"}`}
       >
         <span className="truncate">{value || placeholder}</span>
         <ChevronDown
-          className={`h-4 w-4 shrink-0 text-white/50 transition-transform ${open ? "rotate-180" : ""}`}
+          className={`h-4 w-4 shrink-0 text-muted-foreground transition-transform ${open ? "rotate-180" : ""}`}
         />
       </button>
 
       {open && (
         <div
           role="listbox"
-          className="absolute z-50 mt-2 max-h-64 w-full overflow-auto rounded-xl border border-white/10 bg-[#141414] p-1.5 shadow-xl shadow-black/50"
+          className="absolute z-50 mt-2 max-h-64 w-full overflow-auto rounded-xl border border-border bg-card p-1.5"
         >
           {options.map((opt) => {
             const selected = opt === value;
@@ -87,12 +87,12 @@ function OrangeSelect({ value, onChange, options, placeholder, invalid }: Select
                   onChange(opt);
                   setOpen(false);
                 }}
-                className={`flex w-full items-center justify-between gap-2 rounded-lg px-3 py-2 text-left text-sm transition-colors hover:bg-[#ff5a1e]/15 ${
-                  selected ? "font-semibold text-[#ff5a1e]" : "text-white/80"
+                className={`flex w-full items-center justify-between gap-2 rounded-lg px-3 py-2 text-left text-sm transition-colors hover:bg-[#1a6b3d]/15 ${
+                  selected ? "font-semibold text-[#1a6b3d]" : "text-muted-foreground"
                 }`}
               >
                 <span className="truncate">{opt}</span>
-                {selected && <Check className="h-4 w-4 shrink-0 text-[#ff5a1e]" />}
+                {selected && <Check className="h-4 w-4 shrink-0 text-[#1a6b3d]" />}
               </button>
             );
           })}
@@ -179,19 +179,19 @@ export function HireContactForm() {
         required
         rows={5}
         placeholder="Tell me about your project — what you need, timeline, and anything important."
-        className="w-full rounded-xl border border-white/15 bg-white/5 px-4 py-3 text-sm text-white outline-none transition-colors placeholder:text-white/40 focus:border-[#ff5a1e]"
+        className="w-full rounded-xl border border-border bg-card px-4 py-3 text-sm text-foreground outline-none transition-colors placeholder:text-muted-foreground focus:border-[#1a6b3d]"
       />
 
       <button
         type="submit"
-        className="group flex w-full items-center justify-center gap-2 rounded-xl bg-[#ff5a1e] px-6 py-4 text-sm font-bold uppercase tracking-wide text-white transition-opacity hover:opacity-90 sm:w-auto"
+        className="group flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#15703a] to-[#4cb45a] px-6 py-4 text-sm font-bold uppercase tracking-wide text-white transition-opacity hover:opacity-90 sm:w-auto"
       >
         Send message
         <Send className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
       </button>
 
       {sent && (
-        <p className="flex items-center gap-2 text-sm text-[#ff8a5e]">
+        <p className="flex items-center gap-2 text-sm text-[#1a6b3d] dark:text-[#86e0a3]">
           <Check className="h-4 w-4" />
           Your email app should open — just hit send and I&apos;ll reply within 24 hours.
         </p>

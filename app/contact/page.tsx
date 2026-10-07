@@ -125,8 +125,8 @@ const FAQ = [
 
 function Eyebrow({ children }: { children: React.ReactNode }) {
   return (
-    <p className="inline-flex items-center gap-2.5 text-xs font-bold uppercase tracking-[0.2em] text-[#ff5a1e]">
-      <span className="h-2 w-2 rounded-full bg-[#ff5a1e]" />
+    <p className="inline-flex items-center gap-2.5 text-xs font-bold uppercase tracking-[0.2em] text-[#1a6b3d]">
+      <span className="h-2 w-2 rounded-full bg-[#1a6b3d]" />
       {children}
     </p>
   );
@@ -146,6 +146,7 @@ export default function ContactPage() {
         ]}
       />
       <HireHero
+        bgImage="/desk-calm.png"
         small="Let's talk"
         title="Get in touch"
         taglineTitle="Tell me about your project."
@@ -154,15 +155,15 @@ export default function ContactPage() {
         secondaryCta={{ label: "View services", href: "/services" }}
       />
 
-      <main className="bg-[#0a0a0a] text-white">
+      <main className="bg-background text-foreground">
         {/* ===== INTRO ===== */}
-        <section className="border-b border-white/10 px-6 py-20 lg:px-10 lg:py-24">
+        <section className="px-6 py-20 lg:px-10 lg:py-24">
           <div className="mx-auto max-w-3xl text-center">
             <Eyebrow>Say hello</Eyebrow>
             <h2 className="mt-5 text-3xl font-extrabold tracking-tight sm:text-4xl">
               Whatever you are building, I would love to hear about it
             </h2>
-            <p className="mt-6 text-base leading-relaxed text-white/70 sm:text-lg">
+            <p className="mt-6 text-base leading-relaxed text-muted-foreground sm:text-lg">
               A new website, a store that needs to sell more, a site that finally has to rank, or a
               build someone else left half done. Tell me what you need in a few lines and I will come
               back with a clear plan, a timeline, and a fixed price you can trust.
@@ -173,7 +174,7 @@ export default function ContactPage() {
         {/* ===== CONTACT DETAILS + FORM ===== */}
         <section
           id="contact-form"
-          className="scroll-mt-24 border-b border-white/10 px-6 py-20 lg:px-10 lg:py-24"
+          className="scroll-mt-24 border-b border-border px-6 py-20 lg:px-10 lg:py-24"
         >
           <div className="mx-auto grid max-w-[1440px] gap-12 lg:grid-cols-2 lg:gap-16">
             {/* left: info */}
@@ -182,7 +183,7 @@ export default function ContactPage() {
               <h2 className="mt-5 text-3xl font-extrabold tracking-tight sm:text-4xl">
                 Reach me directly
               </h2>
-              <p className="mt-4 max-w-md text-white/70">
+              <p className="mt-4 max-w-md text-muted-foreground">
                 Prefer email or a quick WhatsApp instead of the form? Here is everything you need to
                 reach me.
               </p>
@@ -190,15 +191,15 @@ export default function ContactPage() {
                 {INFO.map((item) => {
                   const Icon = item.icon;
                   const content = (
-                    <div className="flex h-full items-start gap-4 rounded-2xl border border-white/10 bg-white/[0.03] p-5 transition-colors hover:border-[#ff5a1e]/40">
-                      <span className="grid h-11 w-11 shrink-0 place-items-center rounded-lg border border-[#ff5a1e]/25 bg-[#ff5a1e]/10 text-[#ff5a1e]">
+                    <div className="flex h-full items-start gap-4 rounded-2xl border border-border bg-card p-5 transition-colors hover:border-[#1a6b3d]/40">
+                      <span className="grid h-11 w-11 shrink-0 place-items-center rounded-lg border border-[#1a6b3d]/25 bg-[#1a6b3d]/10 text-[#1a6b3d]">
                         <Icon className="h-5 w-5" />
                       </span>
                       <div>
-                        <div className="text-xs uppercase tracking-wider text-white/50">
+                        <div className="text-xs uppercase tracking-wider text-muted-foreground">
                           {item.label}
                         </div>
-                        <div className="mt-1 text-sm font-medium text-white">{item.value}</div>
+                        <div className="mt-1 text-sm font-medium text-foreground">{item.value}</div>
                       </div>
                     </div>
                   );
@@ -218,12 +219,12 @@ export default function ContactPage() {
               </div>
 
               {/* response promise */}
-              <div className="mt-6 flex items-start gap-3 rounded-2xl border border-[#ff5a1e]/25 bg-[#ff5a1e]/5 p-5">
-                <span className="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-[#ff5a1e] text-white">
+              <div className="mt-6 flex items-start gap-3 rounded-2xl border border-[#1a6b3d]/25 bg-[#1a6b3d]/5 p-5">
+                <span className="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-[#1a6b3d] text-white">
                   <Check className="h-3.5 w-3.5" strokeWidth={3} />
                 </span>
-                <p className="text-sm leading-relaxed text-white/80">
-                  <span className="font-semibold text-white">Every message gets a real reply.</span>{" "}
+                <p className="text-sm leading-relaxed text-muted-foreground">
+                  <span className="font-semibold text-foreground">Every message gets a real reply.</span>{" "}
                   Within 24 hours, from me, never a bot. If it does not fit what I do, I will still
                   point you in the right direction.
                 </p>
@@ -231,9 +232,9 @@ export default function ContactPage() {
             </div>
 
             {/* right: form */}
-            <div className="rounded-3xl border border-white/10 bg-white/[0.03] p-6 sm:p-8">
-              <h2 className="text-xl font-bold text-white">Send a message</h2>
-              <p className="mt-2 text-sm text-white/60">
+            <div className="rounded-3xl border border-border bg-card p-6 sm:p-8">
+              <h2 className="text-xl font-bold text-foreground">Send a message</h2>
+              <p className="mt-2 text-sm text-muted-foreground">
                 Fill this in and I will get back to you within 24 hours.
               </p>
               <div className="mt-6">
@@ -244,14 +245,14 @@ export default function ContactPage() {
         </section>
 
         {/* ===== WHAT HAPPENS NEXT ===== */}
-        <section className="border-b border-white/10 bg-black px-6 py-20 lg:px-10 lg:py-24">
+        <section className="bg-[var(--panel)] px-6 py-20 lg:px-10 lg:py-24">
           <div className="mx-auto max-w-[1440px]">
             <div className="mx-auto max-w-2xl text-center">
               <Eyebrow>What happens next</Eyebrow>
               <h2 className="mt-5 text-3xl font-extrabold tracking-tight sm:text-4xl">
                 From your message to launch
               </h2>
-              <p className="mt-4 text-white/65">
+              <p className="mt-4 text-muted-foreground">
                 No black box and no waiting around. Here is exactly what happens after you hit send.
               </p>
             </div>
@@ -259,11 +260,11 @@ export default function ContactPage() {
               {STEPS.map((s) => (
                 <div
                   key={s.n}
-                  className="rounded-2xl border border-white/10 bg-white/[0.03] p-6"
+                  className="rounded-2xl border border-border bg-card p-6"
                 >
-                  <span className="font-mono text-xl font-extrabold text-[#ff5a1e]">{s.n}</span>
+                  <span className="font-mono text-xl font-extrabold text-[#1a6b3d]">{s.n}</span>
                   <h3 className="mt-3 text-lg font-bold">{s.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-white/60">{s.desc}</p>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s.desc}</p>
                 </div>
               ))}
             </div>
@@ -271,14 +272,14 @@ export default function ContactPage() {
         </section>
 
         {/* ===== WHAT TO INCLUDE ===== */}
-        <section className="border-b border-white/10 px-6 py-20 lg:px-10 lg:py-24">
+        <section className="px-6 py-20 lg:px-10 lg:py-24">
           <div className="mx-auto grid max-w-[1440px] items-center gap-12 lg:grid-cols-2 lg:gap-16">
             <div>
               <Eyebrow>Not sure what to write?</Eyebrow>
               <h2 className="mt-5 text-3xl font-extrabold tracking-tight sm:text-4xl">
                 A few lines is all it takes
               </h2>
-              <p className="mt-6 text-base leading-relaxed text-white/70">
+              <p className="mt-6 text-base leading-relaxed text-muted-foreground">
                 You do not need a full brief or a spec document. The more you can share, the faster I
                 can give you an accurate plan and quote, but even a rough idea is a great start.
               </p>
@@ -287,9 +288,9 @@ export default function ContactPage() {
               {INCLUDE.map((item) => (
                 <li
                   key={item}
-                  className="flex items-start gap-3 rounded-xl border border-white/10 bg-white/[0.03] p-4 text-sm leading-relaxed text-white/80"
+                  className="flex items-start gap-3 rounded-xl border border-border bg-card p-4 text-sm leading-relaxed text-muted-foreground"
                 >
-                  <span className="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full border border-[#ff5a1e]/25 bg-[#ff5a1e]/10 text-[#ff5a1e]">
+                  <span className="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full border border-[#1a6b3d]/25 bg-[#1a6b3d]/10 text-[#1a6b3d]">
                     <Check className="h-3.5 w-3.5" strokeWidth={2.5} />
                   </span>
                   {item}
@@ -300,14 +301,14 @@ export default function ContactPage() {
         </section>
 
         {/* ===== SERVICE QUICK LINKS ===== */}
-        <section className="border-b border-white/10 bg-black px-6 py-20 lg:px-10 lg:py-24">
+        <section className="bg-[var(--panel)] px-6 py-20 lg:px-10 lg:py-24">
           <div className="mx-auto max-w-[1440px]">
             <div className="mx-auto max-w-2xl text-center">
               <Eyebrow>What can I help with?</Eyebrow>
               <h2 className="mt-5 text-3xl font-extrabold tracking-tight sm:text-4xl">
                 Pick a starting point
               </h2>
-              <p className="mt-4 text-white/65">
+              <p className="mt-4 text-muted-foreground">
                 Not sure which one fits? Just say so in your message and I will guide you.
               </p>
             </div>
@@ -316,11 +317,11 @@ export default function ContactPage() {
                 <Link
                   key={s.title}
                   href={s.href}
-                  className="group flex flex-col rounded-2xl border border-white/10 bg-white/[0.03] p-6 transition-all hover:-translate-y-1 hover:border-[#ff5a1e]/50"
+                  className="group flex flex-col rounded-2xl border border-border bg-card p-6 transition-all hover:-translate-y-1 hover:border-[#1a6b3d]/50"
                 >
                   <h3 className="text-lg font-bold">{s.title}</h3>
-                  <p className="mt-2 flex-1 text-sm leading-relaxed text-white/60">{s.desc}</p>
-                  <span className="mt-4 inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#ff5a1e]">
+                  <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">{s.desc}</p>
+                  <span className="mt-4 inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#1a6b3d]">
                     Learn more
                     <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
                   </span>
@@ -331,7 +332,7 @@ export default function ContactPage() {
         </section>
 
         {/* ===== FAQ ===== */}
-        <section className="border-b border-white/10 px-6 py-20 lg:px-10 lg:py-24">
+        <section className="px-6 py-20 lg:px-10 lg:py-24">
           <div className="mx-auto max-w-3xl">
             <div className="text-center">
               <Eyebrow>FAQ</Eyebrow>
@@ -343,13 +344,13 @@ export default function ContactPage() {
               {FAQ.map((item) => (
                 <details
                   key={item.q}
-                  className="group overflow-hidden rounded-xl border border-white/10 [&_summary::-webkit-details-marker]:hidden"
+                  className="group overflow-hidden rounded-xl border border-border [&_summary::-webkit-details-marker]:hidden"
                 >
-                  <summary className="flex cursor-pointer items-center justify-between gap-4 bg-[#141414] px-5 py-4 text-sm font-semibold text-white transition-colors group-open:bg-[#ff5a1e] sm:text-base">
+                  <summary className="flex cursor-pointer items-center justify-between gap-4 bg-card px-5 py-4 text-sm font-semibold text-foreground transition-colors group-open:bg-[#1a6b3d] group-open:text-white sm:text-base">
                     {item.q}
                     <Plus className="h-5 w-5 shrink-0 transition-transform group-open:rotate-45" />
                   </summary>
-                  <p className="bg-black px-5 py-4 text-sm leading-relaxed text-white/85">{item.a}</p>
+                  <p className="bg-[var(--panel)] px-5 py-4 text-sm leading-relaxed text-muted-foreground">{item.a}</p>
                 </details>
               ))}
             </div>
@@ -358,25 +359,25 @@ export default function ContactPage() {
 
         {/* ===== FINAL CTA ===== */}
         <section className="px-6 py-20 lg:px-10 lg:py-24">
-          <div className="mx-auto max-w-4xl rounded-3xl border border-[#ff5a1e]/30 bg-gradient-to-b from-[#1c0e08] to-[#0a0604] p-10 text-center sm:p-14">
+          <div className="mx-auto max-w-4xl rounded-3xl border border-[#1a6b3d]/30 bg-gradient-to-b from-[var(--panel-2)] to-[var(--panel)] p-10 text-center sm:p-14">
             <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl">
               Ready when you are
             </h2>
-            <p className="mx-auto mt-4 max-w-xl text-white/65">
+            <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
               Tell me what you are building and I will reply within 24 hours with a clear plan and a
               fixed quote. No obligation, just an honest next step.
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-3">
               <Link
                 href="#contact-form"
-                className="group inline-flex items-center gap-2.5 rounded-full bg-[#ff5a1e] px-8 py-4 text-sm font-bold text-white transition-transform hover:scale-105"
+                className="group inline-flex items-center gap-2.5 rounded-full bg-gradient-to-r from-[#15703a] to-[#4cb45a] px-8 py-4 text-sm font-bold text-white transition-transform hover:scale-105"
               >
                 Send a message
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
               </Link>
               <a
                 href={`mailto:${EMAIL}`}
-                className="inline-flex items-center gap-2 rounded-full border border-white/25 px-8 py-4 text-sm font-bold text-white transition-colors hover:bg-white/10"
+                className="inline-flex items-center gap-2 rounded-full border border-border px-8 py-4 text-sm font-bold text-foreground transition-colors hover:bg-foreground/10"
               >
                 Email me instead
               </a>

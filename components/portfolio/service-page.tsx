@@ -13,7 +13,7 @@ export function ServicePage({ service }: { service: Service }) {
       <Navbar />
       <main>
         {/* hero with background image */}
-        <section className="relative flex min-h-[62vh] items-center overflow-hidden border-b border-border">
+        <section className="relative flex min-h-[62vh] items-center overflow-hidden">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={serviceImage(service.slug, 1920, 1080)}

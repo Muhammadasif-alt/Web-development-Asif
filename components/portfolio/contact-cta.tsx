@@ -2,8 +2,7 @@ import { ContactForm } from "@/components/portfolio/contact-form";
 
 export function ContactCta() {
   return (
-    <section id="contact" className="relative overflow-hidden border-t border-border py-24">
-      <div className="pointer-events-none absolute left-1/2 top-0 h-[320px] w-[520px] -translate-x-1/2 rounded-full bg-brand/10 blur-[130px]" />
+    <section id="contact" className="relative overflow-hidden py-24">
       <div className="mx-auto max-w-3xl px-6">
         <div className="mb-10 text-center">
           <span className="font-mono text-xs uppercase tracking-[0.18em] text-brand">

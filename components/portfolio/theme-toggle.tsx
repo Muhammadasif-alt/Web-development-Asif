@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { Sun, Moon } from "lucide-react";
 
 export function ThemeToggle() {
-  const [dark, setDark] = useState(true);
+  const [dark, setDark] = useState(false);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -28,7 +28,7 @@ export function ThemeToggle() {
       type="button"
       onClick={toggle}
       aria-label="Toggle light / dark theme"
-      className="grid h-9 w-9 place-items-center rounded-lg border border-border text-muted-foreground transition-colors hover:border-brand/50 hover:text-foreground"
+      className="grid h-11 w-11 place-items-center rounded-full bg-neutral-900/8 text-neutral-800 backdrop-blur-sm transition-colors hover:bg-neutral-900/15 dark:bg-white/10 dark:text-white dark:hover:bg-white/20"
     >
       {/* render a stable icon until mounted to avoid hydration mismatch */}
       {mounted && !dark ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />}

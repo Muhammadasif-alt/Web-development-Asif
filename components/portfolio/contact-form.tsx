@@ -25,7 +25,7 @@ const BUDGETS = [
 ];
 
 const fieldClass =
-  "flex h-10 w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm text-foreground shadow-xs outline-none transition-[color,box-shadow] placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50";
+  "flex h-10 w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm text-foreground outline-none transition-[color,box-shadow] placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50";
 
 const labelClass = "mb-1.5 block text-xs font-medium text-muted-foreground";
 
@@ -130,7 +130,7 @@ export function ContactForm() {
           required
           rows={5}
           placeholder="Tell me about your project — what you need, timeline, and anything important."
-          className="flex w-full rounded-md border border-input bg-transparent px-3 py-2.5 text-sm text-foreground shadow-xs outline-none transition-[color,box-shadow] placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50"
+          className="flex w-full rounded-md border border-input bg-transparent px-3 py-2.5 text-sm text-foreground outline-none transition-[color,box-shadow] placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50"
         />
       </div>
 

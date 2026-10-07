@@ -123,7 +123,7 @@ export function SeoPage() {
       <Navbar />
       <main>
         {/* HERO */}
-        <section className="relative flex min-h-[68vh] items-center overflow-hidden border-b border-border">
+        <section className="relative flex min-h-[68vh] items-center overflow-hidden">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={serviceImage("seo", 1920, 1080)}
@@ -131,7 +131,6 @@ export function SeoPage() {
             className="absolute inset-0 h-full w-full object-cover opacity-50"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/85 to-background/50" />
-          <div className="pointer-events-none absolute -top-24 right-[-10%] h-[460px] w-[460px] rounded-full bg-brand/10 blur-[130px]" />
           <div className="relative mx-auto w-full max-w-5xl px-6 pt-32 pb-16 lg:pt-40">
             <nav className="flex items-center gap-2 font-mono text-xs text-muted-foreground">
               <Link href="/" className="transition-colors hover:text-foreground">Home</Link>
@@ -172,7 +171,7 @@ export function SeoPage() {
         </section>
 
         {/* STATS */}
-        <section className="border-b border-border bg-card/40">
+        <section className="bg-card/40">
           <div className="mx-auto grid max-w-[1440px] grid-cols-2 gap-px px-6 py-2 sm:grid-cols-4">
             {STATS.map((s) => (
               <div key={s.label} className="px-4 py-8 text-center">
@@ -221,7 +220,7 @@ export function SeoPage() {
         </section>
 
         {/* PROCESS */}
-        <section className="border-t border-border py-24">
+        <section className="py-24">
           <div className="mx-auto max-w-[1440px] px-6">
             <div className="mb-14 max-w-2xl">
               <span className="inline-flex items-center gap-3 font-mono text-xs uppercase tracking-[0.18em] text-brand">
@@ -254,7 +253,7 @@ export function SeoPage() {
         </section>
 
         {/* CASE STUDIES / RESULTS */}
-        <section id="results" className="border-t border-border py-24">
+        <section id="results" className="py-24">
           <div className="mx-auto max-w-[1440px] px-6">
             <div className="mb-14 max-w-2xl">
               <span className="inline-flex items-center gap-3 font-mono text-xs uppercase tracking-[0.18em] text-brand">
@@ -296,7 +295,7 @@ export function SeoPage() {
         </section>
 
         {/* WHY CHOOSE ME */}
-        <section className="border-t border-border py-24">
+        <section className="py-24">
           <div className="mx-auto max-w-[1440px] px-6">
             <div className="mb-14 max-w-2xl">
               <span className="inline-flex items-center gap-3 font-mono text-xs uppercase tracking-[0.18em] text-brand">
@@ -328,7 +327,7 @@ export function SeoPage() {
         </section>
 
         {/* FAQ */}
-        <section className="border-t border-border py-24">
+        <section className="py-24">
           <div className="mx-auto max-w-3xl px-6">
             <div className="mb-10 text-center">
               <span className="font-mono text-xs uppercase tracking-[0.18em] text-brand">FAQ</span>
@@ -354,10 +353,9 @@ export function SeoPage() {
         </section>
 
         {/* CTA */}
-        <section className="border-t border-border py-24">
+        <section className="py-24">
           <div className="mx-auto max-w-3xl px-6">
             <div className="relative overflow-hidden rounded-3xl border border-brand/25 bg-brand/[0.06] p-10 text-center sm:p-14">
-              <div className="pointer-events-none absolute left-1/2 top-0 h-[260px] w-[420px] -translate-x-1/2 rounded-full bg-brand/10 blur-[120px]" />
               <div className="relative">
                 <div className="mx-auto flex items-center justify-center gap-2 font-mono text-xs uppercase tracking-[0.18em] text-brand">
                   <Clock className="h-4 w-4" />

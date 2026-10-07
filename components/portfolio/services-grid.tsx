@@ -4,7 +4,7 @@ import { SERVICE_GROUPS, SERVICES } from "@/lib/services-data";
 
 export function Services() {
   return (
-    <section id="services" className="border-t border-border py-24">
+    <section id="services" className="py-24">
       <div className="mx-auto max-w-[1440px] px-6">
         <div className="mb-14 max-w-2xl">
           <span className="inline-flex items-center gap-3 font-mono text-xs uppercase tracking-[0.18em] text-brand">

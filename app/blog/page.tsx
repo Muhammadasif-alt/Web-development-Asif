@@ -20,8 +20,8 @@ export const metadata: Metadata = {
 
 function Eyebrow({ children }: { children: React.ReactNode }) {
   return (
-    <p className="inline-flex items-center gap-2.5 text-xs font-bold uppercase tracking-[0.2em] text-[#ff5a1e]">
-      <span className="h-2 w-2 rounded-full bg-[#ff5a1e]" />
+    <p className="inline-flex items-center gap-2.5 text-xs font-bold uppercase tracking-[0.2em] text-[#1a6b3d]">
+      <span className="h-2 w-2 rounded-full bg-[#1a6b3d]" />
       {children}
     </p>
   );
@@ -47,6 +47,7 @@ export default async function BlogPage({
   return (
     <>
       <HireHero
+        bgImage="/desk-code.png"
         small="Insights & tips"
         title="The Blog"
         taglineTitle="Build smarter sites."
@@ -55,7 +56,7 @@ export default async function BlogPage({
         secondaryCta={{ label: "View services", href: "/services" }}
       />
 
-      <main className="bg-[#0a0a0a] text-white">
+      <main className="bg-background text-foreground">
         <section className="px-6 py-20 lg:px-10 lg:py-24">
           <div className="mx-auto max-w-[1440px]">
             <div className="mx-auto max-w-2xl text-center">
@@ -63,7 +64,7 @@ export default async function BlogPage({
               <h2 className="mt-5 text-3xl font-extrabold tracking-tight sm:text-4xl">
                 Advice you can actually use
               </h2>
-              <p className="mt-4 text-white/65">
+              <p className="mt-4 text-muted-foreground">
                 Straight talk on building fast, SEO-ready websites that bring in real business.
               </p>
             </div>
@@ -74,9 +75,9 @@ export default async function BlogPage({
                 <Link
                   key={p.slug}
                   href={`/blog/${p.slug}`}
-                  className="group flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] transition-all duration-300 hover:-translate-y-1.5 hover:border-[#ff5a1e]/60"
+                  className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition-all duration-300 hover:-translate-y-1.5 hover:border-[#1a6b3d]/60"
                 >
-                  <div className="aspect-[16/10] overflow-hidden bg-[#141414]">
+                  <div className="aspect-[16/10] overflow-hidden bg-card">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={p.cover}
@@ -86,16 +87,16 @@ export default async function BlogPage({
                     />
                   </div>
                   <div className="flex flex-1 flex-col p-6">
-                    <div className="flex items-center gap-2.5 font-mono text-xs text-white/50">
-                      <span className="font-semibold text-[#ff5a1e]">{p.category}</span>
+                    <div className="flex items-center gap-2.5 font-mono text-xs text-muted-foreground">
+                      <span className="font-semibold text-[#1a6b3d]">{p.category}</span>
                       <span>•</span>
                       <span>{p.date}</span>
                       <span>•</span>
                       <span>{p.read}</span>
                     </div>
-                    <h3 className="mt-3 text-lg font-bold leading-snug text-white">{p.title}</h3>
-                    <p className="mt-2 flex-1 text-sm leading-relaxed text-white/60">{p.excerpt}</p>
-                    <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-bold text-[#ff5a1e]">
+                    <h3 className="mt-3 text-lg font-bold leading-snug text-foreground">{p.title}</h3>
+                    <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">{p.excerpt}</p>
+                    <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-bold text-[#1a6b3d]">
                       Read article
                       <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                     </span>
@@ -113,13 +114,13 @@ export default async function BlogPage({
                 {current > 1 ? (
                   <Link
                     href={pageHref(current - 1)}
-                    className="inline-flex h-11 items-center gap-1.5 rounded-full border border-white/15 bg-white/[0.03] px-5 text-sm font-semibold text-white transition-colors hover:border-[#ff5a1e]/60"
+                    className="inline-flex h-11 items-center gap-1.5 rounded-full border border-border bg-card px-5 text-sm font-semibold text-foreground transition-colors hover:border-[#1a6b3d]/60"
                   >
                     <ArrowLeft className="h-4 w-4" />
                     Prev
                   </Link>
                 ) : (
-                  <span className="inline-flex h-11 cursor-not-allowed items-center gap-1.5 rounded-full border border-white/10 px-5 text-sm font-semibold text-white/30">
+                  <span className="inline-flex h-11 cursor-not-allowed items-center gap-1.5 rounded-full border border-border px-5 text-sm font-semibold text-muted-foreground">
                     <ArrowLeft className="h-4 w-4" />
                     Prev
                   </span>
@@ -133,8 +134,8 @@ export default async function BlogPage({
                       aria-current={n === current ? "page" : undefined}
                       className={`grid h-11 w-11 place-items-center rounded-full text-sm font-bold transition-colors ${
                         n === current
-                          ? "bg-[#ff5a1e] text-white"
-                          : "border border-white/15 bg-white/[0.03] text-white/70 hover:border-[#ff5a1e]/60 hover:text-white"
+                          ? "bg-[#1a6b3d] text-white"
+                          : "border border-border bg-card text-muted-foreground hover:border-[#1a6b3d]/60 hover:text-foreground"
                       }`}
                     >
                       {n}
@@ -145,13 +146,13 @@ export default async function BlogPage({
                 {current < totalPages ? (
                   <Link
                     href={pageHref(current + 1)}
-                    className="inline-flex h-11 items-center gap-1.5 rounded-full border border-white/15 bg-white/[0.03] px-5 text-sm font-semibold text-white transition-colors hover:border-[#ff5a1e]/60"
+                    className="inline-flex h-11 items-center gap-1.5 rounded-full border border-border bg-card px-5 text-sm font-semibold text-foreground transition-colors hover:border-[#1a6b3d]/60"
                   >
                     Next
                     <ArrowRight className="h-4 w-4" />
                   </Link>
                 ) : (
-                  <span className="inline-flex h-11 cursor-not-allowed items-center gap-1.5 rounded-full border border-white/10 px-5 text-sm font-semibold text-white/30">
+                  <span className="inline-flex h-11 cursor-not-allowed items-center gap-1.5 rounded-full border border-border px-5 text-sm font-semibold text-muted-foreground">
                     Next
                     <ArrowRight className="h-4 w-4" />
                   </span>
@@ -159,7 +160,7 @@ export default async function BlogPage({
               </nav>
             )}
 
-            <p className="mt-8 text-center text-sm text-white/40">
+            <p className="mt-8 text-center text-sm text-muted-foreground">
               Page {current} of {totalPages}
             </p>
           </div>

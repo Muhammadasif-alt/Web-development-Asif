@@ -7,6 +7,7 @@ import { ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/portfolio/theme-toggle";
 import { SERVICE_LIST } from "@/lib/services-data";
+import { BrandLogo } from "./brand-logo";
 
 const LINKS: [string, string][] = [
   ["Home", "/"],
@@ -36,24 +37,7 @@ export function Navbar() {
     >
       <nav className="mx-auto flex max-w-[1440px] items-center justify-between px-6 py-4">
         <Link href="/" aria-label="Asif — Web Development, home" className="flex items-center">
-          {/* light theme logo */}
-          <Image
-            src="/logo-light.webp"
-            alt="Web Development by Asif"
-            width={1420}
-            height={321}
-            priority
-            className="h-8 w-auto dark:hidden"
-          />
-          {/* dark theme logo */}
-          <Image
-            src="/logo-dark.webp"
-            alt="Web Development by Asif"
-            width={1402}
-            height={319}
-            priority
-            className="hidden h-8 w-auto dark:block"
-          />
+          <BrandLogo className="h-8 text-sm" />
         </Link>
 
         <div className="hidden items-center gap-8 md:flex">
@@ -77,7 +61,7 @@ export function Navbar() {
               <ChevronDown className="h-3.5 w-3.5 transition-transform group-hover:rotate-180" />
             </Link>
             <div className="invisible absolute left-1/2 top-full -translate-x-1/2 pt-4 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100">
-              <div className="grid w-[560px] grid-cols-2 gap-1 rounded-2xl border border-border bg-popover p-3 shadow-xl shadow-black/20">
+              <div className="grid w-[560px] grid-cols-2 gap-1 rounded-2xl border border-border bg-popover p-3">
                 {SERVICE_LIST.map((s) => {
                   const Icon = s.icon;
                   return (

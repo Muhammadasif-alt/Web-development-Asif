@@ -56,8 +56,6 @@ export function Hero() {
       <div className="absolute inset-0 bg-gradient-to-r from-background via-background/90 to-background/70" />
       <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
       {/* ambient glow */}
-      <div className="pointer-events-none absolute -top-40 right-[-10%] h-[480px] w-[480px] rounded-full bg-brand/10 blur-[130px]" />
-      <div className="pointer-events-none absolute bottom-[-20%] left-[-10%] h-[380px] w-[380px] rounded-full bg-brand/5 blur-[130px]" />
 
       <div className="relative z-10 mx-auto grid max-w-[1440px] items-center gap-12 px-6 pb-24 pt-36 lg:min-h-screen lg:grid-cols-2 lg:gap-16 lg:pb-28 lg:pt-40">
         {/* LEFT — copy */}
@@ -109,7 +107,7 @@ export function Hero() {
 
         {/* RIGHT — browser frame with rotating project shots */}
         <div className="relative">
-          <div className="overflow-hidden rounded-xl border border-border bg-card/60 shadow-2xl shadow-black/40 backdrop-blur">
+          <div className="overflow-hidden rounded-xl border border-border bg-card/60 backdrop-blur">
             {/* browser chrome */}
             <div className="flex items-center gap-2 border-b border-border px-4 py-3">
               <span className="h-3 w-3 rounded-full bg-muted-foreground/40" />
@@ -140,7 +138,7 @@ export function Hero() {
                   rel="noopener noreferrer"
                   className="group/cap"
                 >
-                  <div className="text-sm font-semibold text-white group-hover/cap:text-brand">
+                  <div className="text-sm font-semibold text-foreground group-hover/cap:text-brand">
                     {SHOTS[shot].title}
                   </div>
                   <div className="text-xs text-zinc-300">{SHOTS[shot].tag}</div>

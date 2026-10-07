@@ -7,6 +7,7 @@ import { ProjectsFilter } from "@/components/portfolio/projects-filter";
 import { PROJECTS, projectShot } from "@/lib/projects-data";
 import { JsonLd } from "@/components/seo/json-ld";
 import { portfolioSchema, breadcrumbSchema } from "@/lib/schema";
+import { IntroSplit } from "@/components/portfolio/intro-split";
 
 export const metadata: Metadata = {
   title: "Projects and Portfolio | Web Developer Asif.dev",
@@ -32,8 +33,8 @@ const RESULTS = [
 
 function Eyebrow({ children }: { children: React.ReactNode }) {
   return (
-    <p className="inline-flex items-center gap-2.5 text-xs font-bold uppercase tracking-[0.2em] text-[#ff5a1e]">
-      <span className="h-2 w-2 rounded-full bg-[#ff5a1e]" />
+    <p className="inline-flex items-center gap-2.5 text-xs font-bold uppercase tracking-[0.2em] text-[#1a6b3d]">
+      <span className="h-2 w-2 rounded-full bg-[#1a6b3d]" />
       {children}
     </p>
   );
@@ -52,6 +53,12 @@ export default function ProjectsPage() {
         ]}
       />
       <HireHero
+        form={{
+          heading: "Start Your Project",
+          subheading: "Like what you see? Tell me what you are building and I will quote it.",
+          source: "Projects page",
+        }}
+        bgImage="/desk-code.png"
         small="My Work"
         title="Projects & Portfolio"
         taglineTitle="Real websites, real stores, real results."
@@ -60,52 +67,48 @@ export default function ProjectsPage() {
         secondaryCta={{ label: "View services", href: "/services" }}
       />
 
-      <main className="bg-[#0a0a0a] text-white">
+      <main className="bg-background text-foreground">
         {/* ===== 2. INTRO ===== */}
-        <section className="border-b border-white/10 px-6 py-20 lg:px-10 lg:py-24">
-          <div className="mx-auto max-w-3xl text-center">
-            <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl">
-              Built to <span className="text-[#ff5a1e]">perform</span>, not just to look good
-            </h2>
-            <p className="mt-6 text-base leading-relaxed text-white/70 sm:text-lg">
-              Every project here started with a goal: more leads, more sales, or a faster site that
-              finally ranks. I do not build for awards, I build for results. Filter by the type of
-              work and see what was delivered, from custom WordPress builds to Shopify stores and
-              Next.js web apps.
-            </p>
-          </div>
-        </section>
+        <IntroSplit
+          eyebrow="The work"
+          heading="Built to perform, not just to look good"
+          body={[
+            "Every project here started with a goal: more leads, more sales, or a faster site that finally ranks. I do not build for awards, I build for results.",
+            "Filter by the type of work and see what was delivered, from custom WordPress builds to Shopify stores and Next.js web apps.",
+          ]}
+          image="/cta-workspace.png"
+        />
 
         {/* ===== 4. FEATURED SPOTLIGHT ===== */}
-        <section className="border-b border-white/10 px-6 py-20 lg:px-10 lg:py-24">
+        <section className="px-6 py-20 lg:px-10 lg:py-24">
           <div className="mx-auto max-w-[1440px]">
-            <div className="grid gap-8 overflow-hidden rounded-3xl border border-[#ff5a1e]/30 bg-gradient-to-b from-[#1c0e08] to-[#0a0604] lg:grid-cols-2">
+            <div className="grid gap-8 overflow-hidden rounded-3xl border border-[#1a6b3d]/30 bg-gradient-to-b from-[var(--panel-2)] to-[var(--panel)] lg:grid-cols-2">
               <a
                 href={featured.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative aspect-[16/11] overflow-hidden lg:aspect-auto"
+                className="group relative flex aspect-[16/11] items-center overflow-hidden bg-[var(--panel)] lg:aspect-auto"
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={projectShot(featured.url)}
                   alt={featured.title}
-                  className="h-full w-full object-cover object-top transition duration-500 group-hover:scale-105"
+                  className="h-full w-full object-cover object-top transition duration-500 group-hover:scale-105 lg:h-auto lg:object-contain"
                 />
               </a>
               <div className="flex flex-col justify-center p-8 lg:p-12">
                 <Eyebrow>Featured</Eyebrow>
                 <h2 className="mt-5 text-3xl font-extrabold tracking-tight">{featured.title}</h2>
-                <span className="mt-3 w-fit rounded-full bg-[#ff5a1e]/15 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-[#ff5a1e]">
+                <span className="mt-3 w-fit rounded-full bg-[#1a6b3d]/12 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-[#1a6b3d]">
                   {featured.category}
                 </span>
-                <p className="mt-5 text-sm leading-relaxed text-white/70">
-                  <span className="font-semibold text-white">The brief:</span> Idea Digital needed a
+                <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
+                  <span className="font-semibold text-foreground">The brief:</span> Idea Digital needed a
                   fast, credible agency site that explains their SEO services and turns visitors into
                   enquiries.
                 </p>
-                <p className="mt-3 text-sm leading-relaxed text-white/70">
-                  <span className="font-semibold text-white">What I did:</span> Built a clean,
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                  <span className="font-semibold text-foreground">What I did:</span> Built a clean,
                   conversion-focused site with clear services, process, and case-study sections, tuned
                   for speed and on-page SEO from the first line.
                 </p>
@@ -113,14 +116,14 @@ export default function ProjectsPage() {
                   {featured.stack.map((s) => (
                     <span
                       key={s}
-                      className="rounded-md border border-white/10 bg-white/[0.02] px-2 py-1 text-[11px] text-white/60"
+                      className="rounded-md border border-border bg-card px-2 py-1 text-[11px] text-muted-foreground"
                     >
                       {s}
                     </span>
                   ))}
                 </div>
-                <p className="mt-5 rounded-xl border border-[#ff5a1e]/25 bg-[#ff5a1e]/5 p-4 text-sm text-white/80">
-                  <span className="font-semibold text-[#ff5a1e]">The result:</span> A fast,
+                <p className="mt-5 rounded-xl border border-[#1a6b3d]/25 bg-[#1a6b3d]/5 p-4 text-sm text-muted-foreground">
+                  <span className="font-semibold text-[#1a6b3d]">The result:</span> A fast,
                   professional site with a clear lead path that positions the agency to win new
                   clients.
                 </p>
@@ -128,7 +131,7 @@ export default function ProjectsPage() {
                   href={featured.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group mt-6 inline-flex w-fit items-center gap-2 rounded-full bg-[#ff5a1e] px-6 py-3 text-sm font-bold text-white transition-transform hover:scale-105"
+                  className="group mt-6 inline-flex w-fit items-center gap-2 rounded-full bg-gradient-to-r from-[#15703a] to-[#4cb45a] px-6 py-3 text-sm font-bold text-white transition-transform hover:scale-105"
                 >
                   View live site
                   <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -139,7 +142,7 @@ export default function ProjectsPage() {
         </section>
 
         {/* ===== 3 + 5 + 6. FILTERS + GRID ===== */}
-        <section className="border-b border-white/10 px-6 py-20 lg:px-10 lg:py-24">
+        <section className="px-6 py-20 lg:px-10 lg:py-24">
           <div className="mx-auto max-w-[1440px]">
             <div className="mx-auto max-w-2xl text-center">
               <Eyebrow>Browse by type</Eyebrow>
@@ -154,7 +157,7 @@ export default function ProjectsPage() {
         </section>
 
         {/* ===== 7. RESULTS BAR ===== */}
-        <section className="border-b border-white/10 bg-black px-6 py-20 lg:px-10 lg:py-24">
+        <section className="bg-[var(--panel)] px-6 py-20 lg:px-10 lg:py-24">
           <div className="mx-auto max-w-[1440px]">
             <div className="mx-auto max-w-2xl text-center">
               <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl">
@@ -165,10 +168,10 @@ export default function ProjectsPage() {
               {RESULTS.map(([n, l]) => (
                 <div
                   key={l}
-                  className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 text-center"
+                  className="rounded-2xl border border-border bg-card p-6 text-center"
                 >
-                  <div className="text-4xl font-extrabold text-[#ff5a1e]">{n}</div>
-                  <div className="mt-2 text-sm text-white/55">{l}</div>
+                  <div className="text-4xl font-extrabold text-[#1a6b3d]">{n}</div>
+                  <div className="mt-2 text-sm text-muted-foreground">{l}</div>
                 </div>
               ))}
             </div>
@@ -176,20 +179,20 @@ export default function ProjectsPage() {
         </section>
 
         {/* ===== 8. MINI PROCESS ===== */}
-        <section className="border-b border-white/10 px-6 py-20 lg:px-10 lg:py-24">
+        <section className="px-6 py-20 lg:px-10 lg:py-24">
           <div className="mx-auto max-w-3xl text-center">
             <Eyebrow>Behind Every Project</Eyebrow>
             <h2 className="mt-5 text-3xl font-extrabold tracking-tight sm:text-4xl">
               The same care, every time
             </h2>
-            <p className="mt-6 text-base leading-relaxed text-white/70">
+            <p className="mt-6 text-base leading-relaxed text-muted-foreground">
               Whatever the platform, the process stays the same. I start with your goal, pick the
               right stack, build clean and SEO-ready code, tune it for speed, and stay available after
               launch. That is why the projects on this page keep performing long after they go live.
             </p>
             <Link
               href="/services"
-              className="group mt-8 inline-flex items-center gap-2 rounded-full border border-white/25 px-7 py-3.5 text-sm font-bold text-white transition-colors hover:bg-white/10"
+              className="group mt-8 inline-flex items-center gap-2 rounded-full border border-border px-7 py-3.5 text-sm font-bold text-foreground transition-colors hover:bg-foreground/10"
             >
               See my full process
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
@@ -199,25 +202,25 @@ export default function ProjectsPage() {
 
         {/* ===== 10. CTA ===== */}
         <section className="px-6 py-20 lg:px-10 lg:py-24">
-          <div className="mx-auto max-w-4xl rounded-3xl border border-[#ff5a1e]/30 bg-gradient-to-b from-[#1c0e08] to-[#0a0604] p-10 text-center sm:p-14">
+          <div className="mx-auto max-w-4xl rounded-3xl border border-[#1a6b3d]/30 bg-gradient-to-b from-[var(--panel-2)] to-[var(--panel)] p-10 text-center sm:p-14">
             <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl">
               Want to be the next project?
             </h2>
-            <p className="mx-auto mt-4 max-w-xl text-white/65">
+            <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
               Tell me what you are building and I will get back within 24 hours with a clear plan and a
               fixed quote. No obligation, just an honest next step.
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-3">
               <Link
                 href="/contact"
-                className="group inline-flex items-center gap-2.5 rounded-full bg-[#ff5a1e] px-8 py-4 text-sm font-bold text-white transition-transform hover:scale-105"
+                className="group inline-flex items-center gap-2.5 rounded-full bg-gradient-to-r from-[#15703a] to-[#4cb45a] px-8 py-4 text-sm font-bold text-white transition-transform hover:scale-105"
               >
                 Start your project
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
               </Link>
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2 rounded-full border border-white/25 px-8 py-4 text-sm font-bold text-white transition-colors hover:bg-white/10"
+                className="inline-flex items-center gap-2 rounded-full border border-border px-8 py-4 text-sm font-bold text-foreground transition-colors hover:bg-foreground/10"
               >
                 Get in touch
               </Link>
