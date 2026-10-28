@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import {
   ArrowRight,
+  ArrowUpRight,
   Plus,
   Rocket,
   Code2,
@@ -629,11 +630,11 @@ export default function HireMePage() {
           </div>
           <Link
             href="/projects"
-            className="group inline-flex items-center gap-2.5 text-xs font-bold uppercase tracking-[0.18em] text-muted-foreground transition-colors hover:text-foreground"
+            className="group inline-flex items-center gap-3 rounded-full bg-gradient-to-r from-[#15703a] to-[#4cb45a] py-2 pl-6 pr-2 text-xs font-bold uppercase tracking-[0.16em] text-white"
           >
-            View all projects
-            <span className="grid h-7 w-7 place-items-center rounded-full border border-border transition-colors group-hover:border-[#1a6b3d] group-hover:bg-[#1a6b3d] group-hover:text-white">
-              <Plus className="h-3.5 w-3.5" />
+            All Work
+            <span className="grid h-8 w-8 place-items-center rounded-full bg-black/85 ring-1 ring-white/15">
+              <ArrowUpRight className="h-4 w-4 transition-transform group-hover:rotate-45" />
             </span>
           </Link>
         </div>
