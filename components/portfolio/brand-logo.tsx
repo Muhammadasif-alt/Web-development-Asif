@@ -5,13 +5,26 @@
  * colour lives in one place instead of being baked into an exported file. The
  * wordmark is real text, which keeps it on the site's own typeface.
  */
-/** `onDark` forces the light variant for surfaces that stay dark in every theme (the footer). */
-export function BrandLogo({ className = "", onDark = false }: { className?: string; onDark?: boolean }) {
+/**
+ * `onDark` forces the light variant for surfaces that stay dark in every theme (the footer);
+ * `onLight` forces the dark variant for surfaces that stay white in every theme (the navbar).
+ */
+export function BrandLogo({
+  className = "",
+  onDark = false,
+  onLight = false,
+}: {
+  className?: string;
+  onDark?: boolean;
+  onLight?: boolean;
+}) {
+  const ink = onDark ? "text-white" : onLight ? "text-neutral-900" : "text-neutral-900 dark:text-white";
+  const rule = onDark ? "bg-white/25" : onLight ? "bg-neutral-300" : "bg-neutral-300 dark:bg-white/25";
   return (
     <span className={`inline-flex items-center gap-2.5 ${className}`}>
       <svg
         viewBox="0 0 72 68"
-        className={`h-full w-auto shrink-0 ${onDark ? "text-white" : "text-neutral-900 dark:text-white"}`}
+        className={`h-full w-auto shrink-0 ${ink}`}
         fill="none"
         aria-hidden="true"
       >
@@ -30,10 +43,10 @@ export function BrandLogo({ className = "", onDark = false }: { className?: stri
         </g>
       </svg>
 
-      <span className={`h-[76%] w-px shrink-0 ${onDark ? "bg-white/25" : "bg-neutral-300 dark:bg-white/25"}`} />
+      <span className={`h-[76%] w-px shrink-0 ${rule}`} />
 
       <span className="flex flex-col justify-center leading-none">
-        <span className={`text-[0.95em] font-extrabold tracking-tight ${onDark ? "text-white" : "text-neutral-900 dark:text-white"}`}>
+        <span className={`text-[0.95em] font-extrabold tracking-tight ${ink}`}>
           Web Development
         </span>
         <span className={`mt-[0.28em] text-[0.62em] font-bold uppercase tracking-[0.14em] ${onDark ? "text-[#1a6b3d]" : "text-[#1a6b3d]"}`}>

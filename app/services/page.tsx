@@ -194,13 +194,6 @@ const WHICH = [
   { q: "I want everything handled by one person.", a: "Perfect, that is exactly how I work." },
 ];
 
-const PRICING = [
-  { t: "Builds are fixed price.", d: "After a quick chat about your goals, you get one clear number before any work starts." },
-  { t: "SEO and maintenance are simple monthly plans.", d: "Predictable cost, cancel anytime." },
-  { t: "Every quote is written down.", d: "Scope, timeline, and price all in one place, so nothing changes on you mid-project." },
-  { t: "Free consultation first.", d: "We talk before you pay anything, with no obligation." },
-];
-
 const PROCESS: ProcessStep[] = [
   { icon: Search, title: "Discover", desc: "We talk about your goals, audience, and what success looks like. You get a clear plan and a fixed quote." },
   { icon: PenTool, title: "Design", desc: "I map the structure and design a clean, on-brand layout built to convert, not just look nice." },
@@ -399,32 +392,6 @@ export default function ServicesPage() {
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
               </Link>
             </div>
-          </div>
-        </section>
-
-        {/* ===== 8. HOW PRICING WORKS ===== */}
-        <section className="px-6 py-20 lg:px-10 lg:py-24">
-          <div className="mx-auto max-w-[1440px]">
-            <div className="max-w-2xl">
-              <Eyebrow>Simple and Honest</Eyebrow>
-              <h2 className="mt-5 text-3xl font-extrabold tracking-tight sm:text-4xl">
-                How pricing works
-              </h2>
-              <p className="mt-4 text-muted-foreground">
-                No hourly meters, no surprise invoices. Here is exactly how I quote every project.
-              </p>
-            </div>
-            <div className="mt-12 grid gap-5 sm:grid-cols-2">
-              {PRICING.map((p) => (
-                <div key={p.t} className="rounded-2xl border border-border bg-card p-6">
-                  <h3 className="text-lg font-bold">{p.t}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{p.d}</p>
-                </div>
-              ))}
-            </div>
-            <p className="mt-8 text-base font-semibold text-muted-foreground">
-              You will always know the full cost before we begin.
-            </p>
           </div>
         </section>
 

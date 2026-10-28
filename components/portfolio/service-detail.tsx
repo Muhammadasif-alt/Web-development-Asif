@@ -19,7 +19,9 @@ export type ServiceDetail = {
   included: { title: string; desc: string }[];
   benefits: { title: string; desc: string }[];
   process: { title: string; desc: string }[];
+  /** Not rendered on the slimmed page; kept so existing page data still type-checks. */
   tech: string[];
+  /** Not rendered (pricing was removed site-wide); kept so existing page data still type-checks. */
   packages: {
     name: string;
     price: string;
@@ -79,7 +81,7 @@ export function ServiceDetailPage({ data }: { data: ServiceDetail }) {
       />
 
       <main className="bg-background text-foreground">
-        {/* ===== INTRO — copy and image share the row evenly ===== */}
+        {/* ===== INTRO — one short paragraph and the benefits as a checklist ===== */}
         <section className="px-6 py-20 lg:px-10 lg:py-24">
           <div className="mx-auto grid max-w-[1440px] items-center gap-12 lg:grid-cols-2 lg:gap-16">
             <div>
@@ -87,11 +89,19 @@ export function ServiceDetailPage({ data }: { data: ServiceDetail }) {
               <h2 className="mt-5 text-3xl font-extrabold leading-tight tracking-tight sm:text-4xl">
                 {data.intro.heading}
               </h2>
-              <div className="mt-6 space-y-4 text-base leading-relaxed text-muted-foreground">
-                {data.intro.body.split("\n\n").map((p, i) => (
-                  <p key={i}>{p}</p>
+              <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground">
+                {data.intro.body.split("\n\n")[0]}
+              </p>
+              <ul className="mt-8 grid gap-x-6 gap-y-4 sm:grid-cols-2">
+                {data.benefits.map((b) => (
+                  <li key={b.title} className="flex items-start gap-3 text-sm font-medium text-foreground">
+                    <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-[#1a6b3d]/12 text-[#1a6b3d]">
+                      <Check className="h-3.5 w-3.5" strokeWidth={3} />
+                    </span>
+                    {b.title}
+                  </li>
                 ))}
-              </div>
+              </ul>
             </div>
 
             <div className="rounded-3xl border border-[#1a6b3d]/35 bg-card p-2">
@@ -115,32 +125,6 @@ export function ServiceDetailPage({ data }: { data: ServiceDetail }) {
           cta={{ label: "Get a Custom Proposal", href: "/contact" }}
         />
 
-        {/* ===== BENEFITS ===== */}
-        <section className="px-6 py-20 lg:px-10 lg:py-24">
-          <div className="mx-auto max-w-[1440px]">
-            <div className="mx-auto max-w-2xl text-center">
-              <Eyebrow>What you get</Eyebrow>
-              <h2 className="mt-5 text-3xl font-extrabold tracking-tight sm:text-4xl">
-                Results, not just deliverables
-              </h2>
-            </div>
-            <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-              {data.benefits.map((b, i) => (
-                <div
-                  key={b.title}
-                  className="rounded-2xl border border-border bg-card p-6"
-                >
-                  <span className="font-mono text-sm font-bold text-[#1a6b3d]">
-                    0{i + 1}
-                  </span>
-                  <h3 className="mt-3 text-lg font-bold">{b.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{b.desc}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
         {/* ===== PROCESS ===== */}
         <ProcessTimeline
           eyebrow="How it works"
@@ -154,84 +138,6 @@ export function ServiceDetailPage({ data }: { data: ServiceDetail }) {
           cta={{ label: "Start your project", href: "/contact" }}
           bg="bg-[var(--panel)]"
         />
-
-        {/* ===== TECH ===== */}
-        <section className="px-6 py-20 lg:px-10 lg:py-24">
-          <div className="mx-auto max-w-3xl text-center">
-            <Eyebrow>Tools I use</Eyebrow>
-            <h2 className="mt-5 text-3xl font-extrabold tracking-tight sm:text-4xl">
-              Built on tools that scale
-            </h2>
-            <div className="mt-8 flex flex-wrap justify-center gap-2.5">
-              {data.tech.map((t) => (
-                <span
-                  key={t}
-                  className="rounded-full border border-border bg-card px-4 py-2 text-sm text-muted-foreground"
-                >
-                  {t}
-                </span>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ===== PACKAGES ===== */}
-        <section className="bg-[var(--panel)] px-6 py-20 lg:px-10 lg:py-24">
-          <div className="mx-auto max-w-[1440px]">
-            <div className="mx-auto max-w-2xl text-center">
-              <Eyebrow>Pricing</Eyebrow>
-              <h2 className="mt-5 text-3xl font-extrabold tracking-tight sm:text-4xl">
-                Simple, transparent packages
-              </h2>
-              <p className="mt-4 text-muted-foreground">
-                Starting prices — the final quote depends on scope. No hidden fees.
-              </p>
-            </div>
-            <div className="mt-12 grid gap-6 lg:grid-cols-3">
-              {data.packages.map((pkg) => (
-                <div
-                  key={pkg.name}
-                  className={`flex flex-col rounded-3xl border p-8 ${
-                    pkg.featured
-                      ? "border-[#1a6b3d] bg-gradient-to-b from-[var(--panel-2)] to-[var(--panel)]"
-                      : "border-border bg-card"
-                  }`}
-                >
-                  {pkg.featured && (
-                    <span className="mb-4 w-fit rounded-full bg-gradient-to-r from-[#1a6b3d] to-[#1a6b3d] px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-white">
-                      Most popular
-                    </span>
-                  )}
-                  <h3 className="text-lg font-bold">{pkg.name}</h3>
-                  <div className="mt-3 flex items-baseline gap-1.5">
-                    <span className="text-4xl font-extrabold text-[#1a6b3d]">{pkg.price}</span>
-                    <span className="text-sm text-muted-foreground">{pkg.period}</span>
-                  </div>
-                  <p className="mt-3 text-sm text-muted-foreground">{pkg.tagline}</p>
-                  <ul className="mt-6 flex-1 space-y-3">
-                    {pkg.features.map((f) => (
-                      <li key={f} className="flex items-start gap-2 text-sm text-muted-foreground">
-                        <Check className="mt-0.5 h-4 w-4 shrink-0 text-[#1a6b3d]" />
-                        {f}
-                      </li>
-                    ))}
-                  </ul>
-                  <Link
-                    href="/contact"
-                    className={`mt-8 inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-bold transition-transform hover:scale-105 ${
-                      pkg.featured
-                        ? "bg-[#1a6b3d] text-white"
-                        : "border border-border text-foreground hover:bg-foreground/10"
-                    }`}
-                  >
-                    {pkg.cta}
-                    <ArrowRight className="h-4 w-4" />
-                  </Link>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
 
         {/* ===== FAQ ===== */}
         <section className="px-6 py-20 lg:px-10 lg:py-24">

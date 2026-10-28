@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
 import {
   ArrowRight,
   ArrowUpRight,
@@ -9,10 +8,6 @@ import {
   Code2,
   ShieldCheck,
   Headphones,
-  Check,
-  Megaphone,
-  ShoppingBag,
-  LayoutDashboard,
   Globe,
   Zap,
   MessageSquare,
@@ -23,6 +18,9 @@ import {
   Mail,
   Phone,
   LifeBuoy,
+  Smartphone,
+  PenTool,
+  Share2,
 } from "lucide-react";
 import { getSortedPosts } from "@/lib/blog-data";
 import { HireContactForm } from "@/components/portfolio/hire-contact-form";
@@ -58,151 +56,122 @@ const HERO_STATS = [
   { icon: Headphones, num: "24/7", label: "Support & Maintenance" },
 ];
 
-/**
- * The three things I actually get hired for, kept separate so a visitor
- * self-selects instead of reading one long list of technologies.
- *
- * The Web Apps bullets are the ones to edit as real SaaS and admin-tool
- * case studies come in — they describe build types, not specific clients.
- */
-const PILLARS: {
-  icon: typeof Code2;
-  eyebrow: string;
-  title: string;
-  desc: string;
-  points: string[];
-  stack: string;
-  href: string;
-}[] = [
+/* The six services shown on the home page, each linking to its own page.
+   `tone` gives the grid its rhythm: plain cards with a tinted, a brand and an ink card mixed in. */
+type Tone = "plain" | "tint" | "brand" | "ink";
+const SERVICES: { icon: typeof Code2; title: string; desc: string; href: string; tone: Tone }[] = [
   {
-    icon: LayoutDashboard,
-    eyebrow: "Custom Software",
-    title: "Web Applications",
-    desc: "Real software with logins, data, and business logic — built around how your team actually works.",
-    points: [
-      "Admin dashboards and reporting panels",
-      "SaaS platforms with subscriptions and billing",
-      "Booking systems, CRMs, and client portals",
-      "APIs and third-party integrations",
-    ],
-    stack: "React · Node · Next.js · Laravel · MongoDB",
-    href: "/services/web-apps",
-  },
-  {
-    icon: ShoppingBag,
-    eyebrow: "Selling Online",
-    title: "E-commerce",
-    desc: "Stores designed around the checkout, then tuned until more visitors become customers.",
-    points: [
-      "Shopify themes coded in Liquid",
-      "WooCommerce stores and migrations",
-      "Payments, shipping, and tax setup",
-      "Conversion and speed optimisation",
-    ],
-    stack: "Shopify · Liquid · WooCommerce · Stripe",
-    href: "/services/ecommerce",
-  },
-  {
-    icon: Globe,
-    eyebrow: "Marketing Sites",
-    title: "WordPress",
-    desc: "Fast, easy-to-edit business websites built to rank on Google and bring in enquiries.",
-    points: [
-      "Custom themes without plugin bloat",
-      "Service and landing pages built to convert",
-      "Speed and Core Web Vitals tuning",
-      "Redesigns and migrations, rankings intact",
-    ],
-    stack: "WordPress · PHP · Laravel · Elementor",
+    icon: Code2,
+    title: "Web Development",
+    desc: "Fast, responsive websites, web apps, and online stores — WordPress, Shopify, Laravel, and custom builds shaped around your goals.",
     href: "/services/web-development",
+    tone: "plain",
+  },
+  {
+    icon: Smartphone,
+    title: "App Development",
+    desc: "Web and mobile apps built from the scope up — user journeys, interface, development, and release, planned before code starts.",
+    href: "/services/app-development",
+    tone: "tint",
+  },
+  {
+    icon: PenTool,
+    title: "UI/UX Design",
+    desc: "Interface design built on user flows, wireframes, and prototypes, so your product is obvious to use and consistent everywhere.",
+    href: "/services/ui-ux-design",
+    tone: "brand",
+  },
+  {
+    icon: Search,
+    title: "SEO",
+    desc: "Search optimisation grounded in your audience — technical fixes, content that answers real questions, and honest reporting on what moved.",
+    href: "/services/marketing",
+    tone: "plain",
+  },
+  {
+    icon: Share2,
+    title: "Social Media & Ads",
+    desc: "Facebook and Instagram campaigns built around a real offer, tracked honestly from first spend — creative, targeting, and landing pages together.",
+    href: "/services/social-media-ads",
+    tone: "ink",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Maintenance & Support",
+    desc: "Hosting, security updates, backups, uptime monitoring, and ongoing fixes — so your website keeps working instead of quietly breaking.",
+    href: "/services/support-maintenance",
+    tone: "plain",
   },
 ];
 
-type Part = { t: string; hl?: boolean };
-const QUALIFY: { img: string; n: string; title: string; parts: Part[] }[] = [
-  {
-    img: "/card1-asif.webp",
-    n: "1",
-    title: "You need a real product",
-    parts: [
-      { t: "You want a " },
-      { t: "custom app or platform", hl: true },
-      { t: " — dashboards, logins, payments — engineered properly instead of patched together from plugins." },
-    ],
+/* Card, icon, number and button classes for each tone. Ink inverts in dark mode so it still stands out. */
+const TONE: Record<Tone, { card: string; icon: string; num: string; text: string; btn: string }> = {
+  plain: {
+    card: "border bg-card text-foreground",
+    icon: "bg-[#1a6b3d] text-white",
+    num: "text-[#1a6b3d]",
+    text: "text-muted-foreground",
+    btn: "border text-foreground group-hover:border-transparent group-hover:bg-[#1a6b3d] group-hover:text-white",
   },
-  {
-    img: "/card2-asif-1.webp",
-    n: "2",
-    title: "You want it to sell",
-    parts: [
-      { t: "You want a site or store that turns visitors into " },
-      { t: "real clients and sales", hl: true },
-      { t: " — month after month, with numbers you can actually track." },
-    ],
+  tint: {
+    card: "bg-[#e8f3ec] text-neutral-950 dark:bg-[#0e2117] dark:text-white",
+    icon: "bg-white text-[#1a6b3d] shadow-sm dark:bg-white/10 dark:text-white",
+    num: "text-[#1a6b3d] dark:text-white/70",
+    text: "text-neutral-600 dark:text-white/70",
+    btn: "bg-white text-neutral-950 shadow-sm group-hover:bg-[#1a6b3d] group-hover:text-white dark:bg-white/10 dark:text-white",
   },
-  {
-    img: "/card3-asif-1.webp",
-    n: "3",
-    title: "You want one developer",
-    parts: [
-      { t: "You want a " },
-      { t: "complete end-to-end build", hl: true },
-      { t: " — design, development, SEO, and support after launch — from one person who owns the result." },
-    ],
+  brand: {
+    card: "bg-[#1a6b3d] text-white shadow-xl shadow-[#1a6b3d]/25",
+    icon: "bg-white/15 text-white",
+    num: "text-white/70",
+    text: "text-white/80",
+    btn: "bg-white/15 text-white ring-1 ring-white/25 group-hover:bg-white group-hover:text-[#1a6b3d]",
   },
-];
+  ink: {
+    card: "bg-neutral-950 text-white dark:bg-white dark:text-neutral-950",
+    icon: "bg-white/10 text-white dark:bg-[#1a6b3d] dark:text-white",
+    num: "text-white/60 dark:text-[#1a6b3d]",
+    text: "text-white/75 dark:text-neutral-600",
+    btn: "bg-[#1a6b3d] text-white group-hover:bg-white group-hover:text-neutral-950 dark:group-hover:bg-neutral-950 dark:group-hover:text-white",
+  },
+};
 
-const OFFER: { n: string; title: [string, string]; desc: string; href: string }[] = [
-  {
-    n: "01",
-    title: ["Web App", "Development"],
-    desc: "Custom platforms on MERN, Next.js, and Laravel — dashboards, SaaS tools, client portals, and APIs — shaped around your workflow, secure, and ready to grow with you.",
-    href: "/services/web-apps",
-  },
-  {
-    n: "02",
-    title: ["E-commerce", "& Automation"],
-    desc: "Shopify and WooCommerce stores with a smooth checkout, reliable payments, and automation that handles orders and follow-ups while you sleep.",
-    href: "/services/ecommerce",
-  },
-  {
-    n: "03",
-    title: ["Website", "Development"],
-    desc: "Fast, SEO-ready business websites on WordPress, Laravel, or Next.js — custom, mobile-first, and built to turn visitors into enquiries instead of bouncing off a template.",
-    href: "/services/web-development",
-  },
-];
-
-const WHY: { icon: typeof Code2; title: string; desc: string }[] = [
+const WHY: { icon: typeof Code2; title: string; desc: string; outcome: string }[] = [
   {
     icon: Code2,
     title: "One developer, full stack",
     desc: "Design, front-end, back-end, and deployment handled by the same person. No handoffs, no lost details, no finger-pointing.",
+    outcome: "Nothing lost between handoffs",
   },
   {
     icon: Zap,
     title: "Built for performance",
     desc: "Fast loads and strong Core Web Vitals are the starting point on every build — never an upsell.",
+    outcome: "Fast pages from day one",
   },
   {
     icon: ShieldCheck,
     title: "Clean, maintainable code",
     desc: "Readable, documented code that you — or any developer after me — can work with without a rewrite.",
+    outcome: "Easy to build on later",
   },
   {
     icon: MessageSquare,
     title: "Straight communication",
     desc: "A fixed quote before work starts, replies within 24 hours, and progress you can see every week.",
+    outcome: "You always know what's next",
   },
   {
     icon: Rocket,
     title: "Business-first decisions",
     desc: "I recommend the stack that fits your goals and budget — not the one that makes the invoice bigger.",
+    outcome: "The right stack for your budget",
   },
   {
     icon: Headphones,
     title: "Support after launch",
     desc: "Updates, backups, monitoring, and small changes taken care of, so launch day is the start, not the end.",
+    outcome: "A site that keeps working",
   },
 ];
 
@@ -229,54 +198,6 @@ const PROCESS: ProcessStep[] = [
   },
 ];
 
-/* Entry prices. These mirror the Starter tier on each service detail page. */
-const PRICING: {
-  icon: typeof Code2;
-  name: string;
-  price: string;
-  period: string;
-  tagline: string;
-  points: string[];
-  href: string;
-}[] = [
-  {
-    icon: LayoutDashboard,
-    name: "Web App Development",
-    price: "From $1,499",
-    period: "one-time",
-    tagline: "A custom platform built around your workflow.",
-    points: ["MERN or Next.js build", "Auth, database, and admin", "API integrations included"],
-    href: "/services/web-apps",
-  },
-  {
-    icon: ShoppingBag,
-    name: "E-commerce & Automation",
-    price: "From $799",
-    period: "one-time",
-    tagline: "Get selling fast with a clean, solid store.",
-    points: ["Shopify or WooCommerce", "Products and payments set up", "Automation that follows up"],
-    href: "/services/ecommerce",
-  },
-  {
-    icon: Code2,
-    name: "Website Development",
-    price: "From $499",
-    period: "one-time",
-    tagline: "A clean, fast professional site to get you online.",
-    points: ["Custom, mobile-first design", "SEO-ready from day one", "Speed tuned before launch"],
-    href: "/services/web-development",
-  },
-  {
-    icon: Megaphone,
-    name: "SEO & Performance",
-    price: "From $299",
-    period: "/mo",
-    tagline: "Get the foundations right and start climbing.",
-    points: ["Technical and on-page SEO", "Content and schema", "Monthly reporting"],
-    href: "/services/marketing",
-  },
-];
-
 /* The three newest real articles, straight from the blog. */
 const POSTS = getSortedPosts().slice(0, 3);
 
@@ -291,7 +212,7 @@ const FAQS = [
   },
   {
     q: "How much do you charge?",
-    a: "Websites start at $499, stores at $799, and custom web apps at $1,499. Every project is quoted upfront with a fixed price after a quick chat, so you know the full cost before any work begins.",
+    a: "Every project gets a fixed quote after a quick chat about your goals — scope, timeline, and price written down before any work starts, so there are no surprises. Use the budget field on the contact form to give me a rough range.",
   },
   {
     q: "Can you take over an existing project?",
@@ -316,15 +237,26 @@ export default function HireMePage() {
     <>
     <JsonLd data={[personSchema(), businessSchema(), websiteSchema(), faqSchema(FAQS)]} />
     <main className="bg-background">
-    <section className="dark relative overflow-hidden bg-black">
-      {/* Ground. Light by day, deep green by night — the video sits in the card
-          on the right rather than behind everything, so the copy never fights it. */}
-      <div className="absolute inset-0 bg-black" />
+    <section className="relative overflow-hidden bg-[#f3f8f5] dark:bg-black">
+      {/* Ground. A soft brand-green wash with a faint grid by day, near-black by night —
+          the video sits in the card on the right, so the copy never fights it. */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 bg-[linear-gradient(135deg,#f7fbf9_0%,#e8f3ec_55%,#d3eadb_100%)] dark:bg-[linear-gradient(135deg,#000_0%,#020905_60%,#06150d_100%)]"
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -right-48 -top-48 h-[680px] w-[680px] rounded-full bg-[#1a6b3d]/20 blur-3xl dark:bg-[#1a6b3d]/25"
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(26,107,61,0.08)_1px,transparent_1px),linear-gradient(to_bottom,rgba(26,107,61,0.08)_1px,transparent_1px)] bg-[size:64px_64px] [mask-image:radial-gradient(ellipse_at_center,black_35%,transparent_85%)] dark:bg-[linear-gradient(to_right,rgba(255,255,255,0.045)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.045)_1px,transparent_1px)]"
+      />
 
       <div className="relative z-10 mx-auto flex max-w-[1440px] flex-col px-6 lg:px-10">
         <HireNav />
 
-        <div className="grid flex-1 items-center gap-12 py-12 lg:grid-cols-2 lg:items-stretch lg:gap-16 lg:py-20">
+        <div className="grid flex-1 items-center gap-12 py-12 lg:grid-cols-2 lg:gap-16 lg:py-20">
           {/* ---------- copy ---------- */}
           <div className="flex flex-col justify-center">
             <p className="inline-flex w-fit items-center gap-2.5 rounded-full border border-[#1a6b3d]/30 bg-[#1a6b3d]/8 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.16em] text-[#1a6b3d] dark:border-[#1a6b3d]/60 dark:bg-[#1a6b3d]/15 dark:text-white">
@@ -332,19 +264,16 @@ export default function HireMePage() {
               Full-Stack Developer · Open for New Projects
             </p>
 
-            <h1 className="mt-7 text-[2.6rem] font-extrabold leading-[1.02] tracking-tight text-neutral-950 dark:text-white sm:text-5xl lg:text-[3.4rem]">
+            <h1 className="mt-6 text-[2.6rem] font-extrabold leading-[1.04] tracking-tight text-neutral-950 dark:text-white sm:text-5xl lg:text-[3.4rem]">
               Full-Stack Developer for{" "}
               <span className="text-[#1a6b3d] dark:text-[#1a6b3d]">Web Apps</span>{" "}
               &amp; Online Stores
             </h1>
 
-            <h2 className="mt-7 text-xl font-bold leading-snug text-neutral-900 dark:text-white sm:text-2xl">
-              MERN, Laravel, WordPress &amp; Shopify — one developer, end to end.
-            </h2>
-            <p className="mt-3 max-w-md text-sm leading-relaxed text-neutral-600 dark:text-white/70 sm:text-base">
-              I design, build, and launch fast digital products for growing businesses — custom
-              dashboards and SaaS platforms, online stores that convert, and websites that rank on
-              Google and bring in enquiries.
+            <p className="mt-6 max-w-xl text-base leading-relaxed text-neutral-600 dark:text-white/70 sm:text-lg">
+              I design, build, and launch websites, web apps, and online stores for growing
+              businesses — with MERN, Laravel, WordPress, and Shopify, from first idea to launch
+              and beyond.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
@@ -364,7 +293,7 @@ export default function HireMePage() {
             </div>
 
             {/* quick proof — desktop (mobile gets the stat list below) */}
-            <ul className="mt-10 hidden max-w-xl flex-wrap gap-x-7 gap-y-2 border-t border-neutral-200 pt-6 font-mono text-xs text-neutral-600 dark:border-white/15 dark:text-white/60 lg:flex">
+            <ul className="mt-8 hidden max-w-xl flex-wrap gap-x-7 gap-y-2 font-mono text-xs text-neutral-600 dark:border-white/15 dark:text-white/60 lg:flex">
               {["50+ Delivered", "5+ Years Experience", "24h Rapid Response"].map((t) => (
                 <li key={t} className="flex items-center gap-2">
                   <span className="h-2 w-2 rounded-full bg-[#1a6b3d] dark:bg-[#1a6b3d]" />
@@ -375,18 +304,12 @@ export default function HireMePage() {
           </div>
 
           {/* ---------- video card + floating proof ----------
-              On desktop the card fills the row, so it is exactly as tall as the copy. */}
-          <div className="relative mx-auto w-full max-w-md lg:max-w-none">
-            <div className="relative overflow-hidden rounded-[2rem] border border-neutral-200/80 bg-white/60 p-2 backdrop-blur-sm dark:border-white/10 dark:bg-white/5 lg:absolute lg:inset-0">
-              <div className="relative aspect-[4/5] overflow-hidden rounded-[1.5rem] bg-neutral-900 sm:aspect-[3/4] lg:aspect-auto lg:h-full">
+              A fixed tall portrait card, independent of how long the copy runs. */}
+          <div className="relative mx-auto w-full max-w-md lg:ml-auto lg:mr-0 lg:max-w-[560px]">
+            <div className="relative overflow-hidden rounded-[2rem] border border-white/80 bg-white/60 p-2 shadow-2xl shadow-[#1a6b3d]/15 backdrop-blur-sm dark:border-white/10 dark:bg-white/5 dark:shadow-none">
+              <div className="relative aspect-[4/5] overflow-hidden rounded-[1.5rem] bg-neutral-900">
                 <HeroVideo />
               </div>
-            </div>
-
-            {/* git push — top right */}
-            <div className="absolute -right-2 top-14 hidden rounded-xl border border-neutral-200 bg-white px-4 py-2.5 font-mono text-xs text-neutral-700 dark:border-white/10 dark:bg-[#0d0d0d] dark:text-white/80 sm:block lg:-right-6">
-              git push origin production{" "}
-              <span className="text-[#1a6b3d] dark:text-[#1a6b3d]">✓</span>
             </div>
 
             {/* projects — left */}
@@ -432,123 +355,56 @@ export default function HireMePage() {
     {/* ===== TECHNOLOGIES — logo marquee ===== */}
     <TechMarquee />
 
-    {/* ===== WHAT I DO — three clear lanes ===== */}
-    <section className="relative overflow-hidden bg-[var(--panel)] px-6 py-20 text-foreground lg:px-10 lg:py-24">
-      <div className="relative mx-auto max-w-[1440px]">
-        <div className="grid gap-8 lg:grid-cols-2 lg:items-end">
+    {/* ===== SERVICES — one grid, six doors in ===== */}
+    <section className="bg-[var(--panel)] px-6 py-20 text-foreground lg:px-10 lg:py-24">
+      <div className="mx-auto max-w-[1440px]">
+        <div className="grid gap-6 lg:grid-cols-2 lg:items-end">
           <div>
             <p className="flex items-center gap-2.5 text-xs font-bold uppercase tracking-[0.2em] text-[#1a6b3d]">
               <span className="h-2 w-2 rounded-full bg-[#1a6b3d]" />
-              What I Do
+              Services
             </p>
-            <h2 className="mt-5 text-4xl font-extrabold leading-[1.02] tracking-tight sm:text-5xl">
-              Three ways I help.
+            <h2 className="mt-5 text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl">
+              Everything your business
               <br />
-              Find the one you need.
+              needs <span className="text-[#1a6b3d]">online</span>
             </h2>
           </div>
-          <p className="text-muted-foreground lg:pb-2 lg:ml-auto lg:max-w-sm lg:text-right">
-            Most freelancers stick to one platform. I work across all three, so your project gets the
-            stack that actually fits it — not the only one I happen to know.
+          <p className="max-w-md text-base leading-relaxed text-muted-foreground lg:justify-self-end">
+            From your first website to your next product — focused services built around your
+            goals, not a one-size-fits-all package.
           </p>
         </div>
 
-        <div className="mt-14 grid gap-6 lg:grid-cols-3">
-          {PILLARS.map((p) => {
-            const Icon = p.icon;
+        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {SERVICES.map((sv, i) => {
+            const Icon = sv.icon;
+            const t = TONE[sv.tone];
             return (
               <Link
-                key={p.title}
-                href={p.href}
-                className="group flex flex-col rounded-3xl border border-border bg-card p-8 transition-all duration-300 hover:-translate-y-1.5 hover:border-[#1a6b3d]/60 hover:bg-white/[0.05]"
+                key={sv.title}
+                href={sv.href}
+                className={`group relative flex flex-col overflow-hidden rounded-[1.75rem] p-7 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-black/10 sm:p-8 ${t.card}`}
               >
-                <span className="grid h-12 w-12 place-items-center rounded-2xl border border-[#1a6b3d]/25 bg-[#1a6b3d]/10 text-[#1a6b3d] transition-colors group-hover:bg-[#1a6b3d] group-hover:text-white">
-                  <Icon className="h-6 w-6" />
-                </span>
-                <p className="mt-6 text-[11px] font-bold uppercase tracking-[0.18em] text-[#1a6b3d]">
-                  {p.eyebrow}
-                </p>
-                <h3 className="mt-2 text-2xl font-extrabold leading-tight">{p.title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{p.desc}</p>
-
-                <ul className="mt-6 flex-1 space-y-2.5 border-t border-border pt-6">
-                  {p.points.map((pt) => (
-                    <li key={pt} className="flex items-start gap-2.5 text-sm text-muted-foreground">
-                      <Check className="mt-0.5 h-4 w-4 shrink-0 text-[#1a6b3d]" strokeWidth={2.5} />
-                      {pt}
-                    </li>
-                  ))}
-                </ul>
-
-                <p className="mt-6 font-mono text-[11px] leading-relaxed text-muted-foreground">{p.stack}</p>
-                <span className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#1a6b3d] to-[#1a6b3d] px-6 py-3.5 text-xs font-bold uppercase tracking-wider text-white transition-opacity group-hover:opacity-90">
-                  Learn more
-                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                <div className="flex items-start justify-between">
+                  <span className={`grid h-12 w-12 place-items-center rounded-2xl transition-transform duration-300 group-hover:scale-110 ${t.icon}`}>
+                    <Icon className="h-6 w-6" strokeWidth={1.8} />
+                  </span>
+                  <span className={`font-mono text-xs font-bold ${t.num}`}>
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                </div>
+                <h3 className="mt-6 text-xl font-extrabold tracking-tight">{sv.title}</h3>
+                <p className={`mt-3 flex-1 text-sm leading-relaxed ${t.text}`}>{sv.desc}</p>
+                <span
+                  className={`mt-7 inline-flex w-fit items-center gap-2 rounded-full px-4 py-2 text-xs font-bold transition-colors ${t.btn}`}
+                >
+                  Explore service
+                  <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:rotate-45" />
                 </span>
               </Link>
             );
           })}
-        </div>
-      </div>
-    </section>
-
-    {/* ===== WHAT I OFFER ===== */}
-    <section className="bg-[var(--panel)] px-6 py-20 text-foreground lg:px-10 lg:py-24">
-      <div className="mx-auto max-w-[1440px]">
-        {/* header */}
-        <div className="grid gap-8 lg:grid-cols-2 lg:items-end">
-          <div>
-            <p className="flex items-center gap-2.5 text-xs font-bold uppercase tracking-[0.2em] text-[#1a6b3d]">
-              <span className="h-2 w-2 rounded-full bg-[#1a6b3d]" />
-              Services
-            </p>
-            <h2 className="mt-5 text-5xl font-extrabold uppercase leading-[0.92] tracking-tight sm:text-6xl">
-              Services
-              <br />
-              built to win
-            </h2>
-          </div>
-          <div className="lg:pb-2 lg:text-right">
-            <p className="text-muted-foreground lg:ml-auto lg:max-w-sm">
-              Every build starts with one question: what result do you need? Design, code, and SEO
-              are all pointed at that answer. No fluff, no filler.
-            </p>
-            <Link
-              href="/services"
-              className="mt-6 inline-flex items-center gap-2 bg-gradient-to-r from-[#1a6b3d] to-[#1a6b3d] px-6 py-3 text-xs font-bold uppercase tracking-wider text-white transition-opacity hover:opacity-90"
-            >
-              View all services
-              <ArrowRight className="h-4 w-4" />
-            </Link>
-          </div>
-        </div>
-
-        {/* cards */}
-        <div className="mt-12 grid border-l border-t border-border sm:grid-cols-3">
-          {OFFER.map((o) => (
-            <Link
-              key={o.n}
-              href={o.href}
-              className="group flex flex-col border-b border-r border-border p-7 transition-all duration-300 hover:-translate-y-2 hover:bg-[#1a6b3d]"
-            >
-              <span className="font-mono text-sm font-bold text-[#1a6b3d] group-hover:text-foreground">
-                {o.n}
-              </span>
-              <span className="mt-3 block h-px w-full bg-[#1a6b3d]/40 group-hover:bg-[#1a6b3d] dark:group-hover:bg-white/50" />
-              <h3 className="mt-6 text-2xl font-extrabold uppercase leading-[1.05] text-foreground">
-                {o.title[0]}
-                <br />
-                {o.title[1]}
-              </h3>
-              <p className="mt-4 flex-1 text-sm leading-relaxed text-muted-foreground group-hover:text-white/90">
-                {o.desc}
-              </p>
-              <span className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#1a6b3d] to-[#1a6b3d] px-6 py-3.5 text-xs font-bold uppercase tracking-wider text-white transition-opacity group-hover:opacity-90">
-                Learn more
-                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </span>
-            </Link>
-          ))}
         </div>
       </div>
     </section>
@@ -583,9 +439,22 @@ export default function HireMePage() {
     </section>
 
     {/* ===== ABOUT ME ===== */}
-    <section className="dark relative overflow-hidden bg-[var(--panel-2)] text-foreground">
+    <section className="relative overflow-hidden bg-[#f6faf7] text-foreground dark:bg-[var(--panel-2)]">
+      {/* light theme: soft mint wash, dot texture and a glow — distinct from the hero's grid */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,#ffffff_0%,#eef6f1_100%)] dark:hidden"
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(rgba(26,107,61,0.14)_1px,transparent_1px)] bg-[size:22px_22px] [mask-image:linear-gradient(to_right,black,transparent_70%)] dark:hidden"
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -bottom-40 -left-40 h-[520px] w-[520px] rounded-full bg-[#1a6b3d]/15 blur-3xl dark:hidden"
+      />
       <div className="absolute inset-x-0 bottom-0 h-1 bg-[#12502d]" />
-      <div className="mx-auto grid max-w-[1440px] items-center gap-12 px-6 py-20 lg:grid-cols-2 lg:gap-14 lg:px-10 lg:py-24">
+      <div className="relative mx-auto grid max-w-[1440px] items-center gap-12 px-6 py-20 lg:grid-cols-2 lg:gap-14 lg:px-10 lg:py-24">
         {/* LEFT — about me */}
         <div>
           <span className="inline-block rounded-full border border-border px-4 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
@@ -641,7 +510,7 @@ export default function HireMePage() {
 
         {/* RIGHT — image */}
         <div className="relative mx-auto w-full max-w-md lg:max-w-none">
-          <div className="relative overflow-hidden rounded-2xl">
+          <div className="relative overflow-hidden rounded-3xl shadow-2xl shadow-[#1a6b3d]/20 ring-1 ring-black/5 dark:rounded-2xl dark:shadow-none dark:ring-0">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/asif-laptop.webp" alt="Asif working" className="w-full object-cover" />
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
@@ -680,42 +549,73 @@ export default function HireMePage() {
       </div>
     </section>
 
-    {/* ===== WHY CHOOSE ME ===== */}
-    <section className="relative overflow-hidden bg-[var(--panel)] px-6 py-20 text-foreground lg:px-10 lg:py-24">
-      <div className="relative mx-auto max-w-[1440px]">
-        <div className="mx-auto max-w-2xl text-center">
-          <p className="inline-flex items-center gap-2.5 text-xs font-bold uppercase tracking-[0.2em] text-[#1a6b3d]">
-            <span className="h-2 w-2 rounded-full bg-[#1a6b3d]" />
+    {/* ===== WHY CHOOSE ME — deep green band, sticky intro, numbered timeline ===== */}
+    <section className="dark relative overflow-clip bg-[#0a1f14] px-6 py-20 text-white lg:px-10 lg:py-28">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.04)_1px,transparent_1px)] bg-[size:72px_72px]"
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -left-40 top-0 h-[520px] w-[520px] rounded-full bg-[#1a6b3d]/30 blur-3xl"
+      />
+
+      <div className="relative mx-auto grid max-w-[1440px] gap-14 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
+        {/* LEFT — stays in view while the list scrolls past */}
+        <div className="lg:sticky lg:top-28 lg:self-start">
+          <span className="inline-flex items-center gap-2 rounded-full bg-[#1a6b3d]/40 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.18em] text-white">
+            <span className="h-1.5 w-1.5 rounded-full bg-white" />
             Why Work With Me
-          </p>
-          <h2 className="mt-5 text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl">
-            Multi-stack, <span className="text-[#1a6b3d]">single point of contact</span>
+          </span>
+          <h2 className="mt-6 text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl">
+            Multi-stack,
+            <br />
+            <span className="font-serif font-normal italic text-white/85">single point of contact.</span>
           </h2>
-          <p className="mt-4 text-muted-foreground">
+          <p className="mt-6 max-w-md text-base leading-relaxed text-white/70 sm:text-lg">
             You brief one person and get the whole thing built — no agency layers, no account
             managers, and no waiting on someone else&apos;s subcontractor.
           </p>
+          <Link
+            href="/contact"
+            className="group mt-9 inline-flex items-center gap-3 rounded-full bg-gradient-to-r from-[#1a6b3d] to-[#1a6b3d] py-2 pl-6 pr-2 text-sm font-bold text-white"
+          >
+            Start a project
+            <span className="grid h-8 w-8 place-items-center rounded-full bg-black/85 ring-1 ring-white/15">
+              <ArrowUpRight className="h-4 w-4 transition-transform group-hover:rotate-45" />
+            </span>
+          </Link>
         </div>
 
-        <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {WHY.map((w) => {
+        {/* RIGHT — numbered timeline */}
+        <ol className="relative">
+          {WHY.map((w, i) => {
             const Icon = w.icon;
+            const last = i === WHY.length - 1;
             return (
-              <div
-                key={w.title}
-                className="flex gap-4 rounded-2xl border border-border bg-card p-6 transition-colors hover:border-[#1a6b3d]/50"
-              >
-                <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-[#1a6b3d]/25 bg-[#1a6b3d]/10 text-[#1a6b3d]">
-                  <Icon className="h-5 w-5" />
+              <li key={w.title} className="relative grid grid-cols-[auto_1fr_auto] gap-x-6 pb-12 last:pb-0">
+                {/* connector to the next step */}
+                {!last && (
+                  <span aria-hidden="true" className="absolute left-[23px] top-12 h-[calc(100%-3rem)] w-px bg-white/15" />
+                )}
+                <span className="relative grid h-12 w-12 place-items-center rounded-full border border-white/20 bg-[#0a1f14] font-mono text-sm font-bold text-white">
+                  {String(i + 1).padStart(2, "0")}
                 </span>
-                <div>
-                  <h3 className="text-base font-bold">{w.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{w.desc}</p>
+                <div className="pt-1.5">
+                  <h3 className="text-xl font-bold tracking-tight sm:text-2xl">{w.title}</h3>
+                  <p className="mt-2 max-w-lg text-sm leading-relaxed text-white/70 sm:text-base">{w.desc}</p>
+                  <span className="mt-4 inline-flex items-center gap-2 rounded-full bg-[#1a6b3d]/45 px-3 py-1 text-xs font-semibold text-white">
+                    <Icon className="h-3.5 w-3.5" />
+                    {w.outcome}
+                  </span>
                 </div>
-              </div>
+                <span className="hidden pt-1 font-serif text-4xl italic text-white/25 sm:block">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+              </li>
             );
           })}
-        </div>
+        </ol>
       </div>
     </section>
 
@@ -729,143 +629,6 @@ export default function HireMePage() {
       footnote="Every stage is visible, and the price is agreed before a single line is written."
       cta={{ label: "Start your project", href: "/contact" }}
     />
-
-    {/* ===== THIS IS FOR YOU IF ===== */}
-    <section className="dark relative overflow-hidden border-t border-[#1a6b3d]/25 bg-[var(--panel-2)] px-6 py-20 text-foreground lg:px-10 lg:py-28">
-      <div className="relative mx-auto max-w-[1440px]">
-        <h2 className="text-center text-3xl font-extrabold tracking-tight sm:text-4xl">
-          This work is <span className="text-[#1a6b3d]">for you if:</span>
-        </h2>
-
-        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {QUALIFY.map((card) => (
-            <article
-              key={card.n}
-              className="group flex flex-col rounded-3xl border border-[#1a6b3d]/35 bg-gradient-to-b from-[var(--panel-2)] to-[var(--panel)] p-3 transition-all duration-300 hover:-translate-y-2 hover:border-[#1a6b3d]"
-            >
-              <div className="overflow-hidden rounded-2xl">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={card.img}
-                  alt=""
-                  className="aspect-[4/5] w-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
-                />
-              </div>
-              <div className="relative px-3 pb-6 pt-9">
-                <span className="absolute -top-5 left-3 grid h-11 w-11 place-items-center rounded-full bg-[#1a6b3d] text-lg font-extrabold text-white">
-                  {card.n}
-                </span>
-                <h3 className="text-lg font-bold text-foreground">{card.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                  {card.parts.map((p, i) =>
-                    p.hl ? (
-                      <span key={i} className="font-semibold text-[#1a6b3d]">
-                        {p.t}
-                      </span>
-                    ) : (
-                      <span key={i}>{p.t}</span>
-                    )
-                  )}
-                </p>
-              </div>
-            </article>
-          ))}
-        </div>
-
-        <div className="mt-14 text-center">
-          <Link
-            href="/contact"
-            className="inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-[#1a6b3d] to-[#1a6b3d] px-10 py-4 text-base font-bold uppercase tracking-wide text-white transition-all hover:-translate-y-0.5 hover:opacity-95"
-          >
-            Yes, that&apos;s me!
-          </Link>
-        </div>
-      </div>
-    </section>
-
-    {/* ===== PRICING ===== */}
-    <section className="relative overflow-hidden bg-[var(--panel)] px-6 py-20 text-foreground lg:px-10 lg:py-24">
-      <div className="relative mx-auto max-w-[1440px]">
-        <div className="mx-auto max-w-2xl text-center">
-          <p className="inline-flex items-center gap-2.5 text-xs font-bold uppercase tracking-[0.2em] text-[#1a6b3d]">
-            <span className="h-2 w-2 rounded-full bg-[#1a6b3d]" />
-            Pricing
-          </p>
-          <h2 className="mt-5 text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl">
-            Simple pricing, <span className="text-[#1a6b3d]">no surprises</span>
-          </h2>
-          <p className="mt-4 text-muted-foreground">
-            Starting prices for each service. After a short chat you get a fixed quote, so the price
-            you agree is the price you pay.
-          </p>
-        </div>
-
-        <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {PRICING.map((p) => {
-            const Icon = p.icon;
-            return (
-              <div
-                key={p.name}
-                className="group flex flex-col rounded-3xl border border-border bg-card p-7 transition-all duration-300 hover:-translate-y-1.5 hover:border-[#1a6b3d]/60"
-              >
-                <span className="grid h-11 w-11 place-items-center rounded-xl border border-[#1a6b3d]/25 bg-[#1a6b3d]/10 text-[#1a6b3d]">
-                  <Icon className="h-5 w-5" />
-                </span>
-                <h3 className="mt-5 text-base font-bold">{p.name}</h3>
-                <div className="mt-3 flex items-baseline gap-1.5">
-                  <span className="text-3xl font-extrabold text-[#1a6b3d]">{p.price}</span>
-                  <span className="text-xs text-muted-foreground">{p.period}</span>
-                </div>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{p.tagline}</p>
-                <ul className="mt-5 flex-1 space-y-2.5">
-                  {p.points.map((pt) => (
-                    <li key={pt} className="flex items-start gap-2 text-sm text-muted-foreground">
-                      <Check className="mt-0.5 h-4 w-4 shrink-0 text-[#1a6b3d]" strokeWidth={2.5} />
-                      {pt}
-                    </li>
-                  ))}
-                </ul>
-                <Link
-                  href={p.href}
-                  className="mt-6 inline-flex items-center justify-center gap-2 rounded-full border border-border px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-foreground transition-colors group-hover:border-[#1a6b3d] group-hover:bg-gradient-to-r from-[#1a6b3d] to-[#1a6b3d]"
-                >
-                  See packages
-                  <ArrowRight className="h-3.5 w-3.5" />
-                </Link>
-              </div>
-            );
-          })}
-        </div>
-
-        {/* reassurance strip */}
-        <div className="mx-auto mt-12 flex max-w-3xl flex-wrap items-center justify-center gap-x-8 gap-y-3 rounded-2xl border border-[#1a6b3d]/25 bg-[#1a6b3d]/5 px-6 py-5 text-sm text-muted-foreground">
-          <span className="inline-flex items-center gap-2">
-            <Check className="h-4 w-4 text-[#1a6b3d]" strokeWidth={2.5} />
-            Fixed quote upfront
-          </span>
-          <span className="inline-flex items-center gap-2">
-            <Check className="h-4 w-4 text-[#1a6b3d]" strokeWidth={2.5} />
-            No hidden fees
-          </span>
-          <span className="inline-flex items-center gap-2">
-            <Check className="h-4 w-4 text-[#1a6b3d]" strokeWidth={2.5} />
-            SEO and speed included
-          </span>
-          <span className="inline-flex items-center gap-2">
-            <Check className="h-4 w-4 text-[#1a6b3d]" strokeWidth={2.5} />
-            Reply within 24 hours
-          </span>
-        </div>
-
-        <p className="mt-8 text-center text-sm text-muted-foreground">
-          Not sure which one fits?{" "}
-          <Link href="/contact" className="font-semibold text-[#1a6b3d] hover:underline">
-            Tell me your goal
-          </Link>{" "}
-          and I will point you the right way.
-        </p>
-      </div>
-    </section>
 
     {/* ===== BLOG / KNOWLEDGE ===== */}
     <section className="bg-[var(--panel-2)] px-6 py-20 text-foreground lg:px-10 lg:py-24">
@@ -941,7 +704,7 @@ export default function HireMePage() {
     {/* ===== FAQ ===== */}
     <section className="bg-[var(--panel-2)] px-6 py-20 text-foreground lg:px-10 lg:py-24">
       <div className="mx-auto grid max-w-[1440px] gap-12 lg:grid-cols-2 lg:gap-16">
-        {/* left — heading + description + image */}
+        {/* left — heading + description, stays put while the questions scroll */}
         <div className="lg:sticky lg:top-24 lg:self-start">
           <p className="flex items-center gap-2.5 text-xs font-bold uppercase tracking-[0.2em] text-[#1a6b3d]">
             <span className="h-2 w-2 rounded-full bg-[#1a6b3d]" />
@@ -956,13 +719,6 @@ export default function HireMePage() {
             The questions clients ask most before we start. Anything else on your mind? Send a
             message — I reply within 24 hours.
           </p>
-          <Image
-            src="/desk-code.png"
-            alt="Late-night development workspace"
-            width={1536}
-            height={1024}
-            className="mt-8 aspect-[16/10] w-full rounded-3xl border border-border object-cover shadow-xl"
-          />
         </div>
 
         {/* right — accordion */}
@@ -980,19 +736,26 @@ export default function HireMePage() {
               <div className="bg-[var(--panel)] px-6 py-5 pl-[4.25rem] text-[15px] leading-relaxed text-muted-foreground">{f.a}</div>
             </details>
           ))}
-          <div className="flex flex-col gap-4 rounded-2xl bg-[#1a6b3d]/10 p-6 sm:flex-row sm:items-center sm:justify-between">
-            <p className="font-semibold">Still have a question? I reply within 24 hours.</p>
-            <Link href="/contact" className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#1a6b3d] to-[#1a6b3d] px-6 py-3 text-xs font-bold uppercase tracking-wider text-white transition-opacity hover:opacity-90">
-              Ask me <ArrowRight className="h-4 w-4" />
-            </Link>
-          </div>
         </div>
       </div>
     </section>
 
     {/* ===== CONTACT ===== */}
-    <section className="bg-[var(--panel)] px-6 py-20 text-foreground lg:px-10 lg:py-24">
-      <div className="mx-auto grid max-w-[1440px] gap-12 lg:grid-cols-2 lg:gap-16">
+    <section className="relative overflow-clip bg-[var(--panel)] px-6 py-20 text-foreground lg:px-10 lg:py-24">
+      {/* light theme: mint wash rising from the bottom, a corner glow, and dots behind the form */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 bg-[linear-gradient(0deg,#e3f1e8_0%,#ffffff_70%)] dark:hidden"
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -left-32 -top-32 h-[460px] w-[460px] rounded-full bg-[#1a6b3d]/15 blur-3xl dark:hidden"
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-y-0 right-0 w-full bg-[radial-gradient(rgba(26,107,61,0.16)_1px,transparent_1px)] bg-[size:22px_22px] [mask-image:linear-gradient(to_left,black,transparent_60%)] dark:hidden"
+      />
+      <div className="relative mx-auto grid max-w-[1440px] gap-12 lg:grid-cols-2 lg:gap-16">
         {/* left — heading + description */}
         <div>
           <p className="flex items-center gap-2.5 text-xs font-bold uppercase tracking-[0.2em] text-[#1a6b3d]">

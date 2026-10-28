@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { HireNav } from "@/components/portfolio/hire-nav";
 import { HeroLeadForm } from "@/components/portfolio/hero-lead-form";
@@ -23,6 +22,7 @@ type Props = {
    * Background photo for the hero. Falls back to the brand gradient alone when
    * omitted — the home page uses its own video instead of this component.
    */
+  /** Ignored: inner-page heroes use the brand background instead of a photo. */
   bgImage?: string;
   /** Short proof points listed under the tagline, each with a tick. */
   bullets?: string[];
@@ -43,7 +43,6 @@ export function HireHero({
   taglineText,
   primaryCta,
   secondaryCta,
-  bgImage,
   bullets,
   form,
   titleAccent,
@@ -57,40 +56,24 @@ export function HireHero({
 
   return (
     <section className="relative min-h-screen overflow-hidden">
-      {/* Light ground by day. The workspace photo belongs to the night theme —
-          on a light page it would only fight the copy. */}
-      <div className="absolute inset-0 bg-white dark:bg-black" />
-
-      {bgImage && (
-        <div className="absolute inset-x-0 bottom-0 top-24 lg:top-28">
-          <Image
-            src={bgImage}
-            alt=""
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover object-center"
-          />
-          {/* By day the photo is washed almost white so it reads as texture,
-              not as a picture competing with the copy. By night it carries. */}
-          <div className="absolute inset-0 bg-white/[0.55] dark:bg-black/60" />
-          <div className="absolute inset-0 bg-gradient-to-r from-white via-white/70 to-transparent dark:hidden" />
-          {/* soften the seam where the photo begins */}
-          <div className="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-white to-transparent dark:from-black" />
-        </div>
-      )}
-
-      {/* left-to-right darkening so the copy always keeps contrast */}
+      {/* Brand ground, same family as the home hero: a soft green wash with a faint grid
+          by day, near-black shading into deep green by night. No photo behind the copy. */}
       <div
-        className="absolute inset-0 hidden dark:block"
-        style={{
-          background:
-            "linear-gradient(to right, rgba(4,18,11,0.88) 0%, rgba(4,18,11,0.58) 44%, rgba(4,18,11,0.20) 74%, transparent 100%)",
-        }}
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 bg-[linear-gradient(135deg,#f7fbf9_0%,#e8f3ec_55%,#d3eadb_100%)] dark:bg-[linear-gradient(135deg,#000_0%,#020905_60%,#06150d_100%)]"
       />
-      {/* subtle bottom + top shading */}
-      <div className="absolute inset-x-0 bottom-0 hidden h-56 bg-gradient-to-t from-black/45 to-transparent dark:block" />
-      <div className="absolute inset-x-0 top-0 hidden h-28 bg-gradient-to-b from-black/25 to-transparent dark:block" />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -right-48 -top-48 h-[680px] w-[680px] rounded-full bg-[#1a6b3d]/20 blur-3xl dark:bg-[#1a6b3d]/25"
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -bottom-56 -left-40 h-[520px] w-[520px] rounded-full bg-[#1a6b3d]/10 blur-3xl dark:bg-[#1a6b3d]/15"
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(26,107,61,0.08)_1px,transparent_1px),linear-gradient(to_bottom,rgba(26,107,61,0.08)_1px,transparent_1px)] bg-[size:64px_64px] [mask-image:radial-gradient(ellipse_at_center,black_35%,transparent_85%)] dark:bg-[linear-gradient(to_right,rgba(255,255,255,0.045)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.045)_1px,transparent_1px)]"
+      />
 
       <div className="relative z-10 flex min-h-screen flex-col">
         {/* NAV */}

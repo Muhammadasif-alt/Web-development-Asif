@@ -177,7 +177,7 @@ const DATA: ServiceDetail = {
     },
     {
       q: "How does pricing work?",
-      a: "Web development is priced as a one-time build. Starter sites start around $499, larger builds and stores around $999, and full custom apps get a tailored quote after a quick discovery chat. The price is fixed up front, so no surprises.",
+      a: "Every project gets a fixed quote after a quick chat about your goals — scope, timeline, and price written down before any work starts, so there are no surprises. Use the budget field on the contact form to give me a rough range.",
     },
     {
       q: "Where are you based and how do we work together?",
