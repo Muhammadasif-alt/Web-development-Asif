@@ -910,7 +910,7 @@ export default function HireMePage() {
                 />
               </div>
               <div className="flex flex-1 flex-col bg-card p-6 transition-colors duration-300 group-hover:bg-[#1a6b3d]">
-                <span className="w-fit bg-gradient-to-r from-[#1a6b3d] to-[#1a6b3d] px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-white transition-colors group-hover:bg-white group-hover:text-[#1a6b3d]">
+                <span className="w-fit bg-[#1a6b3d] px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-white transition-colors group-hover:bg-white group-hover:text-[#1a6b3d]">
                   {post.category}
                 </span>
                 <h3 className="mt-4 text-xl font-bold leading-snug text-foreground">{post.title}</h3>
