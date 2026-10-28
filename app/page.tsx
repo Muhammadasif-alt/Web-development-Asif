@@ -29,6 +29,8 @@ import { HireNav } from "@/components/portfolio/hire-nav";
 import { HireFooter } from "@/components/portfolio/hire-footer";
 import { HomeWork } from "@/components/portfolio/home-work";
 import { TechMarquee } from "@/components/portfolio/tech-marquee";
+import { Testimonials } from "@/components/portfolio/testimonials";
+import { TESTIMONIALS } from "@/lib/testimonials";
 import { ProcessTimeline, type ProcessStep } from "@/components/portfolio/process-timeline";
 import { JsonLd } from "@/components/seo/json-ld";
 import { personSchema, businessSchema, websiteSchema, faqSchema } from "@/lib/schema";
@@ -894,6 +896,11 @@ export default function HireMePage() {
         </div>
       </div>
     </section>
+
+    {/* ===== TESTIMONIALS — hidden in production until every sample is replaced ===== */}
+    {(process.env.NODE_ENV !== "production" || !TESTIMONIALS.some((t) => t.sample)) && (
+      <Testimonials items={TESTIMONIALS} />
+    )}
 
     {/* ===== FAQ ===== */}
     <section className="bg-[var(--panel-2)] px-6 py-20 text-foreground lg:px-10 lg:py-24">
