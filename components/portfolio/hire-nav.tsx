@@ -111,7 +111,7 @@ export function HireNav() {
         <ThemeToggle />
         <Link
         href="/contact"
-        className="group inline-flex items-center gap-3 rounded-full bg-gradient-to-r from-[#15703a] to-[#4cb45a] py-2 pl-5 pr-2 text-sm font-bold text-white"
+        className="group inline-flex items-center gap-3 rounded-full bg-gradient-to-r from-[#1a6b3d] to-[#1a6b3d] py-2 pl-5 pr-2 text-sm font-bold text-white"
       >
         Get in touch
         <span className="grid h-8 w-8 place-items-center rounded-full bg-black/85 text-white ring-1 ring-white/15">
@@ -181,7 +181,7 @@ export function HireNav() {
             <Link
               href="/contact"
               onClick={close}
-              className="group mt-2 inline-flex items-center justify-center gap-3 rounded-full bg-gradient-to-r from-[#15703a] to-[#4cb45a] py-3 text-sm font-bold text-white"
+              className="group mt-2 inline-flex items-center justify-center gap-3 rounded-full bg-gradient-to-r from-[#1a6b3d] to-[#1a6b3d] py-3 text-sm font-bold text-white"
             >
               Get in touch
               <span className="grid h-7 w-7 place-items-center rounded-full bg-white/20 text-white dark:bg-white/20">

@@ -60,7 +60,7 @@ export default function IndustriesPage() {
                       {String(i + 1).padStart(2, "0")}
                     </p>
                     <h2 className="mt-5 text-3xl font-extrabold tracking-tight">{ind.name}</h2>
-                    <p className="mt-3 text-lg font-semibold text-[#1a6b3d] dark:text-[#86e0a3]">
+                    <p className="mt-3 text-lg font-semibold text-[#1a6b3d] dark:text-[#1a6b3d]">
                       {ind.hero.taglineTitle}
                     </p>
                     <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
@@ -77,7 +77,7 @@ export default function IndustriesPage() {
                     <div className="mt-6 flex flex-wrap gap-3">
                       <Link
                         href={`/industries/${ind.slug}`}
-                        className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#15703a] to-[#4cb45a] px-6 py-3 text-sm font-bold text-white transition-transform hover:scale-105"
+                        className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#1a6b3d] to-[#1a6b3d] px-6 py-3 text-sm font-bold text-white transition-transform hover:scale-105"
                       >
                         See the {ind.name.toLowerCase()} approach
                         <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
@@ -122,7 +122,7 @@ export default function IndustriesPage() {
             </p>
             <Link
               href="/contact"
-              className="group mt-8 inline-flex items-center gap-2.5 rounded-full bg-gradient-to-r from-[#15703a] to-[#4cb45a] px-8 py-4 text-sm font-bold text-white transition-transform hover:scale-105"
+              className="group mt-8 inline-flex items-center gap-2.5 rounded-full bg-gradient-to-r from-[#1a6b3d] to-[#1a6b3d] px-8 py-4 text-sm font-bold text-white transition-transform hover:scale-105"
             >
               Tell me about your business
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />

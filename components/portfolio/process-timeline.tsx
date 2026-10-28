@@ -47,7 +47,7 @@ export function ProcessTimeline({
       <div className="mx-auto max-w-[1440px]">
         {/* heading block */}
         <div className="mx-auto max-w-3xl text-center">
-          <span className="inline-flex items-center rounded-full border border-[#1a6b3d]/30 bg-[#1a6b3d]/8 px-5 py-2 text-xs font-bold uppercase tracking-[0.22em] text-[#1a6b3d] dark:border-[#86e0a3]/30 dark:bg-[#86e0a3]/10 dark:text-[#86e0a3]">
+          <span className="inline-flex items-center rounded-full border border-[#1a6b3d]/30 bg-[#1a6b3d]/8 px-5 py-2 text-xs font-bold uppercase tracking-[0.22em] text-[#1a6b3d] dark:border-[#1a6b3d]/30 dark:bg-[#1a6b3d]/10 dark:text-[#1a6b3d]">
             {eyebrow}
           </span>
           <h2 className="mt-6 text-3xl font-extrabold leading-tight tracking-tight sm:text-4xl lg:text-[2.75rem]">
@@ -83,7 +83,7 @@ export function ProcessTimeline({
             return (
               <li key={s.title} className="relative flex flex-col items-center px-4 text-center">
                 <span className="relative">
-                  <span className="grid h-[72px] w-[72px] place-items-center rounded-full bg-gradient-to-br from-[#15703a] to-[#4cb45a] text-white">
+                  <span className="grid h-[72px] w-[72px] place-items-center rounded-full bg-gradient-to-br from-[#1a6b3d] to-[#1a6b3d] text-white">
                     <Icon className="h-7 w-7" strokeWidth={2} />
                   </span>
                   {/* number badge, notched over the top-left of the node */}
@@ -118,7 +118,7 @@ export function ProcessTimeline({
                   />
                 )}
                 <span className="relative shrink-0">
-                  <span className="grid h-16 w-16 place-items-center rounded-full bg-gradient-to-br from-[#15703a] to-[#4cb45a] text-white">
+                  <span className="grid h-16 w-16 place-items-center rounded-full bg-gradient-to-br from-[#1a6b3d] to-[#1a6b3d] text-white">
                     <Icon className="h-6 w-6" strokeWidth={2} />
                   </span>
                   <span className="absolute -left-1.5 -top-1 grid h-7 w-7 place-items-center rounded-full border border-border bg-[var(--panel-2)] text-xs font-bold text-foreground">
@@ -142,7 +142,7 @@ export function ProcessTimeline({
             {cta && (
               <Link
                 href={cta.href}
-                className="mt-6 inline-flex items-center rounded-full bg-gradient-to-r from-[#15703a] to-[#4cb45a] px-8 py-4 text-sm font-bold text-white transition-transform hover:scale-105"
+                className="mt-6 inline-flex items-center rounded-full bg-gradient-to-r from-[#1a6b3d] to-[#1a6b3d] px-8 py-4 text-sm font-bold text-white transition-transform hover:scale-105"
               >
                 {cta.label}
               </Link>

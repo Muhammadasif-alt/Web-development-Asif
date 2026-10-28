@@ -27,11 +27,11 @@ import "./showcase-marquee.css";
 const CRED_ICONS: LucideIcon[] = [ShieldCheck, Users, BadgeCheck, CheckCheck, FileText];
 const WHY_ICONS: LucideIcon[] = [Gem, Headset, Award, Clock];
 
-const ACCENT = "text-[#1a6b3d] dark:text-[#86e0a3]";
+const ACCENT = "text-[#1a6b3d] dark:text-[#1a6b3d]";
 
 function Pill({ children }: { children: React.ReactNode }) {
   return (
-    <span className="inline-flex items-center rounded-lg border border-[var(--sc-accent)] bg-[var(--sc-accent)]/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.18em] text-[#1a6b3d] dark:text-[#86e0a3]">
+    <span className="inline-flex items-center rounded-lg border border-[var(--sc-accent)] bg-[var(--sc-accent)]/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.18em] text-[#1a6b3d] dark:text-[#1a6b3d]">
       {children}
     </span>
   );
@@ -79,7 +79,7 @@ export function ShowcasePage({ data }: { data: Industry }) {
     "--sc-bg": theme.bg,
     "--sc-ink": theme.ink,
     "--sc-dark": theme.dark,
-    "--sc-light": "#86e0a3",
+    "--sc-light": "#1a6b3d",
   } as React.CSSProperties;
 
   const btn =

@@ -93,7 +93,7 @@ export function HomeWork({ header }: { header: React.ReactNode }) {
                 <div className="absolute inset-x-0 bottom-0 p-6 sm:p-8">
                   <div
                     className="font-mono text-5xl font-extrabold leading-none text-transparent sm:text-6xl"
-                    style={{ WebkitTextStroke: "1.5px #4cd38a" }}
+                    style={{ WebkitTextStroke: "1.5px #ffffff" }}
                   >
                     {String(i + 1).padStart(2, "0")}
                   </div>
@@ -123,7 +123,7 @@ export function HomeWork({ header }: { header: React.ReactNode }) {
             </span>
             <div className="h-px flex-1 max-w-xs bg-border">
               <div
-                className="h-px bg-[#4cd38a] transition-all duration-700"
+                className="h-px bg-[#1a6b3d] transition-all duration-700"
                 style={{ width: `${((index + 1) / steps) * 100}%` }}
               />
             </div>

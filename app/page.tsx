@@ -322,14 +322,14 @@ export default function HireMePage() {
         <div className="grid flex-1 items-center gap-12 py-12 lg:grid-cols-2 lg:items-stretch lg:gap-16 lg:py-20">
           {/* ---------- copy ---------- */}
           <div className="flex flex-col justify-center">
-            <p className="inline-flex w-fit items-center gap-2.5 rounded-full border border-[#1a6b3d]/30 bg-[#1a6b3d]/8 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.16em] text-[#1a6b3d] dark:border-[#86e0a3]/35 dark:bg-[#86e0a3]/10 dark:text-[#86e0a3]">
-              <span className="h-1.5 w-1.5 rounded-full bg-[#1a6b3d] dark:bg-[#c8e659]" />
+            <p className="inline-flex w-fit items-center gap-2.5 rounded-full border border-[#1a6b3d]/30 bg-[#1a6b3d]/8 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.16em] text-[#1a6b3d] dark:border-[#1a6b3d]/60 dark:bg-[#1a6b3d]/15 dark:text-white">
+              <span className="h-1.5 w-1.5 rounded-full bg-[#1a6b3d] dark:bg-[#1a6b3d]" />
               Full-Stack Developer · Open for New Projects
             </p>
 
             <h1 className="mt-7 text-[2.6rem] font-extrabold leading-[1.02] tracking-tight text-neutral-950 dark:text-white sm:text-5xl lg:text-[3.4rem]">
               Full-Stack Developer for{" "}
-              <span className="text-[#1a6b3d] dark:text-[#86e0a3]">Web Apps</span>{" "}
+              <span className="text-[#1a6b3d] dark:text-[#1a6b3d]">Web Apps</span>{" "}
               &amp; Online Stores
             </h1>
 
@@ -345,7 +345,7 @@ export default function HireMePage() {
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
                 href="/contact"
-                className="group inline-flex items-center gap-2.5 rounded-full bg-gradient-to-r from-[#15703a] to-[#4cb45a] px-7 py-3.5 text-sm font-bold text-white transition-transform hover:scale-105"
+                className="group inline-flex items-center gap-2.5 rounded-full bg-gradient-to-r from-[#1a6b3d] to-[#1a6b3d] px-7 py-3.5 text-sm font-bold text-white transition-transform hover:scale-105"
               >
                 Start a project
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
@@ -362,7 +362,7 @@ export default function HireMePage() {
             <ul className="mt-10 hidden max-w-xl flex-wrap gap-x-7 gap-y-2 border-t border-neutral-200 pt-6 font-mono text-xs text-neutral-600 dark:border-white/15 dark:text-white/60 lg:flex">
               {["50+ Delivered", "5+ Years Experience", "24h Rapid Response"].map((t) => (
                 <li key={t} className="flex items-center gap-2">
-                  <span className="h-2 w-2 rounded-full bg-[#1a6b3d] dark:bg-[#4cd38a]" />
+                  <span className="h-2 w-2 rounded-full bg-[#1a6b3d] dark:bg-[#1a6b3d]" />
                   {t}
                 </li>
               ))}
@@ -381,12 +381,12 @@ export default function HireMePage() {
             {/* git push — top right */}
             <div className="absolute -right-2 top-14 hidden rounded-xl border border-neutral-200 bg-white px-4 py-2.5 font-mono text-xs text-neutral-700 dark:border-white/10 dark:bg-[#0d0d0d] dark:text-white/80 sm:block lg:-right-6">
               git push origin production{" "}
-              <span className="text-[#1a6b3d] dark:text-[#c8e659]">✓</span>
+              <span className="text-[#1a6b3d] dark:text-[#1a6b3d]">✓</span>
             </div>
 
             {/* projects — left */}
             <div className="absolute -left-3 top-1/3 rounded-2xl border border-neutral-200 bg-white px-5 py-3.5 dark:border-white/10 dark:bg-[#0d0d0d] lg:-left-8">
-              <div className="text-2xl font-extrabold text-[#1a6b3d] dark:text-[#86e0a3]">50+</div>
+              <div className="text-2xl font-extrabold text-[#1a6b3d] dark:text-[#1a6b3d]">50+</div>
               <div className="mt-0.5 text-xs text-neutral-600 dark:text-white/60">
                 Projects Delivered
               </div>
@@ -394,7 +394,7 @@ export default function HireMePage() {
 
             {/* rating — bottom right */}
             <div className="absolute -right-3 bottom-10 rounded-2xl border border-neutral-200 bg-white px-5 py-3.5 dark:border-white/10 dark:bg-[#0d0d0d] lg:-right-8">
-              <div className="text-2xl font-extrabold text-[#1a6b3d] dark:text-[#86e0a3]">5★</div>
+              <div className="text-2xl font-extrabold text-[#1a6b3d] dark:text-[#1a6b3d]">5★</div>
               <div className="mt-0.5 text-xs text-neutral-600 dark:text-white/60">Client Rating</div>
             </div>
           </div>
@@ -476,7 +476,7 @@ export default function HireMePage() {
                 </ul>
 
                 <p className="mt-6 font-mono text-[11px] leading-relaxed text-muted-foreground">{p.stack}</p>
-                <span className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#15703a] to-[#4cb45a] px-6 py-3.5 text-xs font-bold uppercase tracking-wider text-[#06210f] transition-opacity group-hover:opacity-90">
+                <span className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#1a6b3d] to-[#1a6b3d] px-6 py-3.5 text-xs font-bold uppercase tracking-wider text-white transition-opacity group-hover:opacity-90">
                   Learn more
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </span>
@@ -510,7 +510,7 @@ export default function HireMePage() {
             </p>
             <Link
               href="/services"
-              className="mt-6 inline-flex items-center gap-2 bg-gradient-to-r from-[#15703a] to-[#4cb45a] px-6 py-3 text-xs font-bold uppercase tracking-wider text-white transition-opacity hover:opacity-90"
+              className="mt-6 inline-flex items-center gap-2 bg-gradient-to-r from-[#1a6b3d] to-[#1a6b3d] px-6 py-3 text-xs font-bold uppercase tracking-wider text-white transition-opacity hover:opacity-90"
             >
               View all services
               <ArrowRight className="h-4 w-4" />
@@ -538,7 +538,7 @@ export default function HireMePage() {
               <p className="mt-4 flex-1 text-sm leading-relaxed text-muted-foreground group-hover:text-white/90">
                 {o.desc}
               </p>
-              <span className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#15703a] to-[#4cb45a] px-6 py-3.5 text-xs font-bold uppercase tracking-wider text-[#06210f] transition-opacity group-hover:opacity-90">
+              <span className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#1a6b3d] to-[#1a6b3d] px-6 py-3.5 text-xs font-bold uppercase tracking-wider text-white transition-opacity group-hover:opacity-90">
                 Learn more
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
               </span>
@@ -589,7 +589,7 @@ export default function HireMePage() {
           <div className="mt-9 flex flex-wrap gap-3">
             <Link
               href="/contact"
-              className="group inline-flex items-center gap-3 rounded-full bg-gradient-to-r from-[#15703a] to-[#4cb45a] py-3 pl-6 pr-2 text-sm font-bold text-white transition-opacity hover:opacity-90"
+              className="group inline-flex items-center gap-3 rounded-full bg-gradient-to-r from-[#1a6b3d] to-[#1a6b3d] py-3 pl-6 pr-2 text-sm font-bold text-white transition-opacity hover:opacity-90"
             >
               Contact me
               <span className="grid h-8 w-8 place-items-center rounded-full bg-white text-[#1a6b3d]">
@@ -633,7 +633,7 @@ export default function HireMePage() {
               </div>
               <Link
                 href="/projects"
-                className="group inline-flex items-center gap-3 rounded-full bg-gradient-to-r from-[#15703a] to-[#4cb45a] py-2 pl-6 pr-2 text-xs font-bold uppercase tracking-[0.16em] text-white"
+                className="group inline-flex items-center gap-3 rounded-full bg-gradient-to-r from-[#1a6b3d] to-[#1a6b3d] py-2 pl-6 pr-2 text-xs font-bold uppercase tracking-[0.16em] text-white"
               >
                 All Work
                 <span className="grid h-8 w-8 place-items-center rounded-full bg-black/85 ring-1 ring-white/15">
@@ -741,7 +741,7 @@ export default function HireMePage() {
         <div className="mt-14 text-center">
           <Link
             href="/contact"
-            className="inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-[#15703a] to-[#4cb45a] px-10 py-4 text-base font-bold uppercase tracking-wide text-white transition-all hover:-translate-y-0.5 hover:opacity-95"
+            className="inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-[#1a6b3d] to-[#1a6b3d] px-10 py-4 text-base font-bold uppercase tracking-wide text-white transition-all hover:-translate-y-0.5 hover:opacity-95"
           >
             Yes, that&apos;s me!
           </Link>
@@ -793,7 +793,7 @@ export default function HireMePage() {
                 </ul>
                 <Link
                   href={p.href}
-                  className="mt-6 inline-flex items-center justify-center gap-2 rounded-full border border-border px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-foreground transition-colors group-hover:border-[#1a6b3d] group-hover:bg-gradient-to-r from-[#15703a] to-[#4cb45a]"
+                  className="mt-6 inline-flex items-center justify-center gap-2 rounded-full border border-border px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-foreground transition-colors group-hover:border-[#1a6b3d] group-hover:bg-gradient-to-r from-[#1a6b3d] to-[#1a6b3d]"
                 >
                   See packages
                   <ArrowRight className="h-3.5 w-3.5" />
@@ -876,7 +876,7 @@ export default function HireMePage() {
                 />
               </div>
               <div className="flex flex-1 flex-col bg-card p-6 transition-colors duration-300 group-hover:bg-[#1a6b3d]">
-                <span className="w-fit bg-gradient-to-r from-[#15703a] to-[#4cb45a] px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-white transition-colors group-hover:bg-white group-hover:text-[#1a6b3d]">
+                <span className="w-fit bg-gradient-to-r from-[#1a6b3d] to-[#1a6b3d] px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-white transition-colors group-hover:bg-white group-hover:text-[#1a6b3d]">
                   {post.category}
                 </span>
                 <h3 className="mt-4 text-xl font-bold leading-snug text-foreground">{post.title}</h3>
@@ -948,7 +948,7 @@ export default function HireMePage() {
           ))}
           <div className="flex flex-col gap-4 rounded-2xl bg-[#1a6b3d]/10 p-6 sm:flex-row sm:items-center sm:justify-between">
             <p className="font-semibold">Still have a question? I reply within 24 hours.</p>
-            <Link href="/contact" className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#15703a] to-[#4cb45a] px-6 py-3 text-xs font-bold uppercase tracking-wider text-[#06210f] transition-opacity hover:opacity-90">
+            <Link href="/contact" className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#1a6b3d] to-[#1a6b3d] px-6 py-3 text-xs font-bold uppercase tracking-wider text-white transition-opacity hover:opacity-90">
               Ask me <ArrowRight className="h-4 w-4" />
             </Link>
           </div>

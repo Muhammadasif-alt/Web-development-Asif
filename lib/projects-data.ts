@@ -68,7 +68,6 @@ export const PROJECTS: Project[] = [
 
   /* Marketing agencies */
   { url: "https://pulsebeat.com.au", title: "Pulse Beat", tag: "Digital Marketing", desc: "Digital marketing agency website in Sydney with services and lead capture.", category: "SEO and Growth", stack: ["WordPress", "Elementor"] },
-  { url: "https://weproms.com", title: "WeProms Digital", tag: "Digital Marketing", desc: "Digital marketing agency website with services and case studies.", category: "SEO and Growth", stack: ["Web Design"] },
 ];
 
 /* Stable filename for a project's locally stored screenshot. */

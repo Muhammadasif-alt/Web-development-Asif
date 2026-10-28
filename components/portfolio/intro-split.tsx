@@ -34,8 +34,8 @@ export function IntroSplit({
       <div className="mx-auto grid max-w-[1440px] items-center gap-12 lg:grid-cols-2 lg:gap-16">
         <div className={reverse ? "lg:order-2" : undefined}>
           {eyebrow && (
-            <p className="inline-flex items-center gap-2.5 text-xs font-bold uppercase tracking-[0.2em] text-[#1a6b3d] dark:text-[#86e0a3]">
-              <span className="h-2 w-2 rounded-full bg-[#1a6b3d] dark:bg-[#86e0a3]" />
+            <p className="inline-flex items-center gap-2.5 text-xs font-bold uppercase tracking-[0.2em] text-[#1a6b3d] dark:text-[#1a6b3d]">
+              <span className="h-2 w-2 rounded-full bg-[#1a6b3d] dark:bg-[#1a6b3d]" />
               {eyebrow}
             </p>
           )}

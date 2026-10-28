@@ -294,7 +294,7 @@ export default function ServicesPage() {
                       <Eyebrow>Service {s.num}</Eyebrow>
                     </div>
                     <h2 className="mt-5 text-3xl font-extrabold tracking-tight">{s.title}</h2>
-                    <p className="mt-3 text-lg font-semibold text-[#1a6b3d] dark:text-[#86e0a3]">{s.short}</p>
+                    <p className="mt-3 text-lg font-semibold text-[#1a6b3d] dark:text-[#1a6b3d]">{s.short}</p>
                     <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{s.body}</p>
 
                     <div className="mt-6 space-y-3">
@@ -309,7 +309,7 @@ export default function ServicesPage() {
                     <div className="mt-6 flex flex-wrap gap-3">
                       <Link
                         href="/contact"
-                        className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#15703a] to-[#4cb45a] px-6 py-3 text-sm font-bold text-white transition-transform hover:scale-105"
+                        className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#1a6b3d] to-[#1a6b3d] px-6 py-3 text-sm font-bold text-white transition-transform hover:scale-105"
                       >
                         {s.cta}
                         <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
@@ -362,7 +362,7 @@ export default function ServicesPage() {
                   className="flex flex-col gap-1 rounded-2xl border border-border bg-card p-5 sm:flex-row sm:items-center sm:justify-between sm:gap-6"
                 >
                   <span className="font-semibold text-foreground">&quot;{w.q}&quot;</span>
-                  <span className="text-sm text-[#1a6b3d] dark:text-[#86e0a3]">{w.a}</span>
+                  <span className="text-sm text-[#1a6b3d] dark:text-[#1a6b3d]">{w.a}</span>
                 </div>
               ))}
             </div>
@@ -373,7 +373,7 @@ export default function ServicesPage() {
             <div className="mt-6 text-center">
               <Link
                 href="/contact"
-                className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#15703a] to-[#4cb45a] px-7 py-3.5 text-sm font-bold text-white transition-transform hover:scale-105"
+                className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#1a6b3d] to-[#1a6b3d] px-7 py-3.5 text-sm font-bold text-white transition-transform hover:scale-105"
               >
                 Get a recommendation
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
@@ -520,7 +520,7 @@ export default function ServicesPage() {
               <div className="mt-8 flex flex-wrap justify-center gap-3">
                 <Link
                   href="/contact"
-                  className="group inline-flex items-center gap-2.5 rounded-full bg-gradient-to-r from-[#15703a] to-[#4cb45a] px-8 py-4 text-sm font-bold text-white transition-transform hover:scale-105"
+                  className="group inline-flex items-center gap-2.5 rounded-full bg-gradient-to-r from-[#1a6b3d] to-[#1a6b3d] px-8 py-4 text-sm font-bold text-white transition-transform hover:scale-105"
                 >
                   Start your project
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />

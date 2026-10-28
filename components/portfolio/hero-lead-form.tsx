@@ -154,7 +154,7 @@ export function HeroLeadForm({
 
           <button
             type="submit"
-            className="group flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#15703a] to-[#4cb45a] py-3.5 text-sm font-bold text-white transition-transform hover:scale-[1.02]"
+            className="group flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#1a6b3d] to-[#1a6b3d] py-3.5 text-sm font-bold text-white transition-transform hover:scale-[1.02]"
           >
             {cta}
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />

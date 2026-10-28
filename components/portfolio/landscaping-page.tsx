@@ -16,7 +16,7 @@ const GREEN = "#1a6b3d";
 const CUT = "polygon(0 0, 88% 0, 100% 12%, 100% 100%, 10% 100%, 0 90%)";
 
 const btn =
-  "inline-flex items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-[#15703a] to-[#4cb45a] px-6 py-3.5 text-sm font-bold text-white shadow-lg transition-transform hover:scale-[1.03]";
+  "inline-flex items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-[#1a6b3d] to-[#1a6b3d] px-6 py-3.5 text-sm font-bold text-white shadow-lg transition-transform hover:scale-[1.03]";
 
 /** Italic serif eyebrow flanked by red rules, as on the reference design. */
 function Eyebrow({ children, align = "center" }: { children: React.ReactNode; align?: "center" | "left" }) {
@@ -258,7 +258,7 @@ export function LandscapingPage({ data }: { data: Industry }) {
             <h2 className="mt-6 text-3xl font-extrabold uppercase leading-tight sm:text-5xl">
               {D.proof.title.map((t) => (
                 <span key={t} className="block">
-                  <span className="text-[#1a6b3d] dark:text-[#86e0a3]">{t.split(" ")[0]}</span> {t.split(" ").slice(1).join(" ")}
+                  <span className="text-[#1a6b3d] dark:text-[#1a6b3d]">{t.split(" ")[0]}</span> {t.split(" ").slice(1).join(" ")}
                 </span>
               ))}
             </h2>
@@ -363,7 +363,7 @@ export function LandscapingPage({ data }: { data: Industry }) {
                   <tr key={a} className={i % 2 ? "bg-foreground/[0.04]" : "bg-foreground/[0.08]"}>
                     <td className="px-5 py-3.5 font-semibold">{a}</td>
                     <td className="px-5 py-3.5">{b}</td>
-                    <td className="px-5 py-3.5 font-bold text-[#1a6b3d] dark:text-[#86e0a3]">{c}</td>
+                    <td className="px-5 py-3.5 font-bold text-[#1a6b3d] dark:text-[#1a6b3d]">{c}</td>
                   </tr>
                 ))}
               </tbody>
@@ -427,7 +427,7 @@ export function LandscapingPage({ data }: { data: Industry }) {
           <div className="absolute inset-0 bg-gradient-to-r from-background via-background/85 to-transparent" />
           <div className="relative grid items-center gap-10 p-6 sm:p-10 lg:grid-cols-2 lg:p-12">
             <div>
-              <p className="font-serif text-lg italic text-[#1a6b3d] dark:text-[#86e0a3]">{D.cta.eyebrow}</p>
+              <p className="font-serif text-lg italic text-[#1a6b3d] dark:text-[#1a6b3d]">{D.cta.eyebrow}</p>
               <span className="mt-2 block h-px w-24 bg-[#1a6b3d]" />
               <h2 className="mt-6 text-3xl font-extrabold leading-tight sm:text-5xl">{D.cta.title}</h2>
               <p className="mt-5 text-sm font-medium sm:text-base">{D.cta.body}</p>

@@ -36,8 +36,8 @@ export function Testimonials({ items }: { items: Testimonial[] }) {
 
       <div className="relative mx-auto max-w-[1100px]">
         <div className="mx-auto max-w-2xl text-center">
-          <p className="inline-flex items-center gap-2.5 text-xs font-bold uppercase tracking-[0.2em] text-[#86e0a3]">
-            <span className="h-2 w-2 rounded-full bg-[#4cd38a]" />
+          <p className="inline-flex items-center gap-2.5 text-xs font-bold uppercase tracking-[0.2em] text-[#1a6b3d]">
+            <span className="h-2 w-2 rounded-full bg-[#1a6b3d]" />
             Testimonials
           </p>
           <h2 className="mt-5 text-4xl font-extrabold tracking-tight text-white sm:text-5xl">
@@ -108,7 +108,7 @@ export function Testimonials({ items }: { items: Testimonial[] }) {
                   className="h-14 w-14 rounded-xl object-cover"
                 />
               ) : (
-                <span className="grid h-14 w-14 place-items-center rounded-xl bg-gradient-to-br from-[#15703a] to-[#4cb45a] text-lg font-extrabold text-white">
+                <span className="grid h-14 w-14 place-items-center rounded-xl bg-gradient-to-br from-[#1a6b3d] to-[#1a6b3d] text-lg font-extrabold text-white">
                   {initials(t.name)}
                 </span>
               )}
@@ -124,7 +124,7 @@ export function Testimonials({ items }: { items: Testimonial[] }) {
             </div>
             <div className="sm:text-right">
               <span className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1 font-mono text-xs text-white/80">
-                <Sparkles className="h-3.5 w-3.5 text-[#86e0a3]" />
+                <Sparkles className="h-3.5 w-3.5 text-[#1a6b3d]" />
                 {t.project}
               </span>
               <div className="mt-2 font-mono text-[11px] text-white/45">Delivered: {t.delivered}</div>

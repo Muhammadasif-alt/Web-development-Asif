@@ -198,7 +198,7 @@ export function ServiceDetailPage({ data }: { data: ServiceDetail }) {
                   }`}
                 >
                   {pkg.featured && (
-                    <span className="mb-4 w-fit rounded-full bg-gradient-to-r from-[#15703a] to-[#4cb45a] px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-white">
+                    <span className="mb-4 w-fit rounded-full bg-gradient-to-r from-[#1a6b3d] to-[#1a6b3d] px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-white">
                       Most popular
                     </span>
                   )}
@@ -267,7 +267,7 @@ export function ServiceDetailPage({ data }: { data: ServiceDetail }) {
             <div className="mt-8 flex flex-wrap justify-center gap-3">
               <Link
                 href="/contact"
-                className="group inline-flex items-center gap-2.5 rounded-full bg-gradient-to-r from-[#15703a] to-[#4cb45a] px-8 py-4 text-sm font-bold text-white transition-transform hover:scale-105"
+                className="group inline-flex items-center gap-2.5 rounded-full bg-gradient-to-r from-[#1a6b3d] to-[#1a6b3d] px-8 py-4 text-sm font-bold text-white transition-transform hover:scale-105"
               >
                 Start your project
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />

@@ -13,7 +13,7 @@ import "./showcase-marquee.css";
 const WHY_ICONS: LucideIcon[] = [ShieldCheck, Handshake, Sun, Gem];
 const STEP_ICONS: LucideIcon[] = [ClipboardCheck, Handshake, FileText, Hammer, ClipboardList];
 
-const ACCENT = "text-[#1a6b3d] dark:text-[#86e0a3]";
+const ACCENT = "text-[#1a6b3d] dark:text-[#1a6b3d]";
 
 /** Story photo: left edge notched inward at the middle. */
 const STORY_CUT = "polygon(0 0, 100% 0, 100% 100%, 0 100%, 9% 50%)";
@@ -75,7 +75,7 @@ export function RoofingPage({ data }: { data: Industry }) {
         />
         <div className="mx-auto max-w-[1440px] px-6 pb-40 pt-20 lg:px-10 lg:pb-48 lg:pt-28">
           <div className="max-w-2xl">
-            <p className="font-serif text-4xl italic text-[#86e0a3] sm:text-5xl">{D.hero.script}</p>
+            <p className="font-serif text-4xl italic text-[#1a6b3d] sm:text-5xl">{D.hero.script}</p>
             <h1 className="mt-2 text-4xl font-extrabold leading-[1.1] sm:text-5xl lg:text-6xl">{D.hero.title}</h1>
             <p className="mt-6 max-w-xl text-base leading-relaxed text-white/90">{D.hero.text}</p>
             <a href="#estimate" className={`${btn} mt-8 !bg-white !text-black`}>
@@ -126,7 +126,7 @@ export function RoofingPage({ data }: { data: Industry }) {
       </section>
 
       {/* ===== TICKER ===== */}
-      <div className="overflow-hidden bg-[#86e0a3] py-5 text-[#0b1f15]" aria-hidden="true">
+      <div className="overflow-hidden bg-[#1a6b3d] py-5 text-[#0b1f15]" aria-hidden="true">
         <div className="sc-track">
           {[...D.ticker, ...D.ticker, ...D.ticker, ...D.ticker].map((t, i) => (
             <span key={i} className="flex shrink-0 items-center text-xl font-bold sm:text-2xl">
@@ -172,7 +172,7 @@ export function RoofingPage({ data }: { data: Industry }) {
           <Heading className="mt-5" lead={D.why.heading} accent={D.why.accent} />
           <p className="mt-4 max-w-3xl text-sm text-muted-foreground sm:text-base">{D.why.text}</p>
           <div className="mt-12 grid items-center gap-10 lg:grid-cols-[1fr_1.1fr]">
-            <div className="bg-[#86e0a3] pr-1.5" style={{ clipPath: WHY_CUT }}>
+            <div className="bg-[#1a6b3d] pr-1.5" style={{ clipPath: WHY_CUT }}>
               <div className="overflow-hidden rounded-3xl" style={{ clipPath: WHY_CUT }}>
                 <Image
                   src={D.why.image}
@@ -239,7 +239,7 @@ export function RoofingPage({ data }: { data: Industry }) {
                 <details key={f.q} open={i === 0} className="group rounded-full bg-muted px-7 py-4 open:rounded-3xl">
                   <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-base font-medium sm:text-lg">
                     {f.q}
-                    <span className="text-2xl leading-none text-[#1a6b3d] transition-transform group-open:rotate-45 dark:text-[#86e0a3]">+</span>
+                    <span className="text-2xl leading-none text-[#1a6b3d] transition-transform group-open:rotate-45 dark:text-[#1a6b3d]">+</span>
                   </summary>
                   <p className="pb-2 pt-4 text-sm leading-relaxed text-muted-foreground sm:text-base">{f.a}</p>
                 </details>

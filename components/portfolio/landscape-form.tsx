@@ -82,7 +82,7 @@ export function LandscapeForm({ services, budgets, button, note, source, layout 
       </div>
       <button
         type="submit"
-        className="h-12 w-full rounded-lg bg-gradient-to-r from-[#15703a] to-[#4cb45a] text-sm font-bold text-white transition-transform hover:scale-[1.02]"
+        className="h-12 w-full rounded-lg bg-gradient-to-r from-[#1a6b3d] to-[#1a6b3d] text-sm font-bold text-white transition-transform hover:scale-[1.02]"
       >
         {button}
       </button>

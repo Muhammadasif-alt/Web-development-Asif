@@ -109,13 +109,13 @@ export function HireHero({
         >
         <div className={form ? "w-full lg:flex-1" : "contents"}>
           {/* Same badge pill the home hero uses, so every page opens the same way. */}
-          <p className="inline-flex w-fit items-center gap-2.5 rounded-full border border-[#1a6b3d]/30 bg-[#1a6b3d]/8 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.16em] text-[#1a6b3d] dark:border-[#86e0a3]/35 dark:bg-[#86e0a3]/10 dark:text-[#86e0a3]">
-            <span className="h-1.5 w-1.5 rounded-full bg-[#1a6b3d] dark:bg-[#c8e659]" />
+          <p className="inline-flex w-fit items-center gap-2.5 rounded-full border border-[#1a6b3d]/30 bg-[#1a6b3d]/8 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.16em] text-[#1a6b3d] dark:border-[#1a6b3d]/60 dark:bg-[#1a6b3d]/15 dark:text-white">
+            <span className="h-1.5 w-1.5 rounded-full bg-[#1a6b3d] dark:bg-[#1a6b3d]" />
             {small}
           </p>
           <h1 className="mt-7 font-extrabold leading-[0.95] tracking-tight text-neutral-950 dark:text-white text-5xl sm:text-6xl lg:text-7xl xl:text-[5rem]">
             {head}{head && " "}
-            <span className="text-[#1a6b3d] dark:text-[#86e0a3]">{tail}</span>
+            <span className="text-[#1a6b3d] dark:text-[#1a6b3d]">{tail}</span>
           </h1>
 
           {(taglineTitle || taglineText || primaryCta || secondaryCta) && (
@@ -136,7 +136,7 @@ export function HireHero({
                   {primaryCta && (
                     <Link
                       href={primaryCta.href}
-                      className="group inline-flex items-center gap-2.5 rounded-full bg-gradient-to-r from-[#15703a] to-[#4cb45a] px-6 py-3 text-sm font-bold text-white transition-transform hover:scale-105"
+                      className="group inline-flex items-center gap-2.5 rounded-full bg-gradient-to-r from-[#1a6b3d] to-[#1a6b3d] px-6 py-3 text-sm font-bold text-white transition-transform hover:scale-105"
                     >
                       {primaryCta.label}
                       <span className="grid h-6 w-6 place-items-center rounded-full bg-white/25 text-white">

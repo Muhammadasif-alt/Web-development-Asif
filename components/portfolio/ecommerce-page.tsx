@@ -15,7 +15,7 @@ const STAT_ICONS = [Building2, BedDouble, ShieldCheck, Check];
 const GREEN = "bg-[#1a6b3d]";
 const btnSolid = `inline-flex items-center gap-2 rounded-md ${GREEN} px-6 py-3 text-sm font-bold text-white transition-opacity hover:opacity-90`;
 const btnLine =
-  "inline-flex items-center gap-2 rounded-md border border-[#1a6b3d] px-6 py-3 text-sm font-bold text-[#1a6b3d] transition-colors hover:bg-[#1a6b3d] hover:text-white dark:border-[#86e0a3] dark:text-[#86e0a3] dark:hover:bg-[#86e0a3] dark:hover:text-[#0b1f15]";
+  "inline-flex items-center gap-2 rounded-md border border-[#1a6b3d] px-6 py-3 text-sm font-bold text-[#1a6b3d] transition-colors hover:bg-[#1a6b3d] hover:text-white dark:border-[#1a6b3d] dark:text-[#1a6b3d] dark:hover:bg-[#1a6b3d] dark:hover:text-[#0b1f15]";
 
 export function EcommercePage({ data }: { data: Industry }) {
   return (
@@ -42,7 +42,7 @@ export function EcommercePage({ data }: { data: Industry }) {
       {/* ===== HERO ===== */}
       <section className="grid bg-muted/50 lg:grid-cols-2">
         <div className="flex flex-col justify-center px-6 py-14 lg:py-16 lg:pl-[max(2.5rem,calc((100vw-1300px)/2))] lg:pr-12">
-          <p className="text-xs font-bold uppercase tracking-wide text-[#1a6b3d] dark:text-[#86e0a3] sm:text-sm">{D.hero.eyebrow}</p>
+          <p className="text-xs font-bold uppercase tracking-wide text-[#1a6b3d] dark:text-[#1a6b3d] sm:text-sm">{D.hero.eyebrow}</p>
           <h1 className="mt-5 text-4xl font-extrabold leading-[1.1] tracking-tight sm:text-5xl lg:text-6xl">{D.hero.title}</h1>
           <p className="mt-6 max-w-lg text-base leading-relaxed text-muted-foreground">{D.hero.text}</p>
           <div className="mt-8 flex flex-wrap gap-3">
@@ -72,7 +72,7 @@ export function EcommercePage({ data }: { data: Industry }) {
               const Icon = STAT_ICONS[i];
               return (
                 <div key={s.label} className="flex flex-col items-center gap-1">
-                  <Icon className="h-6 w-6 text-[#86e0a3] sm:h-8 sm:w-8" />
+                  <Icon className="h-6 w-6 text-[#1a6b3d] sm:h-8 sm:w-8" />
                   <p className="text-lg font-semibold sm:text-2xl">{s.value}</p>
                   <p className="text-[10px] uppercase tracking-wide text-white/80 sm:text-xs">{s.label}</p>
                 </div>
@@ -165,10 +165,10 @@ export function EcommercePage({ data }: { data: Industry }) {
                   <span className="text-sm">
                     <b className="block">{r.name}</b>
                     <span className="block text-xs text-muted-foreground">{r.role}</span>
-                    <span className="block text-xs text-[#1a6b3d] dark:text-[#86e0a3]">{r.org}</span>
+                    <span className="block text-xs text-[#1a6b3d] dark:text-[#1a6b3d]">{r.org}</span>
                   </span>
                 </figcaption>
-                <p className="mt-4 inline-flex items-center gap-1.5 rounded-full bg-[#1a6b3d]/10 px-3 py-1 text-xs font-medium text-[#1a6b3d] dark:text-[#86e0a3]">
+                <p className="mt-4 inline-flex items-center gap-1.5 rounded-full bg-[#1a6b3d]/10 px-3 py-1 text-xs font-medium text-[#1a6b3d] dark:text-[#1a6b3d]">
                   <Check className="h-3.5 w-3.5" /> Verified Purchase
                 </p>
               </figure>
@@ -208,18 +208,18 @@ export function EcommercePage({ data }: { data: Industry }) {
       <section id="faq" className="px-6 pb-20 lg:px-10 lg:pb-28">
         <div className="mx-auto grid max-w-[1300px] items-center gap-12 lg:grid-cols-2 lg:gap-16">
           <div>
-            <span className="inline-flex items-center rounded-lg border border-[#1a6b3d] bg-[#1a6b3d]/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.18em] text-[#1a6b3d] dark:text-[#86e0a3]">
+            <span className="inline-flex items-center rounded-lg border border-[#1a6b3d] bg-[#1a6b3d]/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.18em] text-[#1a6b3d] dark:text-[#1a6b3d]">
               FAQs
             </span>
             <h2 className="mt-6 text-4xl font-extrabold tracking-tight sm:text-5xl">
-              {D.faq.lead} <span className="text-[#1a6b3d] dark:text-[#86e0a3]">{D.faq.accent}</span>
+              {D.faq.lead} <span className="text-[#1a6b3d] dark:text-[#1a6b3d]">{D.faq.accent}</span>
             </h2>
             <div className="mt-10 space-y-3">
               {data.faqs.map((f, i) => (
                 <details key={f.q} open={i === 0} className="group rounded-xl border border-border bg-card px-5 py-4">
                   <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-sm font-semibold sm:text-base">
                     {f.q}
-                    <span className="text-xl leading-none text-[#1a6b3d] transition-transform group-open:rotate-45 dark:text-[#86e0a3]">+</span>
+                    <span className="text-xl leading-none text-[#1a6b3d] transition-transform group-open:rotate-45 dark:text-[#1a6b3d]">+</span>
                   </summary>
                   <p className="pb-1 pt-4 text-sm leading-relaxed text-muted-foreground">{f.a}</p>
                 </details>

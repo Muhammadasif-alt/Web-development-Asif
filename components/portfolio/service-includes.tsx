@@ -93,7 +93,7 @@ export function ServiceIncludes({
                 <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">{it.desc}</p>
                 <Link
                   href={itemHref}
-                  className="mt-5 inline-flex w-fit items-center gap-2 rounded-full border border-[#1a6b3d]/40 px-4 py-2 text-xs font-bold text-[#1a6b3d] dark:text-[#86e0a3] transition-colors hover:border-transparent hover:bg-gradient-to-r hover:from-[#15703a] hover:to-[#4cb45a] hover:text-white"
+                  className="mt-5 inline-flex w-fit items-center gap-2 rounded-full border border-[#1a6b3d]/40 px-4 py-2 text-xs font-bold text-[#1a6b3d] dark:text-[#1a6b3d] transition-colors hover:border-transparent hover:bg-gradient-to-r hover:from-[#1a6b3d] hover:to-[#1a6b3d] hover:text-white"
                 >
                   Click here
                   <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
@@ -107,7 +107,7 @@ export function ServiceIncludes({
           <div className="mt-14 text-center">
             <Link
               href={cta.href}
-              className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#15703a] to-[#4cb45a] px-8 py-4 text-sm font-bold text-white transition-transform hover:scale-105"
+              className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#1a6b3d] to-[#1a6b3d] px-8 py-4 text-sm font-bold text-white transition-transform hover:scale-105"
             >
               {cta.label}
               <ArrowRight className="h-4 w-4" />

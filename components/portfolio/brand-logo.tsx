@@ -36,7 +36,7 @@ export function BrandLogo({ className = "", onDark = false }: { className?: stri
         <span className={`text-[0.95em] font-extrabold tracking-tight ${onDark ? "text-white" : "text-neutral-900 dark:text-white"}`}>
           Web Development
         </span>
-        <span className={`mt-[0.28em] text-[0.62em] font-bold uppercase tracking-[0.14em] ${onDark ? "text-[#86e0a3]" : "text-[#1a6b3d]"}`}>
+        <span className={`mt-[0.28em] text-[0.62em] font-bold uppercase tracking-[0.14em] ${onDark ? "text-[#1a6b3d]" : "text-[#1a6b3d]"}`}>
           By Asif
         </span>
       </span>

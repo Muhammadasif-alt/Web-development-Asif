@@ -184,14 +184,14 @@ export function HireContactForm() {
 
       <button
         type="submit"
-        className="group flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#15703a] to-[#4cb45a] px-6 py-4 text-sm font-bold uppercase tracking-wide text-white transition-opacity hover:opacity-90 sm:w-auto"
+        className="group flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#1a6b3d] to-[#1a6b3d] px-6 py-4 text-sm font-bold uppercase tracking-wide text-white transition-opacity hover:opacity-90 sm:w-auto"
       >
         Send message
         <Send className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
       </button>
 
       {sent && (
-        <p className="flex items-center gap-2 text-sm text-[#1a6b3d] dark:text-[#86e0a3]">
+        <p className="flex items-center gap-2 text-sm text-[#1a6b3d] dark:text-[#1a6b3d]">
           <Check className="h-4 w-4" />
           Your email app should open — just hit send and I&apos;ll reply within 24 hours.
         </p>
