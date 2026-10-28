@@ -46,15 +46,7 @@ export const metadata: Metadata = {
   },
 };
 
-/* The four entry points into the site, ordered by how a client thinks about the job. */
-const SKILLS = [
-  { num: "01", label: "Web Apps (MERN)", href: "/services/web-apps" },
-  { num: "02", label: "E-commerce & Shopify", href: "/services/ecommerce" },
-  { num: "03", label: "WordPress & Websites", href: "/services/web-development" },
-  { num: "04", label: "SEO & Performance", href: "/services/marketing" },
-];
-
-// Shown in the hero on mobile (desktop shows the skills grid instead).
+// Shown in the hero on mobile (desktop shows the compact proof row instead).
 const HERO_STATS = [
   { icon: Rocket, num: "50+", label: "Projects Completed" },
   { icon: Code2, num: "5+", label: "Years of Experience" },
@@ -324,9 +316,9 @@ export default function HireMePage() {
       <div className="relative z-10 mx-auto flex max-w-[1440px] flex-col px-6 lg:px-10">
         <HireNav />
 
-        <div className="grid flex-1 items-center gap-12 py-12 lg:grid-cols-2 lg:gap-16 lg:py-20">
+        <div className="grid flex-1 items-center gap-12 py-12 lg:grid-cols-2 lg:items-stretch lg:gap-16 lg:py-20">
           {/* ---------- copy ---------- */}
-          <div>
+          <div className="flex flex-col justify-center">
             <p className="inline-flex w-fit items-center gap-2.5 rounded-full border border-[#1a6b3d]/30 bg-[#1a6b3d]/8 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.16em] text-[#1a6b3d] dark:border-[#86e0a3]/35 dark:bg-[#86e0a3]/10 dark:text-[#86e0a3]">
               <span className="h-1.5 w-1.5 rounded-full bg-[#1a6b3d] dark:bg-[#c8e659]" />
               Web Development &amp; Digital Solutions
@@ -361,12 +353,23 @@ export default function HireMePage() {
                 View work
               </Link>
             </div>
+
+            {/* quick proof — desktop (mobile gets the stat list below) */}
+            <ul className="mt-10 hidden max-w-xl flex-wrap gap-x-7 gap-y-2 border-t border-neutral-200 pt-6 font-mono text-xs text-neutral-600 dark:border-white/15 dark:text-white/60 lg:flex">
+              {["50+ Delivered", "5+ Years Experience", "24h Rapid Response"].map((t) => (
+                <li key={t} className="flex items-center gap-2">
+                  <span className="h-2 w-2 rounded-full bg-[#1a6b3d] dark:bg-[#4cd38a]" />
+                  {t}
+                </li>
+              ))}
+            </ul>
           </div>
 
-          {/* ---------- video card + floating proof ---------- */}
+          {/* ---------- video card + floating proof ----------
+              On desktop the card fills the row, so it is exactly as tall as the copy. */}
           <div className="relative mx-auto w-full max-w-md lg:max-w-none">
-            <div className="relative overflow-hidden rounded-[2rem] border border-neutral-200/80 bg-white/60 p-2 backdrop-blur-sm dark:border-white/10 dark:bg-white/5">
-              <div className="relative aspect-[4/5] overflow-hidden rounded-[1.5rem] bg-neutral-900 sm:aspect-[3/4]">
+            <div className="relative overflow-hidden rounded-[2rem] border border-neutral-200/80 bg-white/60 p-2 backdrop-blur-sm dark:border-white/10 dark:bg-white/5 lg:absolute lg:inset-0">
+              <div className="relative aspect-[4/5] overflow-hidden rounded-[1.5rem] bg-neutral-900 sm:aspect-[3/4] lg:aspect-auto lg:h-full">
                 <HeroVideo />
               </div>
             </div>
@@ -413,22 +416,6 @@ export default function HireMePage() {
               );
             })}
           </div>
-        </div>
-      </div>
-
-      {/* ---------- entry points band ---------- */}
-      <div className="relative z-10 bg-[#123f28]">
-        <div className="mx-auto grid max-w-[1440px] grid-cols-2 gap-x-6 gap-y-7 px-6 py-8 lg:grid-cols-4 lg:px-10">
-          {SKILLS.map((s) => (
-            <Link key={s.num} href={s.href} className="group">
-              <div className="font-mono text-sm font-semibold tracking-wider text-[#86e0a3]">
-                {s.num}
-              </div>
-              <div className="mt-2 text-base font-semibold text-white transition-opacity group-hover:opacity-80 sm:text-lg">
-                {s.label}
-              </div>
-            </Link>
-          ))}
         </div>
       </div>
     </section>

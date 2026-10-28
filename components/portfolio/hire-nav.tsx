@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { ArrowRight, Menu, X, ChevronDown } from "lucide-react";
 import { BrandLogo } from "./brand-logo";
 import { ThemeToggle } from "./theme-toggle";
@@ -33,9 +34,19 @@ const LINKS: { label: string; href: string; items?: { label: string; href: strin
   { label: "Contact", href: "/contact" },
 ];
 
+/* Selected link is a solid pill; the rest sit in glass-rimmed pills (see globals.css). */
+const pill = "inline-flex items-center gap-1 rounded-full border px-4 py-1.5 transition-colors";
+const pillActive =
+  "border-transparent bg-neutral-950 text-white shadow-md dark:bg-white dark:text-neutral-950 dark:shadow-[0_4px_18px_rgba(255,255,255,0.18)] no-glass";
+const pillIdle =
+  "text-neutral-700 hover:bg-neutral-900/5 hover:text-neutral-950 dark:text-white/90 dark:hover:bg-white/10 dark:hover:text-white";
+
 export function HireNav() {
   const [open, setOpen] = useState(false);
   const [openMenu, setOpenMenu] = useState<string | null>(null);
+  const pathname = usePathname();
+  const isActive = (href: string) =>
+    href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(`${href}/`);
 
   // lock body scroll while the mobile menu is open
   useEffect(() => {
@@ -57,13 +68,13 @@ export function HireNav() {
       </Link>
 
       {/* desktop links */}
-      <div className="hidden items-center gap-9 text-sm font-medium md:flex">
+      <div className="hidden items-center gap-2 text-sm font-medium md:flex">
         {LINKS.map((l) =>
           l.items ? (
             <div key={l.label} className="group relative">
               <Link
                 href={l.href}
-                className="flex items-center gap-1 text-neutral-700 transition-colors hover:text-neutral-950 dark:text-white/90 dark:hover:text-white"
+                className={`${pill} ${isActive(l.href) ? pillActive : pillIdle}`}
               >
                 {l.label}
                 <ChevronDown className="h-3.5 w-3.5 transition-transform group-hover:rotate-180" />
@@ -87,7 +98,7 @@ export function HireNav() {
             <Link
               key={l.label}
               href={l.href}
-              className="text-neutral-700 transition-colors hover:text-neutral-950 dark:text-white/90 dark:hover:text-white"
+              className={`${pill} ${isActive(l.href) ? pillActive : pillIdle}`}
             >
               {l.label}
             </Link>

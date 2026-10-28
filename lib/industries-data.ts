@@ -90,6 +90,8 @@ export type Industry = {
     bullets: string[];
   };
   intro: { heading: string; body: string };
+  /** Trade-specific photos for the plain IndustryPage; falls back to the generic desk shots. */
+  images?: { hero: string; intro: string; introAlt: string };
   /** What is wrong with the site they have now. */
   pains: { title: string; desc: string }[];
   /** Feeds the "What's included" card grid. */
@@ -439,6 +441,11 @@ export const INDUSTRIES: Industry[] = [
       heading: "Two audiences, one site, different jobs",
       body:
         "A property website serves two people who want opposite things. A buyer wants to search, filter, and see photos without waiting. A seller wants one thing: to find out what their property is worth. Most agency sites are built entirely for the buyer and leave the seller with a generic contact form — which is backwards, because the seller is the more valuable lead.\n\nI build both paths properly: listing search that stays fast as the portfolio grows, and a valuation route that captures the seller before they call a competitor. For developers, that extends to project sites — a housing scheme with its own plans, phases, availability and enquiry flow, as I built for DHA Bahawalpur.",
+    },
+    images: {
+      hero: "/real-estate/real-estate-modern-house-exterior-dusk.webp",
+      intro: "/real-estate/real-estate-luxury-home-for-sale.webp",
+      introAlt: "Modern white villa with a swimming pool, the kind of listing a property website has to show off",
     },
     pains: [
       {

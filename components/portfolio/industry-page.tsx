@@ -51,7 +51,7 @@ export function IndustryPage({ data }: { data: Industry }) {
         taglineTitle={data.hero.taglineTitle}
         taglineText={data.hero.taglineText}
         bullets={data.hero.bullets}
-        bgImage="/cta-workspace.png"
+        bgImage={data.images?.hero ?? "/cta-workspace.png"}
         form={{
           heading: "Get a Fixed Quote",
           subheading: `Tell me about your ${data.buyer === "store owner" ? "store" : "business"} and I will reply within 24 hours.`,
@@ -76,10 +76,10 @@ export function IndustryPage({ data }: { data: Industry }) {
             </div>
             <div className="rounded-3xl border border-[#1a6b3d]/35 bg-card p-2">
               <Image
-                src="/desk-code.png"
-                alt=""
-                width={1536}
-                height={1024}
+                src={data.images?.intro ?? "/desk-code.png"}
+                alt={data.images?.introAlt ?? ""}
+                width={1600}
+                height={1061}
                 className="h-full w-full rounded-2xl object-cover"
               />
             </div>

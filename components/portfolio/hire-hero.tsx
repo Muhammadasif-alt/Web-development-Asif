@@ -4,13 +4,6 @@ import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { HireNav } from "@/components/portfolio/hire-nav";
 import { HeroLeadForm } from "@/components/portfolio/hero-lead-form";
 
-const SKILLS = [
-  { num: "01", label: "Web Development", href: "/services/web-development" },
-  { num: "02", label: "Marketing & SEO", href: "/services/marketing" },
-  { num: "03", label: "E-commerce & Automation", href: "/services/ecommerce" },
-  { num: "04", label: "Support & Maintenance", href: "/services/support-maintenance" },
-];
-
 type Cta = { label: string; href: string };
 
 type Props = {
@@ -182,22 +175,6 @@ export function HireHero({
             </div>
           )}
         </div>
-        </div>
-
-        {/* BOTTOM SKILLS — full-bleed green band, same as the home page */}
-        <div className="bg-[#123f28]">
-          <div className="mx-auto grid max-w-[1440px] grid-cols-2 gap-x-6 gap-y-7 px-6 py-8 sm:grid-cols-4 lg:px-10">
-            {SKILLS.map((s) => (
-              <Link key={s.num} href={s.href} className="group">
-                <div className="font-mono text-sm font-semibold tracking-wider text-[#86e0a3]">
-                  {s.num}
-                </div>
-                <div className="mt-2 text-base font-semibold text-white transition-opacity group-hover:opacity-80 sm:text-lg">
-                  {s.label}
-                </div>
-              </Link>
-            ))}
-          </div>
         </div>
       </div>
     </section>
