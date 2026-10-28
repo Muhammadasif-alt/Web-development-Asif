@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import {
   ArrowRight,
-  Check,
   Zap,
   Search,
   MessageSquare,
@@ -231,29 +230,6 @@ export default function AboutPage() {
                   </div>
                 );
               })}
-            </div>
-          </div>
-        </section>
-
-        {/* ===== 5. SEO IS NOT AN ADD-ON ===== */}
-        <section className="bg-[var(--panel)] px-6 py-20 lg:px-10 lg:py-24">
-          <div className="mx-auto max-w-4xl rounded-3xl border border-[#1a6b3d]/30 bg-gradient-to-b from-[var(--panel-2)] to-[var(--panel)] p-8 sm:p-12">
-            <Eyebrow>Why It Matters</Eyebrow>
-            <h2 className="mt-5 text-3xl font-extrabold tracking-tight sm:text-4xl">
-              SEO built into every build, never bolted on
-            </h2>
-            <div className="mt-6 space-y-4 text-base leading-relaxed text-muted-foreground">
-              <p>
-                Most agencies build a site, then sell you SEO as a separate service later. By then the
-                damage is done. Slow code, messy structure, and missing meta data cost you rankings
-                before you even launch.
-              </p>
-              <p>
-                I do it the right way. Optimised meta tags, structured data, mobile-first design, clean
-                URLs, and fast Core Web Vitals are part of the build, not an upsell. That means your
-                site is ready to rank the day it goes live, and it keeps pulling in organic traffic
-                without paying for every single click.
-              </p>
             </div>
           </div>
         </section>

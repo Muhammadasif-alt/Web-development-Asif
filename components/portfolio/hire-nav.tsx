@@ -59,7 +59,7 @@ export function HireNav() {
       {/* full-bleed white bar behind the contained nav */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-y-0 left-1/2 -z-10 w-screen -translate-x-1/2 border-b border-neutral-200 bg-white"
+        className="pointer-events-none absolute inset-y-0 left-1/2 -z-10 w-screen -translate-x-1/2 bg-white"
       />
 
       <Link href="/" onClick={close} aria-label="Web Development By Asif — home" className="shrink-0">

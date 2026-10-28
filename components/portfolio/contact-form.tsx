@@ -3,14 +3,16 @@
 import { useState } from "react";
 import { Send, Check } from "lucide-react";
 import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
 import { Select } from "@/components/portfolio/select";
 
 const SERVICE_OPTIONS = [
   "Web Development",
-  "Marketing & SEO",
-  "E-commerce & Automation",
-  "Support & Maintenance",
+  "App Development",
+  "UI/UX Design",
+  "SEO",
+  "Social Media & Ads",
+  "Maintenance & Support",
+  "Website Rescue / Go-Live Help",
   "Other / Not sure",
 ];
 
@@ -24,10 +26,12 @@ const BUDGETS = [
   "Not sure yet",
 ];
 
-const fieldClass =
-  "flex h-10 w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm text-foreground outline-none transition-[color,box-shadow] placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50";
+/* Same soft filled fields as the hero quote form, with a green focus ring. */
+const baseField =
+  "w-full rounded-xl border border-neutral-200 bg-neutral-50 px-4 text-sm text-foreground outline-none transition-[border-color,box-shadow,background-color] placeholder:text-neutral-400 focus-visible:border-[#1a6b3d] focus-visible:bg-white focus-visible:ring-4 focus-visible:ring-[#1a6b3d]/15 dark:border-white/10 dark:bg-white/[0.04] dark:placeholder:text-white/35 dark:focus-visible:bg-white/[0.07]";
+const fieldClass = `flex h-11 ${baseField}`;
 
-const labelClass = "mb-1.5 block text-xs font-medium text-muted-foreground";
+const labelClass = "mb-1.5 block text-xs font-semibold text-neutral-700 dark:text-white/70";
 
 export function ContactForm() {
   const [sent, setSent] = useState(false);
@@ -69,13 +73,13 @@ export function ContactForm() {
           <label htmlFor="cf-name" className={labelClass}>
             Name <span className="text-brand">*</span>
           </label>
-          <Input id="cf-name" name="name" required placeholder="Your name" autoComplete="name" />
+          <Input className={fieldClass} id="cf-name" name="name" required placeholder="Your name" autoComplete="name" />
         </div>
         <div>
           <label htmlFor="cf-email" className={labelClass}>
             Email <span className="text-brand">*</span>
           </label>
-          <Input id="cf-email" name="email" type="email" required placeholder="you@example.com" autoComplete="email" />
+          <Input className={fieldClass} id="cf-email" name="email" type="email" required placeholder="you@example.com" autoComplete="email" />
         </div>
       </div>
 
@@ -84,7 +88,7 @@ export function ContactForm() {
           <label htmlFor="cf-phone" className={labelClass}>
             Phone
           </label>
-          <Input id="cf-phone" name="phone" type="tel" placeholder="+92 308 8663440" autoComplete="tel" />
+          <Input className={fieldClass} id="cf-phone" name="phone" type="tel" placeholder="+92 308 8663440" autoComplete="tel" />
         </div>
         <div>
           <label htmlFor="cf-work" className={labelClass}>
@@ -130,13 +134,17 @@ export function ContactForm() {
           required
           rows={5}
           placeholder="Tell me about your project — what you need, timeline, and anything important."
-          className="flex w-full rounded-md border border-input bg-transparent px-3 py-2.5 text-sm text-foreground outline-none transition-[color,box-shadow] placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50"
+          className={`flex ${baseField} py-3`}
         />
       </div>
 
-      <Button type="submit" size="lg" className="w-full rounded-full sm:w-auto">
-        Send message <Send className="ml-1.5 h-4 w-4" />
-      </Button>
+      <button
+        type="submit"
+        className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#1a6b3d] to-[#1a6b3d] px-8 py-3.5 text-sm font-bold text-white sm:w-auto"
+      >
+        Send message
+        <Send className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+      </button>
 
       {sent && (
         <p className="flex items-center gap-2 text-sm text-brand">

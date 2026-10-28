@@ -14,15 +14,19 @@ const SOCIAL_ICONS: Record<string, IconType> = {
 
 export function HireFooter() {
   return (
-    <footer className="relative overflow-hidden border-t border-[#1a6b3d]/30 bg-[#0a1f14] px-6 py-14 text-white dark:bg-black lg:px-10">
-      {/* light theme: deep brand green with a glow and faint grid; dark theme stays black */}
+    <footer className="relative overflow-hidden bg-[#0a1f14] px-6 py-14 text-white dark:bg-[linear-gradient(180deg,#000_0%,#030a06_45%,#07170e_100%)] lg:px-10">
+      {/* deep brand green with a glow and faint grid; the dark theme gets a quieter version */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -right-40 -top-40 h-[560px] w-[560px] rounded-full bg-[#1a6b3d]/45 blur-3xl dark:hidden"
+        className="pointer-events-none absolute -right-40 -top-40 h-[560px] w-[560px] rounded-full bg-[#1a6b3d]/45 blur-3xl dark:bg-[#1a6b3d]/25"
       />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.04)_1px,transparent_1px)] bg-[size:72px_72px] [mask-image:linear-gradient(to_bottom,black,transparent_90%)] dark:hidden"
+        className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.04)_1px,transparent_1px)] bg-[size:72px_72px] [mask-image:linear-gradient(to_bottom,black,transparent_90%)] dark:opacity-70"
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -bottom-48 -left-32 hidden h-[460px] w-[460px] rounded-full bg-[#1a6b3d]/15 blur-3xl dark:block"
       />
       <div className="relative mx-auto max-w-[1440px]">
         <div className="flex flex-col gap-12 lg:flex-row lg:justify-between">
@@ -138,7 +142,7 @@ export function HireFooter() {
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col items-center justify-between gap-3 border-t border-white/10 pt-6 text-xs text-white/40 sm:flex-row">
+        <div className="mt-12 flex flex-col items-center justify-between gap-3 pt-6 text-xs text-white/40 sm:flex-row">
           <p>© 2026 Asif — Web Development. All rights reserved.</p>
           <p>Development by Asif.</p>
         </div>

@@ -194,9 +194,18 @@ export default function ContactPage() {
         {/* ===== CONTACT DETAILS + FORM ===== */}
         <section
           id="contact-form"
-          className="scroll-mt-24 border-b border-border px-6 py-20 lg:px-10 lg:py-24"
+          className="ambient-grid relative scroll-mt-24 overflow-clip px-6 py-20 lg:px-10 lg:py-24"
         >
-          <div className="mx-auto grid max-w-[1440px] gap-12 lg:grid-cols-2 lg:gap-16">
+          {/* light theme: mint wash with dots behind the form */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,#ffffff_0%,#eaf4ee_100%)] dark:hidden"
+          />
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 bg-[radial-gradient(rgba(26,107,61,0.16)_1px,transparent_1px)] bg-[size:22px_22px] [mask-image:linear-gradient(to_left,black,transparent_60%)] dark:hidden"
+          />
+          <div className="relative mx-auto grid max-w-[1440px] gap-12 lg:grid-cols-2 lg:gap-16">
             {/* left: info */}
             <div>
               <Eyebrow>Contact details</Eyebrow>
@@ -252,12 +261,16 @@ export default function ContactPage() {
             </div>
 
             {/* right: form */}
-            <div className="rounded-3xl border border-border bg-card p-6 sm:p-8">
-              <h2 className="text-xl font-bold text-foreground">Send a message</h2>
-              <p className="mt-2 text-sm text-muted-foreground">
+            <div className="relative overflow-hidden rounded-[1.75rem] border bg-white p-6 shadow-2xl shadow-[#1a6b3d]/15 dark:bg-[#0b0f0d] dark:shadow-black/50 sm:p-8">
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute -right-20 -top-24 h-56 w-56 rounded-full bg-[#1a6b3d]/12 blur-3xl dark:bg-[#1a6b3d]/30"
+              />
+              <h2 className="relative text-xl font-bold text-foreground">Send a message</h2>
+              <p className="relative mt-2 text-sm text-muted-foreground">
                 Fill this in and I will get back to you within 24 hours.
               </p>
-              <div className="mt-6">
+              <div className="relative mt-6">
                 <ContactForm />
               </div>
             </div>
@@ -265,7 +278,7 @@ export default function ContactPage() {
         </section>
 
         {/* ===== WHAT HAPPENS NEXT ===== */}
-        <section className="bg-[var(--panel)] px-6 py-20 lg:px-10 lg:py-24">
+        <section className="ambient-glow bg-[#f6faf7] px-6 dark:bg-[var(--panel)] py-20 lg:px-10 lg:py-24">
           <div className="mx-auto max-w-[1440px]">
             <div className="mx-auto max-w-2xl text-center">
               <Eyebrow>What happens next</Eyebrow>
@@ -292,7 +305,7 @@ export default function ContactPage() {
         </section>
 
         {/* ===== WHAT TO INCLUDE ===== */}
-        <section className="px-6 py-20 lg:px-10 lg:py-24">
+        <section className="ambient-dots px-6 py-20 lg:px-10 lg:py-24">
           <div className="mx-auto grid max-w-[1440px] items-center gap-12 lg:grid-cols-2 lg:gap-16">
             <div>
               <Eyebrow>Not sure what to write?</Eyebrow>
@@ -321,7 +334,7 @@ export default function ContactPage() {
         </section>
 
         {/* ===== SERVICE QUICK LINKS ===== */}
-        <section className="bg-[var(--panel)] px-6 py-20 lg:px-10 lg:py-24">
+        <section className="ambient-glow bg-[#f6faf7] px-6 dark:bg-[var(--panel)] py-20 lg:px-10 lg:py-24">
           <div className="mx-auto max-w-[1440px]">
             <div className="mx-auto max-w-2xl text-center">
               <Eyebrow>What can I help with?</Eyebrow>
@@ -352,7 +365,7 @@ export default function ContactPage() {
         </section>
 
         {/* ===== FAQ ===== */}
-        <section className="px-6 py-20 lg:px-10 lg:py-24">
+        <section className="ambient-grid px-6 py-20 lg:px-10 lg:py-24">
           <div className="mx-auto max-w-3xl">
             <div className="text-center">
               <Eyebrow>FAQ</Eyebrow>

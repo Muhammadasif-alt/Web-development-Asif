@@ -13,7 +13,6 @@ import {
   MessageSquare,
   Search,
   Layers,
-  Hammer,
   CheckCircle2,
   Mail,
   Phone,
@@ -21,6 +20,10 @@ import {
   Smartphone,
   PenTool,
   Share2,
+  Gem,
+  MonitorSmartphone,
+  Wrench,
+  PackageCheck,
 } from "lucide-react";
 import { getSortedPosts } from "@/lib/blog-data";
 import { HireContactForm } from "@/components/portfolio/hire-contact-form";
@@ -136,6 +139,18 @@ const TONE: Record<Tone, { card: string; icon: string; num: string; text: string
   },
 };
 
+/* What every build is held to — shown as a centred 4×2 grid after the About section. */
+const QUALITY: { icon: typeof Code2; title: string; desc: string }[] = [
+  { icon: Gem, title: "Purposeful Solutions", desc: "Every build starts from your goals and your customers, not from a template someone else used." },
+  { icon: MonitorSmartphone, title: "Thoughtful UX", desc: "Clear layouts and easy navigation on every screen size, so visitors find what they came for." },
+  { icon: Zap, title: "Performance First", desc: "Fast pages and lean code are part of the build from day one, not a fix at the end." },
+  { icon: Search, title: "SEO-Ready Foundations", desc: "Clean structure, proper metadata, and schema so search engines understand the site from launch." },
+  { icon: MessageSquare, title: "Clear Communication", desc: "You know what is being built, why, and what happens next — in plain language, every week." },
+  { icon: Headphones, title: "Support After Launch", desc: "Updates, fixes, and improvements when you need them, from the person who built the site." },
+  { icon: Wrench, title: "Flexible by Design", desc: "A simple business site or a custom platform — the approach follows what you actually need." },
+  { icon: PackageCheck, title: "Careful Delivery", desc: "Tested, documented, and handed over in a way your team can maintain as the business grows." },
+];
+
 const WHY: { icon: typeof Code2; title: string; desc: string; outcome: string }[] = [
   {
     icon: Code2,
@@ -179,22 +194,27 @@ const PROCESS: ProcessStep[] = [
   {
     icon: Search,
     title: "Discovery",
-    desc: "A short call about your goals, customers, and must-have features. You leave with a clear scope and a fixed quote.",
+    desc: "We talk through your business, your customers, and what the project needs to achieve. You get a clear scope and a fixed quote.",
   },
   {
     icon: Layers,
-    title: "Plan & Stack",
-    desc: "I pick the right stack — MERN, Next.js, Laravel, WordPress, or Shopify — and map out pages, data, and integrations.",
+    title: "Planning",
+    desc: "Pages or features are mapped, the right stack is chosen, and we agree the structure before anything is designed or built.",
   },
   {
-    icon: Hammer,
-    title: "Build",
-    desc: "Built in visible stages on a live preview link, so you see progress as it happens instead of waiting for a big reveal.",
+    icon: PenTool,
+    title: "Design & Build",
+    desc: "The agreed design is built in stages on a live preview link, so you can see and comment on real progress every week.",
   },
   {
     icon: CheckCircle2,
-    title: "Test & Launch",
-    desc: "Cross-device testing, speed and SEO checks, then launch and a full handover with everything documented.",
+    title: "Testing",
+    desc: "Forms, layouts on every device, speed, and SEO basics are checked and fixed before anyone else sees the site.",
+  },
+  {
+    icon: Rocket,
+    title: "Launch & Support",
+    desc: "The site goes live with a full handover, and I stay on hand for updates, fixes, and the next round of improvements.",
   },
 ];
 
@@ -329,7 +349,7 @@ export default function HireMePage() {
         </div>
 
         {/* mobile stats */}
-        <div className="border-t border-neutral-200 py-4 dark:border-white/15 lg:hidden">
+        <div className="py-4 lg:hidden">
           <div className="divide-y divide-neutral-200 dark:divide-white/10">
             {HERO_STATS.map((s) => {
               const Icon = s.icon;
@@ -356,7 +376,7 @@ export default function HireMePage() {
     <TechMarquee />
 
     {/* ===== SERVICES — one grid, six doors in ===== */}
-    <section className="bg-[var(--panel)] px-6 py-20 text-foreground lg:px-10 lg:py-24">
+    <section className="ambient-glow bg-[var(--panel)] px-6 py-20 text-foreground lg:px-10 lg:py-24">
       <div className="mx-auto max-w-[1440px]">
         <div className="grid gap-6 lg:grid-cols-2 lg:items-end">
           <div>
@@ -439,7 +459,7 @@ export default function HireMePage() {
     </section>
 
     {/* ===== ABOUT ME ===== */}
-    <section className="relative overflow-hidden bg-[#f6faf7] text-foreground dark:bg-[var(--panel-2)]">
+    <section className="ambient-dots relative overflow-hidden bg-[#f6faf7] text-foreground dark:bg-[var(--panel-2)]">
       {/* light theme: soft mint wash, dot texture and a glow — distinct from the hero's grid */}
       <div
         aria-hidden="true"
@@ -453,7 +473,6 @@ export default function HireMePage() {
         aria-hidden="true"
         className="pointer-events-none absolute -bottom-40 -left-40 h-[520px] w-[520px] rounded-full bg-[#1a6b3d]/15 blur-3xl dark:hidden"
       />
-      <div className="absolute inset-x-0 bottom-0 h-1 bg-[#12502d]" />
       <div className="relative mx-auto grid max-w-[1440px] items-center gap-12 px-6 py-20 lg:grid-cols-2 lg:gap-14 lg:px-10 lg:py-24">
         {/* LEFT — about me */}
         <div>
@@ -519,6 +538,45 @@ export default function HireMePage() {
       </div>
     </section>
 
+    {/* ===== QUALITY — eight things every build is held to ===== */}
+    <section className="relative overflow-clip bg-[#f3f8f5] px-6 py-20 text-foreground dark:bg-[#05120b] lg:px-10 lg:py-24">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute left-1/2 top-0 h-[460px] w-[900px] -translate-x-1/2 -translate-y-1/3 rounded-full bg-[#1a6b3d]/15 blur-3xl dark:bg-[#1a6b3d]/35"
+      />
+      <div className="relative mx-auto max-w-[1440px]">
+        <div className="mx-auto max-w-2xl text-center">
+          <span className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-1.5 text-xs font-bold uppercase tracking-[0.18em] text-[#1a6b3d] shadow-sm dark:bg-white/10 dark:text-white">
+            <span className="h-1.5 w-1.5 rounded-full bg-[#1a6b3d] dark:bg-white" />
+            Built on quality
+          </span>
+          <h2 className="mt-6 text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl">
+            Built on quality,
+            <br />
+            purpose and <span className="font-serif font-normal italic text-[#1a6b3d] dark:text-white/85">care.</span>
+          </h2>
+        </div>
+
+        <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {QUALITY.map((q) => {
+            const Icon = q.icon;
+            return (
+              <div
+                key={q.title}
+                className="group flex flex-col items-center rounded-3xl border bg-white px-6 py-8 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-[#1a6b3d]/10 dark:bg-white/[0.04] dark:shadow-none"
+              >
+                <span className="grid h-12 w-12 place-items-center rounded-2xl bg-[#1a6b3d]/10 text-[#1a6b3d] transition-colors group-hover:bg-[#1a6b3d] group-hover:text-white dark:bg-[#1a6b3d]/30 dark:text-white">
+                  <Icon className="h-5 w-5" strokeWidth={1.8} />
+                </span>
+                <h3 className="mt-5 text-base font-bold tracking-tight">{q.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{q.desc}</p>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+
     {/* ===== WORK — pinned, one card per scroll step ===== */}
     <section className="bg-background px-6 text-foreground lg:px-10">
       <div className="mx-auto max-w-[1440px]">
@@ -568,13 +626,13 @@ export default function HireMePage() {
             Why Work With Me
           </span>
           <h2 className="mt-6 text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl">
-            Multi-stack,
+            A small studio that
             <br />
-            <span className="font-serif font-normal italic text-white/85">single point of contact.</span>
+            <span className="font-serif font-normal italic text-white/85">ships like a senior team.</span>
           </h2>
           <p className="mt-6 max-w-md text-base leading-relaxed text-white/70 sm:text-lg">
-            You brief one person and get the whole thing built — no agency layers, no account
-            managers, and no waiting on someone else&apos;s subcontractor.
+            You work directly with the developer doing the work. No account managers, no
+            hand-off, no disappearing once the invoice clears.
           </p>
           <Link
             href="/contact"
@@ -621,17 +679,18 @@ export default function HireMePage() {
 
     {/* ===== PROCESS ===== */}
     <ProcessTimeline
-      eyebrow="Process"
-      title="A 4-Step Process That Removes the"
-      titleAccent="Mystery From Your Project"
-      intro="Four clear steps. At every stage you know what happens next — and you know the full cost before any work begins."
+      eyebrow="How it works"
+      title="From your idea to a"
+      titleAccent="working website"
+      intro="A clear process keeps the project focused and makes it easy to know what happens next. Five steps, each with something you can see."
       steps={PROCESS}
-      footnote="Every stage is visible, and the price is agreed before a single line is written."
+      footnote="You always know which stage we are in and what comes next."
       cta={{ label: "Start your project", href: "/contact" }}
+      bg="ambient-grid bg-[var(--panel)]"
     />
 
     {/* ===== BLOG / KNOWLEDGE ===== */}
-    <section className="bg-[var(--panel-2)] px-6 py-20 text-foreground lg:px-10 lg:py-24">
+    <section className="ambient-glow bg-[var(--panel-2)] px-6 py-20 text-foreground lg:px-10 lg:py-24">
       <div className="mx-auto max-w-[1440px]">
         {/* header */}
         <div className="flex flex-wrap items-start justify-between gap-6">
@@ -702,7 +761,7 @@ export default function HireMePage() {
     )}
 
     {/* ===== FAQ ===== */}
-    <section className="bg-[var(--panel-2)] px-6 py-20 text-foreground lg:px-10 lg:py-24">
+    <section className="ambient-dots bg-[var(--panel-2)] px-6 py-20 text-foreground lg:px-10 lg:py-24">
       <div className="mx-auto grid max-w-[1440px] gap-12 lg:grid-cols-2 lg:gap-16">
         {/* left — heading + description, stays put while the questions scroll */}
         <div className="lg:sticky lg:top-24 lg:self-start">
@@ -741,7 +800,7 @@ export default function HireMePage() {
     </section>
 
     {/* ===== CONTACT ===== */}
-    <section className="relative overflow-clip bg-[var(--panel)] px-6 py-20 text-foreground lg:px-10 lg:py-24">
+    <section className="ambient-grid relative overflow-clip bg-[var(--panel)] px-6 py-20 text-foreground lg:px-10 lg:py-24">
       {/* light theme: mint wash rising from the bottom, a corner glow, and dots behind the form */}
       <div
         aria-hidden="true"

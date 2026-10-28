@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ArrowRight, BriefcaseBusiness, Check } from "lucide-react";
+import { ArrowRight, BriefcaseBusiness, Check, Clock3 } from "lucide-react";
 import { Select } from "@/components/portfolio/select";
 
 const EMAIL = "raoasifriyasat@gmail.com";
@@ -14,8 +14,10 @@ const BUDGETS = [
   "Not sure yet",
 ];
 
-const field =
-  "h-11 w-full rounded-xl border border-neutral-300 bg-white px-4 text-sm text-neutral-900 outline-none transition-colors placeholder:text-neutral-400 focus:border-[#1a6b3d] dark:border-white/15 dark:bg-white/[0.06] dark:text-white dark:placeholder:text-white/35";
+/* Shared field look: soft filled inputs that light up with a green ring on focus. */
+const base =
+  "w-full rounded-xl border border-neutral-200 bg-neutral-50 px-4 text-sm text-neutral-900 outline-none transition-[border-color,box-shadow,background-color] placeholder:text-neutral-400 focus:border-[#1a6b3d] focus:bg-white focus:ring-4 focus:ring-[#1a6b3d]/15 dark:border-white/10 dark:bg-white/[0.04] dark:text-white dark:placeholder:text-white/35 dark:focus:bg-white/[0.07]";
+const field = `${base} h-11`;
 
 const label = "block text-xs font-semibold text-neutral-700 dark:text-white/70";
 
@@ -60,19 +62,30 @@ export function HeroLeadForm({
   };
 
   return (
-    <div className="w-full rounded-3xl border border-neutral-200 bg-white/90 p-6 backdrop-blur-md dark:border-white/12 dark:bg-[#0d0d0d]/90 sm:p-7">
-      <div className="flex items-start gap-3.5">
-        <span className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-[#1a6b3d] text-white">
-          <BriefcaseBusiness className="h-6 w-6" strokeWidth={2} />
-        </span>
-        <div>
-          <h2 className="text-lg font-extrabold leading-tight text-neutral-950 dark:text-white sm:text-xl">{heading}</h2>
-          <p className="mt-1 text-xs leading-relaxed text-neutral-600 dark:text-white/60">{subheading}</p>
+    <div className="relative w-full overflow-hidden rounded-[1.75rem] border bg-white p-6 shadow-2xl shadow-[#1a6b3d]/15 dark:bg-[#0b0f0d] dark:shadow-black/50 sm:p-8">
+      {/* soft brand glow in the card's top corner */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -right-20 -top-24 h-56 w-56 rounded-full bg-[#1a6b3d]/12 blur-3xl dark:bg-[#1a6b3d]/30"
+      />
+      <div className="relative flex items-start justify-between gap-4">
+        <div className="flex items-start gap-3.5">
+          <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-[#1a6b3d] text-white shadow-lg shadow-[#1a6b3d]/30">
+            <BriefcaseBusiness className="h-6 w-6" strokeWidth={2} />
+          </span>
+          <div>
+            <h2 className="text-lg font-extrabold leading-tight text-neutral-950 dark:text-white sm:text-xl">{heading}</h2>
+            <p className="mt-1 text-xs leading-relaxed text-neutral-600 dark:text-white/60">{subheading}</p>
+          </div>
         </div>
+        <span className="hidden shrink-0 items-center gap-1.5 rounded-full bg-[#1a6b3d]/10 px-3 py-1 text-[11px] font-bold text-[#1a6b3d] dark:bg-white/10 dark:text-white sm:inline-flex">
+          <Clock3 className="h-3.5 w-3.5" />
+          24h reply
+        </span>
       </div>
 
       {sent ? (
-        <div className="mt-6 flex items-start gap-3 rounded-xl border border-[#1a6b3d]/35 bg-[#1a6b3d]/10 p-4">
+        <div className="relative mt-6 flex items-start gap-3 rounded-xl bg-[#1a6b3d]/10 p-4">
           <Check className="mt-0.5 h-5 w-5 shrink-0 text-[#1a6b3d]" />
           <p className="text-sm text-neutral-700 dark:text-white/80">
             Your mail app should have opened with the details filled in. Send it and I will reply
@@ -80,7 +93,8 @@ export function HeroLeadForm({
           </p>
         </div>
       ) : (
-        <form onSubmit={handleSubmit} className="mt-6 space-y-3.5">
+        <form onSubmit={handleSubmit} className="relative mt-7 space-y-4">
+          <div className="grid gap-4 sm:grid-cols-2">
           <div>
             <label htmlFor="hf-name" className={label}>
               Full Name
@@ -108,6 +122,7 @@ export function HeroLeadForm({
               placeholder="you@company.com"
               className={`${field} mt-1.5`}
             />
+          </div>
           </div>
 
           <div>
@@ -148,7 +163,7 @@ export function HeroLeadForm({
               rows={3}
               required
               placeholder="Tell me about your project…"
-              className="mt-1.5 w-full resize-y rounded-xl border border-neutral-300 bg-white px-4 py-3 text-sm text-neutral-900 outline-none transition-colors placeholder:text-neutral-400 focus:border-[#1a6b3d] dark:border-white/15 dark:bg-white/[0.06] dark:text-white dark:placeholder:text-white/35"
+              className={`${base} mt-1.5 resize-y py-3`}
             />
           </div>
 
@@ -159,6 +174,14 @@ export function HeroLeadForm({
             {cta}
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
           </button>
+          <p className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-[11px] text-neutral-500 dark:text-white/45">
+            {["Free quote", "No spam", "Reply within 24h"].map((t) => (
+              <span key={t} className="inline-flex items-center gap-1">
+                <Check className="h-3 w-3 text-[#1a6b3d]" strokeWidth={3} />
+                {t}
+              </span>
+            ))}
+          </p>
         </form>
       )}
     </div>

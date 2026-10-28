@@ -42,8 +42,10 @@ export function Select({ value, onChange, options, placeholder, id, invalid }: S
         onClick={() => setOpen((o) => !o)}
         aria-haspopup="listbox"
         aria-expanded={open}
-        className={`flex h-10 w-full items-center justify-between gap-2 rounded-md border bg-transparent px-3 py-2 text-sm outline-none transition-[color,box-shadow] focus-visible:ring-[3px] focus-visible:ring-ring/50 ${
-          invalid ? "border-destructive/70" : "border-input focus-visible:border-ring"
+        className={`flex h-11 w-full items-center justify-between gap-2 rounded-xl border bg-neutral-50 px-4 text-sm outline-none transition-[color,box-shadow,border-color] focus-visible:ring-4 focus-visible:ring-[#1a6b3d]/15 dark:bg-white/[0.04] ${
+          invalid
+            ? "border-destructive/70"
+            : "border-neutral-200 focus-visible:border-[#1a6b3d] dark:border-white/10"
         } ${value ? "text-foreground" : "text-muted-foreground"}`}
       >
         <span className="truncate">{value || placeholder}</span>
