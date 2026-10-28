@@ -114,7 +114,7 @@ export function HireNav() {
         className="group inline-flex items-center gap-3 rounded-full bg-gradient-to-r from-[#15703a] to-[#4cb45a] py-2 pl-5 pr-2 text-sm font-bold text-white"
       >
         Get in touch
-        <span className="grid h-8 w-8 place-items-center rounded-full bg-white/20 text-white dark:bg-white/20">
+        <span className="grid h-8 w-8 place-items-center rounded-full bg-black/85 text-white ring-1 ring-white/15">
           <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
         </span>
         </Link>
