@@ -67,6 +67,10 @@
   --panel: #ffffff;
   --panel-2: #ffffff;
   --surface: #ffffff;
+
+  /* glass rim — bright corners, faint middle */
+  --glass-rim: linear-gradient(135deg, rgba(0,0,0,0.22) 0%, rgba(0,0,0,0.06) 35%, rgba(0,0,0,0.05) 65%, rgba(0,0,0,0.16) 100%);
+  --glass-rim-hover: linear-gradient(135deg, rgba(26,107,61,0.75) 0%, rgba(26,107,61,0.18) 40%, rgba(26,107,61,0.12) 65%, rgba(26,107,61,0.55) 100%);
 }
 
 /* ---------- DARK ---------- */
@@ -99,6 +103,52 @@
   --panel: #000000;
   --panel-2: #000000;
   --surface: #0f1a1c;
+
+  --glass-rim: linear-gradient(135deg, rgba(255,255,255,0.42) 0%, rgba(255,255,255,0.08) 32%, rgba(255,255,255,0.05) 62%, rgba(255,255,255,0.28) 100%);
+  --glass-rim-hover: linear-gradient(135deg, rgba(134,224,163,0.8) 0%, rgba(76,180,90,0.2) 40%, rgba(76,180,90,0.12) 65%, rgba(134,224,163,0.55) 100%);
+}
+
+/* ---------- GLASS BORDERS ----------
+   Every rounded element with a plain `border` gets a gradient glass rim
+   (drawn by ::before). Brand-coloured, dashed and form-control borders keep
+   their own colour; add `no-glass` to opt an element out. */
+:is([class~="border"][class*="rounded-"]):not(input, textarea, select, img, iframe, video, .no-glass, [class*="border-dashed"], [class*=" border-[#1a6b3d]"], [class^="border-[#1a6b3d]"], [class*=" border-brand"], [class^="border-brand"], [class*="border-[var(--sc-accent)]"]) {
+  border-color: transparent;
+}
+
+:is([class~="border"][class*="rounded-"]):not(input, textarea, select, img, iframe, video, .no-glass, [class*="border-dashed"], [class*=" border-[#1a6b3d]"], [class^="border-[#1a6b3d]"], [class*=" border-brand"], [class^="border-brand"], [class*="border-[var(--sc-accent)]"])::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: inherit;
+  padding: 1px;
+  background: var(--glass-rim);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+
+:is([class~="border"][class*="rounded-"][class*="hover:border-"]):not(.no-glass, [class*="border-dashed"], [class*=" border-[#1a6b3d]"], [class^="border-[#1a6b3d]"], [class*=" border-brand"], [class^="border-brand"])::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: inherit;
+  padding: 1px;
+  background: var(--glass-rim-hover);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+:is([class~="border"][class*="rounded-"][class*="hover:border-"]):hover::after {
+  opacity: 1;
 }
 
 @layer base {
@@ -112,4 +162,10 @@
   html {
     scroll-behavior: smooth;
   }
+  /* anchor for the glass rim pseudo-elements; utilities (absolute, fixed…) still win */
+  :where([class~="border"][class*="rounded-"]) {
+    position: relative;
+    isolation: isolate;
+  }
 }
+
