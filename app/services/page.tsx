@@ -162,6 +162,25 @@ const SERVICES = [
     cta: "Start a care plan",
     detailHref: "/services/support-maintenance",
   },
+  {
+    num: "07",
+    icon: LifeBuoy,
+    title: "Website Rescue and Launch",
+    short: "Site down, broken, or stuck before launch? I get it working.",
+    body: "Domain or hosting expired and the site vanished, a plugin update threw a 503, or you built a site or app yourself — even with AI — and cannot get it live. I restore from backups, fix the errors, and plan and deploy self-built projects properly.",
+    included: [
+      "Restore sites after domain or hosting expiry",
+      "WordPress 503, white screen and plugin fixes",
+      "Go-live help for self-built sites",
+      "Planning and deployment for AI-written code",
+      "Hosting moves without downtime",
+      "Small changes and improvements on existing sites",
+    ],
+    best: "Anyone whose site is down, broken, or built but not yet live.",
+    result: "Your website back online — or live for the first time — set up so it stays that way.",
+    cta: "Get help now",
+    detailHref: "/services/website-rescue",
+  },
 ];
 
 const WHICH = [
@@ -170,6 +189,7 @@ const WHICH = [
   { q: "I need a new website or store.", a: "Start with Web Development or E-commerce." },
   { q: "I have a site but no one finds it.", a: "Start with Marketing and SEO." },
   { q: "My site is slow or breaking.", a: "Start with Support and Maintenance." },
+  { q: "My site is down, or I built one and can't get it live.", a: "Start with Website Rescue and Launch." },
   { q: "I want more leads from ads.", a: "Start with Meta ads under Marketing and SEO." },
   { q: "I want everything handled by one person.", a: "Perfect, that is exactly how I work." },
 ];

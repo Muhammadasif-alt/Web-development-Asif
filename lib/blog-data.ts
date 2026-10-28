@@ -21,6 +21,277 @@ const cover = (slug: string) => `/blog/${slug}.webp`;
 
 export const POSTS: BlogPost[] = [
   {
+    slug: "deploy-ai-built-website-app",
+    title: "Built your website or app with ChatGPT or Claude? How to plan and deploy it properly",
+    excerpt:
+      "AI tools can write working code, but getting it live is a different job. Here is what to check, how to choose hosting, and the mistakes that break AI-built projects in production.",
+    category: "Development",
+    date: "Oct 2026",
+    dateISO: "2026-10-27",
+    read: "7 min read",
+    cover: cover("deploy-ai-built-website-app"),
+    content: [
+      {
+        type: "p",
+        text: "More people than ever are building their own websites and small apps with AI tools like ChatGPT and Claude. That is genuinely useful: you can get a working prototype in an afternoon. The catch is that \"it works on my laptop\" and \"it is live, secure and reliable for customers\" are two different finish lines. To get from one to the other you need to review the code for production problems, choose hosting that matches how the project is built, set up the database and environment settings properly, connect your domain with SSL, and test everything before you send real visitors to it. This guide walks through those steps.",
+      },
+      { type: "h2", text: "1. Work out what you actually built" },
+      {
+        type: "p",
+        text: "Before choosing hosting, you need to know what kind of project you have, because each type is deployed differently. AI tools will happily mix approaches, so it is worth checking.",
+      },
+      {
+        type: "ul",
+        items: [
+          "A static site — just HTML, CSS and JavaScript files with no server code. The simplest to host.",
+          "A front-end framework app — React, Vue or Next.js. May be fully static or may need a server for some pages.",
+          "A back-end app — Node/Express, PHP/Laravel, Python. Needs a server that keeps running and usually a database.",
+          "A WordPress site or theme the AI helped you customise — needs PHP hosting with MySQL.",
+        ],
+      },
+      {
+        type: "p",
+        text: "If you are not sure, look for files like package.json (JavaScript), composer.json (PHP/Laravel) or requirements.txt (Python), and check whether there is any code that talks to a database. That tells you most of what you need.",
+      },
+      { type: "h2", text: "2. Review the code for things that break in production" },
+      {
+        type: "p",
+        text: "AI-written code is often fine for a demo and fragile in production. These are the problems I find most often when someone sends me a project they built with AI.",
+      },
+      {
+        type: "ul",
+        items: [
+          "Secrets in the code: API keys, database passwords or payment keys pasted straight into files. These must move into environment variables, and any key that was ever pushed to a public repository should be replaced.",
+          "Hard-coded local addresses like localhost or 127.0.0.1 that will not exist on a real server.",
+          "No input validation on forms, which leaves the door open to spam and abuse.",
+          "Missing error handling, so one failed request crashes the whole app.",
+          "Files saved to the local disk on platforms where the disk is wiped on every deploy.",
+          "Dependencies pinned to versions that do not exist, or never installed at all.",
+        ],
+      },
+      { type: "h2", text: "3. Choose hosting that fits the project" },
+      {
+        type: "p",
+        text: "The right hosting depends on what you built, not on what is cheapest or most popular. Picking the wrong type is the most common reason a deploy fails.",
+      },
+      {
+        type: "ul",
+        items: [
+          "Static sites and most Next.js or React apps: platforms like Vercel or Netlify, which build and serve them automatically from a Git repository.",
+          "PHP, Laravel and WordPress: shared or managed PHP hosting such as Hostinger or a cPanel host, or a small VPS for more control.",
+          "Node, Python or anything that runs continuously: a platform that supports long-running servers, or a VPS you manage.",
+          "Anything with a database: a managed database service or the database included with your hosting, with automatic backups switched on.",
+        ],
+      },
+      { type: "h2", text: "4. Set up the database and environment settings" },
+      {
+        type: "p",
+        text: "Most AI-built apps that \"worked locally\" break on the server because something the laptop provided is missing. Create the production database, run the project's migrations or import the schema, and set every environment variable the code expects — database connection, API keys, the site URL, mail settings. Keep a private list of these settings somewhere safe; you will need them again if you ever move hosts.",
+      },
+      { type: "h2", text: "5. Connect your domain, SSL and email" },
+      {
+        type: "p",
+        text: "Point your domain to the new hosting by updating its DNS records — usually an A record for the main domain and a CNAME for www, or the nameservers your host gives you. Make sure SSL is active so the site loads on https with a padlock; most modern hosts issue a free certificate automatically. If you use the domain for email, be careful not to break the existing mail records when you change DNS, and set up proper sending for contact forms so their emails do not land in spam.",
+      },
+      {
+        type: "quote",
+        text: "The deploy is not done when the homepage loads. It is done when the forms send, the payments go through, and it still works on a phone.",
+      },
+      { type: "h2", text: "6. Test before you tell anyone" },
+      {
+        type: "ul",
+        items: [
+          "Click through every page on desktop and on a real phone.",
+          "Submit every form and confirm the emails or database entries arrive.",
+          "Test sign-up, login and password reset if the app has accounts.",
+          "Run a test payment in the provider's test mode before switching to live keys.",
+          "Check speed with Google PageSpeed Insights and fix anything badly slow.",
+          "Make sure error pages show something friendly, not raw code or stack traces.",
+        ],
+      },
+      { type: "h2", text: "7. Plan for what happens after launch" },
+      {
+        type: "p",
+        text: "A live project needs a few habits to stay healthy: automatic backups of files and database, a simple way to deploy updates (ideally from Git, so you can roll back), uptime monitoring so you know if it goes down, and a note of where everything is hosted and how to log in. AI tools are great for adding features later, but always test changes on a copy before they touch the live site.",
+      },
+      { type: "h2", text: "When to get help" },
+      {
+        type: "p",
+        text: "This is now one of the most common requests I get: someone has built a site or app with ChatGPT or Claude, it works, and they want it planned and deployed properly. I review the code, fix what will not survive production, choose the right hosting, deploy it, and connect your domain with SSL — and I explain what I did so you can keep building on it. If that sounds like your project, send me a message with what you built and where the code is, and I will come back with a plan and a fixed quote.",
+      },
+    ],
+  },
+  {
+    slug: "website-down-domain-hosting-expired",
+    title: "Domain or hosting expired and your website is gone? How to get it back",
+    excerpt:
+      "When a domain or hosting plan lapses, a website can disappear overnight. Here is what actually happened, how long you usually have, and the steps to restore the site from backup and get it live again.",
+    category: "Business",
+    date: "Oct 2026",
+    dateISO: "2026-10-26",
+    read: "7 min read",
+    cover: cover("website-down-domain-hosting-expired"),
+    content: [
+      {
+        type: "p",
+        text: "If your website has suddenly disappeared and you realise the domain or hosting renewal was missed, do not panic — in many cases it can be brought back. The first step is to work out which one expired, because a lapsed domain and a lapsed hosting plan fail differently and are fixed differently. Then you renew what can still be renewed, find the most recent backup, restore it to working hosting, reconnect the domain, and set up automatic renewals and backups so it does not happen again. This guide explains each step.",
+      },
+      { type: "h2", text: "1. Figure out what expired: the domain or the hosting" },
+      {
+        type: "p",
+        text: "Your domain is your address (yourbusiness.com). Your hosting is the server that stores the website's files and database. They are often bought separately, sometimes from different companies, and they expire independently.",
+      },
+      {
+        type: "ul",
+        items: [
+          "If the domain expired, visitors usually see a parking page from the registrar, an error that the site cannot be reached, or nothing at all. Your email on that domain often stops too.",
+          "If the hosting expired, the domain still points somewhere, but you see a suspended-account page, a default host page, or an error.",
+          "Look up the domain with a WHOIS tool to see its expiry date and registrar, and check your hosting account for an overdue invoice or suspension notice.",
+        ],
+      },
+      { type: "h2", text: "2. Act fast on an expired domain" },
+      {
+        type: "p",
+        text: "Most registrars do not delete a domain the moment it expires. There is usually a grace period in which the original owner can renew at the normal price, followed by a redemption period in which it can still be recovered for an extra fee. The exact lengths depend on the registrar and the domain extension, so check your registrar's terms straight away. After those periods, the domain can be released and registered by anyone — including people who buy expired domains to resell them. If your domain is still in grace or redemption, renew it immediately and switch on auto-renew.",
+      },
+      { type: "h2", text: "3. Check whether your hosting files still exist" },
+      {
+        type: "p",
+        text: "Hosting providers usually suspend an unpaid account before they delete it, and the files and database may remain for a while. If you can pay the invoice and reactivate the account, the site may come back exactly as it was. If the account has already been closed, ask the host's support team directly whether a backup is still available — some keep them for a limited time even after closure. Do this quickly; the longer you wait, the less likely the data is still there.",
+      },
+      { type: "h2", text: "4. Gather every backup you can find" },
+      {
+        type: "p",
+        text: "If the hosting is gone, the site comes back from a backup. Backups are often in more places than people expect, so check them all before assuming the site is lost.",
+      },
+      {
+        type: "ul",
+        items: [
+          "Your hosting control panel's backup tool, if the account can still be accessed.",
+          "WordPress backup plugins such as UpdraftPlus, which may have saved copies to Google Drive, Dropbox or email.",
+          "Your own computer or the previous developer's — the original theme and site files are often still around.",
+          "A database export (a .sql file) from any earlier migration.",
+          "As a last resort, archived copies of pages in public web archives, which can help rebuild content but are not a full restore.",
+        ],
+      },
+      { type: "h2", text: "5. Restore the site to working hosting" },
+      {
+        type: "p",
+        text: "With a backup in hand, the restore follows the same pattern for most sites. Set up hosting (the old account if it can be reactivated, or a new plan such as Hostinger or another provider), upload the site files, create a new database and import the database backup, then update the configuration file — for WordPress that is wp-config.php — with the new database details. If the site address has changed, the URLs stored in the database need updating too. Test the restored site on a temporary address before pointing the domain at it.",
+      },
+      {
+        type: "quote",
+        text: "A backup you have never tested is a hope, not a backup. Restoring a copy once a year is the only way to know it works.",
+      },
+      { type: "h2", text: "6. Reconnect the domain, SSL and email" },
+      {
+        type: "p",
+        text: "Once the site works on the new hosting, point the domain to it by updating the DNS records or nameservers at your registrar. DNS changes can take a few hours to spread. Then make sure an SSL certificate is issued so the site loads securely on https, and recreate any email accounts or mail records that were tied to the old hosting so your business email starts working again.",
+      },
+      { type: "h2", text: "7. Make sure it never happens again" },
+      {
+        type: "ul",
+        items: [
+          "Turn on auto-renew for both the domain and the hosting, with a card that will not expire soon.",
+          "Use a business email address you check regularly for renewal notices — not an old personal address.",
+          "Keep the domain registered in your own name and account, not the developer's.",
+          "Set up automatic backups stored off the server, such as in cloud storage.",
+          "Write down where your domain, hosting and email are, with the login details kept somewhere safe.",
+        ],
+      },
+      { type: "h2", text: "Need it done for you?" },
+      {
+        type: "p",
+        text: "I regularly help clients whose websites went offline after a domain or hosting plan expired. I check what can still be recovered, renew and reconnect the domain, restore the most recent backup to reliable hosting, and get SSL and email working again — then set up backups and renewals so it does not repeat. If your site has disappeared, send me the domain and what you know about where it was hosted, and I will tell you honestly what can be saved and what it will cost.",
+      },
+    ],
+  },
+  {
+    slug: "wordpress-503-error-plugin-fix",
+    title: "WordPress 503 error after a plugin update: how to fix it",
+    excerpt:
+      "A 503 Service Unavailable error can take a WordPress site down in seconds. Here is what usually causes it, how to find the plugin or setting responsible, and how to stop it happening again.",
+    category: "Performance",
+    date: "Oct 2026",
+    dateISO: "2026-10-24",
+    read: "6 min read",
+    cover: cover("wordpress-503-error-plugin-fix"),
+    content: [
+      {
+        type: "p",
+        text: "A 503 Service Unavailable error means the server is reachable but cannot handle the request right now. On WordPress sites, the most common cause by far is a plugin or theme — often right after an update — that crashes PHP or uses up the server's resources. The fix is to confirm it is not just temporary maintenance, turn off plugins without needing the dashboard, find the one responsible, and then fix or replace it. This guide shows how, step by step, and how to make it less likely to happen again.",
+      },
+      { type: "h2", text: "1. Rule out the quick, harmless causes" },
+      {
+        type: "p",
+        text: "Before changing anything, check whether the 503 is temporary. Wait a couple of minutes and reload. Look at your host's status page or account dashboard for maintenance or server issues. If WordPress was in the middle of updating, a leftover .maintenance file in the site's root folder can keep it in maintenance mode — deleting that file often brings the site straight back. If the error clears on its own and does not return, it was probably a brief spike in traffic or server load.",
+      },
+      { type: "h2", text: "2. Take a backup before you start" },
+      {
+        type: "p",
+        text: "Even when the site is down, take a backup of the files and database from your hosting panel before you change anything. If a fix goes wrong, you can always return to this point. It takes a few minutes and has saved many sites from a bad situation getting worse.",
+      },
+      { type: "h2", text: "3. Disable all plugins without the dashboard" },
+      {
+        type: "p",
+        text: "When the site shows a 503 you usually cannot log in to wp-admin, so you disable plugins at the file level instead. Connect with your host's File Manager or an FTP client, open the wp-content folder, and rename the plugins folder to something like plugins-off. WordPress cannot find the plugins, so it deactivates them. Reload the site.",
+      },
+      {
+        type: "ul",
+        items: [
+          "If the site comes back, a plugin is the cause. Rename the folder back to plugins.",
+          "Then rename each individual plugin folder one at a time, reloading the site each time, until the 503 returns — the last one you re-enabled is the culprit.",
+          "If the site is still down with all plugins off, the problem is likely the theme, the PHP version or the server's resources.",
+        ],
+      },
+      { type: "h2", text: "4. Check the theme" },
+      {
+        type: "p",
+        text: "To test the theme, rename your active theme's folder inside wp-content/themes. WordPress will fall back to a default theme such as Twenty Twenty-Four if one is installed. If that brings the site back, the theme — or a recent change to it — is the problem. Custom theme edits, especially code added to functions.php, are a common cause.",
+      },
+      { type: "h2", text: "5. Read the error logs" },
+      {
+        type: "p",
+        text: "Guessing works, but logs are faster. Your hosting panel usually has an error log, and WordPress can write its own if you enable debug logging in wp-config.php by setting WP_DEBUG and WP_DEBUG_LOG to true (and WP_DEBUG_DISPLAY to false, so errors are not shown to visitors). The log will often name the exact plugin file and line that crashed, or point to memory limits and timeouts. Remember to switch debugging off once you have finished.",
+      },
+      { type: "h2", text: "6. Check PHP version and server resources" },
+      {
+        type: "p",
+        text: "If no plugin or theme is to blame, look at the server. A recent PHP version change can break older plugins and themes, so check which PHP version is active in your hosting panel and whether your plugins support it. A 503 can also mean the site is running out of memory or hitting process limits — common on cheaper shared hosting when traffic spikes or a heavy plugin runs. Raising the PHP memory limit, enabling caching, or moving to a better hosting plan can solve this.",
+      },
+      {
+        type: "quote",
+        text: "Most 503 errors are not mysterious. They are one plugin, one theme change or one server limit — the job is finding which.",
+      },
+      { type: "h2", text: "7. Fix the cause, not just the symptom" },
+      {
+        type: "ul",
+        items: [
+          "If a plugin is responsible, check for an update that fixes the bug, roll back to the previous version, or replace it with a better-maintained alternative.",
+          "If it is the theme, undo the recent change or ask the theme developer for a fix.",
+          "If it is PHP, update the incompatible plugins or temporarily switch to a supported PHP version while you do.",
+          "If it is resources, add caching, remove plugins you do not need, and consider better hosting.",
+        ],
+      },
+      { type: "h2", text: "How to stop it happening again" },
+      {
+        type: "ul",
+        items: [
+          "Update plugins one at a time, not all at once, so you know which update caused a problem.",
+          "Test major updates on a staging copy of the site first — many hosts offer one-click staging.",
+          "Keep automatic daily backups stored off the server.",
+          "Remove plugins you no longer use; every one is another thing that can break.",
+          "Use uptime monitoring so you hear about a 503 before your customers do.",
+        ],
+      },
+      { type: "h2", text: "Want someone to fix it now?" },
+      {
+        type: "p",
+        text: "I have fixed plenty of WordPress sites taken down by a 503 after a plugin update. I find the cause from the logs, get the site back online safely, fix or replace the faulty plugin, and set up backups and update practices so it does not keep happening. If your site is down right now, send me the address and what changed before it broke, and I will reply within 24 hours with what is wrong and a fixed price to fix it.",
+      },
+    ],
+  },
+  {
     slug: "local-seo-guide-service-businesses",
     title: "Local SEO for service businesses: a step-by-step guide",
     excerpt:

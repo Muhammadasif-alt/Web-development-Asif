@@ -14,6 +14,7 @@ const SERVICES = [
   { label: "Web Development", href: "/services/web-development" },
   { label: "Marketing & SEO", href: "/services/marketing" },
   { label: "Support & Maintenance", href: "/services/support-maintenance" },
+  { label: "Website Rescue & Launch", href: "/services/website-rescue" },
 ];
 
 const INDUSTRIES = [

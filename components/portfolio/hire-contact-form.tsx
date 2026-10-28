@@ -12,6 +12,7 @@ const SERVICES = [
   "E-commerce / Shopify",
   "Speed Optimization",
   "Maintenance & Support",
+  "Website Rescue / Go-Live Help",
   "Other / Not sure",
 ];
 

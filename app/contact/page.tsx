@@ -80,6 +80,16 @@ const SERVICES = [
     href: "/services/web-development",
   },
   {
+    title: "Web App Development",
+    desc: "Custom dashboards, SaaS platforms, portals, and APIs built on MERN, Next.js, or Laravel.",
+    href: "/services/web-apps",
+  },
+  {
+    title: "Mobile App Development",
+    desc: "iOS and Android apps built with React Native, from first version to app store launch.",
+    href: "/services/mobile-apps",
+  },
+  {
     title: "Marketing & SEO",
     desc: "Technical SEO, on-page work, and paid campaigns that get you found and bring in leads.",
     href: "/services/marketing",
@@ -93,6 +103,16 @@ const SERVICES = [
     title: "Support & Maintenance",
     desc: "Updates, backups, security, and speed tuning that keep your site healthy after launch.",
     href: "/services/support-maintenance",
+  },
+  {
+    title: "Website Rescue & Launch",
+    desc: "Restore a site that went down, fix WordPress errors, or get a self-built or AI-built project live.",
+    href: "/services/website-rescue",
+  },
+  {
+    title: "Industry Websites",
+    desc: "Sites built around one trade — landscaping, construction, roofing, real estate, and more.",
+    href: "/industries",
   },
 ];
 

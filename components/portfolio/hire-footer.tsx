@@ -76,6 +76,7 @@ export function HireFooter() {
                   ["Web Development", "/services/web-development"],
                   ["Marketing & SEO", "/services/marketing"],
                   ["Support", "/services/support-maintenance"],
+                  ["Website Rescue", "/services/website-rescue"],
                 ].map(([l, h]) => (
                   <li key={l}>
                     <Link href={h} className="text-white/65 transition-colors hover:text-[#1a6b3d]">

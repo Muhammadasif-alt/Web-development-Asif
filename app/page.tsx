@@ -22,6 +22,7 @@ import {
   CheckCircle2,
   Mail,
   Phone,
+  LifeBuoy,
 } from "lucide-react";
 import { getSortedPosts } from "@/lib/blog-data";
 import { HireContactForm } from "@/components/portfolio/hire-contact-form";
@@ -301,6 +302,10 @@ const FAQS = [
     a: "Always. Clean code, proper meta tags, schema, and Core Web Vitals tuning are baked into every build — never charged as an extra.",
   },
   {
+    q: "My website went down or I can't get it live. Can you help?",
+    a: "Yes. I restore sites after a domain or hosting expiry, fix WordPress errors like 503s caused by plugins, and plan and deploy sites people have built themselves — including projects written with AI tools. Send me the domain and what happened, and you get a fixed quote within 24 hours.",
+  },
+  {
     q: "Do you offer support after launch?",
     a: "Yes. I offer flexible maintenance plans for updates, backups, security, and small changes, so your project stays fast and secure long after launch.",
   },
@@ -545,6 +550,35 @@ export default function HireMePage() {
             </Link>
           ))}
         </div>
+      </div>
+    </section>
+
+    {/* ===== RESCUE STRIP — for visitors arriving with a broken or unlaunched site ===== */}
+    <section className="bg-background px-6 pb-4 text-foreground lg:px-10">
+      <div className="mx-auto flex max-w-[1440px] flex-col gap-6 rounded-3xl border bg-gradient-to-br from-[#1a6b3d]/[0.12] to-transparent p-7 sm:p-9 lg:flex-row lg:items-center lg:justify-between">
+        <div className="flex items-start gap-5">
+          <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-[#1a6b3d] text-white">
+            <LifeBuoy className="h-6 w-6" />
+          </span>
+          <div>
+            <h3 className="text-xl font-extrabold tracking-tight sm:text-2xl">
+              Website down, broken, or stuck before launch?
+            </h3>
+            <p className="mt-2 max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base">
+              Domain or hosting expired, a WordPress 503 after a plugin update, or a site you built
+              yourself — even with AI — that you can&apos;t get live. I restore, fix, and deploy it.
+            </p>
+          </div>
+        </div>
+        <Link
+          href="/services/website-rescue"
+          className="group inline-flex shrink-0 items-center gap-3 self-start rounded-full bg-gradient-to-r from-[#1a6b3d] to-[#1a6b3d] py-2 pl-6 pr-2 text-sm font-bold text-white lg:self-auto"
+        >
+          Get my site back
+          <span className="grid h-8 w-8 place-items-center rounded-full bg-black/85 ring-1 ring-white/15">
+            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+          </span>
+        </Link>
       </div>
     </section>
 
