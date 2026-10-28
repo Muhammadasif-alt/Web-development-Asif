@@ -5,7 +5,7 @@ const DATA: ServiceDetail = {
   slug: "marketing",
   name: "Marketing and SEO",
   meta: {
-    title: "SEO Services and Marketing | Asif.dev",
+    title: "SEO Services and Marketing",
     description:
       "Technical SEO, on-page SEO, local SEO, Meta ads, and social media management that get you found on Google and turn clicks into real leads.",
   },

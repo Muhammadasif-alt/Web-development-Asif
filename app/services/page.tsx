@@ -24,7 +24,7 @@ import { faqSchema, breadcrumbSchema, businessSchema } from "@/lib/schema";
 import { IntroSplit } from "@/components/portfolio/intro-split";
 
 export const metadata: Metadata = {
-  title: "Web Development and SEO Services | Asif.dev",
+  title: "Web Development and SEO Services",
   description:
     "Web app development, e-commerce, websites, and SEO for growing businesses. MERN stack, Next.js, WordPress, and Shopify builds that convert and scale. Fixed quotes, 24h replies.",
   alternates: { canonical: "/services" },

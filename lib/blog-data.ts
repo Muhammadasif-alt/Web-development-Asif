@@ -21,6 +21,363 @@ const cover = (slug: string) => `/blog/${slug}.webp`;
 
 export const POSTS: BlogPost[] = [
   {
+    slug: "local-seo-guide-service-businesses",
+    title: "Local SEO for service businesses: a step-by-step guide",
+    excerpt:
+      "How plumbers, clinics, contractors and other local service businesses can show up in the map pack and local results — from Google Business Profile to service-area pages, reviews and tracking.",
+    category: "SEO",
+    date: "Oct 2026",
+    dateISO: "2026-10-22",
+    read: "8 min read",
+    cover: cover("local-seo-guide-service-businesses"),
+    content: [
+      {
+        type: "p",
+        text: "If you run a service business — a plumber, an electrician, a dental clinic, a landscaper, a cleaning company — most of your customers find you the same way: they type what they need plus a place, or simply \"near me\", and pick from the first few results. Local SEO is the work of making sure you are one of those results. The short version: get your Google Business Profile right, make your name, address and phone number consistent everywhere, build one genuinely useful page per service and per area you cover, collect reviews steadily, and measure the calls and forms that come in. This guide walks through each step in the order I would do it for a client.",
+      },
+      { type: "h2", text: "1. Understand what you are actually competing for" },
+      {
+        type: "p",
+        text: "A local search usually shows two kinds of results. At the top there is the map pack — the three businesses shown with a map, star ratings and a call button. Below that are the normal organic results. They are ranked differently. The map pack leans heavily on your Google Business Profile, how close you are to the searcher, and your reviews. The organic results lean on your website: its pages, its content and the links pointing to it. A good local strategy works on both, because a customer who sees you in the map pack and again in the results below is far more likely to call you than the business that appears once.",
+      },
+      {
+        type: "p",
+        text: "It also helps to be honest about distance. Google will rarely show a business in the map pack for a searcher on the other side of a big city, however good its profile is. You cannot fake proximity, so focus on the areas you genuinely serve and make sure you dominate those before stretching further out.",
+      },
+      { type: "h2", text: "2. Set up your Google Business Profile properly" },
+      {
+        type: "p",
+        text: "Your Google Business Profile is the single most important local SEO asset you have, and most businesses fill it in once and forget it. Treat it as a second homepage. Every field you complete gives Google more confidence about what you do and where.",
+      },
+      {
+        type: "ul",
+        items: [
+          "Choose the most specific primary category you can — \"Emergency plumber\" says more than \"Plumber\" if that is your main work — then add secondary categories for other services.",
+          "If you visit customers rather than having them visit you, set a service area and hide your street address instead of listing a home address.",
+          "Fill in every service with a short description, and add your real opening hours, including holiday hours.",
+          "Upload genuine photos of your team, vehicles, premises and finished jobs. Stock photos do nothing for trust.",
+          "Post updates every week or two — a recent job, a seasonal offer, a tip. It keeps the profile active and gives searchers a reason to choose you.",
+          "Use the Q&A section to answer the questions you get asked on the phone every day.",
+        ],
+      },
+      { type: "h2", text: "3. Make your name, address and phone number consistent everywhere" },
+      {
+        type: "p",
+        text: "Search engines cross-check your business details across the web: your website, your Google profile, directories, social profiles and industry listings. When they all match exactly, it reinforces that you are a real, established business at that location. When one directory has an old phone number and another has a slightly different business name, that confidence drops. The fix is unglamorous but effective: decide on one exact format for your name, address and phone number, put it in the footer of your website, and then work through every listing you can find and make it match.",
+      },
+      {
+        type: "ul",
+        items: [
+          "Start with the big platforms: Google, Bing Places, Apple Business Connect, Facebook and Yelp or the equivalent in your country.",
+          "Then cover industry directories that customers actually use in your trade.",
+          "Search for your old phone numbers and old addresses to find stale listings you forgot about.",
+          "Use a local phone number on the website rather than only a mobile or a national call-centre number where you can.",
+        ],
+      },
+      { type: "h2", text: "4. Build a real page for every service" },
+      {
+        type: "p",
+        text: "One of the most common problems I see is a website with a single \"Services\" page that lists ten things in bullet points. Google has nothing substantial to rank for any of them. Each core service deserves its own page: what it is, who it is for, what the process looks like, typical price ranges or what affects the price, common questions, photos of real jobs, and a clear way to get a quote. A page like that answers the searcher's question and gives Google a clear signal about what you offer.",
+      },
+      {
+        type: "p",
+        text: "Write these pages for the customer, not for a keyword tool. If someone needs a boiler repaired, they want to know how fast you can come out, whether you cover their make of boiler, and roughly what it might cost. Answer those plainly and the right keywords appear naturally.",
+      },
+      { type: "h2", text: "5. Add area pages — but only if they say something real" },
+      {
+        type: "p",
+        text: "If you serve several towns or suburbs, location pages can help you rank in each of them. This is also where a lot of businesses get it badly wrong. Twenty pages that are identical apart from the town name are thin content, and search engines treat them as doorway pages. They rarely rank and can drag the rest of the site down with them.",
+      },
+      {
+        type: "p",
+        text: "A location page earns its place when it contains something specific to that area: jobs you have done there with photos, the neighbourhoods you cover, local considerations (older housing stock, planning rules, water hardness, whatever matters in your trade), travel times or call-out arrangements, and reviews from customers in that area. If you cannot write anything genuinely local about a place, it is better to cover it on a broader regional page than to create a hollow one.",
+      },
+      {
+        type: "quote",
+        text: "A good test for any area page: if you swapped the town name for another one, would the page still be true? If yes, it is not a local page yet.",
+      },
+      { type: "h2", text: "6. Collect reviews steadily, and reply to all of them" },
+      {
+        type: "p",
+        text: "Reviews influence both rankings and the decision to call. What matters is not just the star rating but the number of reviews, how recent they are, and what they say. A burst of twenty reviews two years ago and nothing since looks worse than a steady trickle every month. The easiest way to get there is to make asking part of finishing every job.",
+      },
+      {
+        type: "ul",
+        items: [
+          "Send a short message with a direct review link within a day of finishing the job, while the customer is still happy.",
+          "Ask customers to mention the service and area in their own words — never script or incentivise reviews, which breaks platform rules.",
+          "Reply to every review, good or bad. A calm, helpful reply to a complaint often wins more trust than a page of five-star ratings.",
+          "Show recent reviews on your website, on the relevant service pages, not just on a separate testimonials page.",
+        ],
+      },
+      { type: "h2", text: "7. Earn local links and mentions" },
+      {
+        type: "p",
+        text: "Links from other websites still matter, and for a local business the most valuable ones are local. You do not need hundreds; a handful of genuine, relevant links can make a real difference in a local market. Think about the relationships you already have: suppliers who list approved installers, local business associations, a sports team or event you sponsor, a community group you help, a local news story about a project. Each of these is a natural reason for another local site to mention and link to you, and they are far more valuable than anything you could buy.",
+      },
+      { type: "h2", text: "8. Get the technical basics right on your website" },
+      {
+        type: "p",
+        text: "Most local searches happen on a phone, often by someone who needs help quickly. If your site is slow, hard to use on mobile, or hides the phone number, you lose the customer even if you rank. Make sure the basics are in place.",
+      },
+      {
+        type: "ul",
+        items: [
+          "A tap-to-call phone number and a short quote form visible without scrolling on mobile.",
+          "Fast load times — compress photos and avoid heavy page builders where possible.",
+          "LocalBusiness structured data (schema) with your name, address, phone, opening hours and service area.",
+          "A clear title and description on each page that includes the service and the area in plain language.",
+          "An embedded map and directions on your contact page if customers visit you.",
+        ],
+      },
+      { type: "h2", text: "9. Track calls and forms, not just rankings" },
+      {
+        type: "p",
+        text: "Rankings are a means to an end. What you actually want is more calls, messages and quote requests from the right kind of customer. Set up tracking so you can see where enquiries come from: Google Business Profile insights for calls and direction requests, analytics events for form submissions and phone-link taps, and if your volume justifies it, call tracking numbers. Review it monthly. Over a few months you will see which services and areas bring in work, and you can put more effort into those pages and less into the ones that do not move.",
+      },
+      { type: "h2", text: "Where to start" },
+      {
+        type: "p",
+        text: "If this feels like a lot, start with the steps that have the biggest effect for the least effort: complete your Google Business Profile, fix your business details across the main platforms, and start asking every happy customer for a review. Then build out proper service pages, and add area pages only where you have something real to say. Local SEO is not a one-off project; it is a set of good habits that compound over time.",
+      },
+      {
+        type: "p",
+        text: "If you would rather have it done for you, I build fast, mobile-first websites for service businesses with the local SEO foundations — service pages, area pages, schema and tracking — set up properly from day one. Send me a message with your trade and the areas you cover, and I will tell you honestly where the quickest wins are.",
+      },
+    ],
+  },
+  {
+    slug: "real-estate-website-lead-generation",
+    title: "What a real estate website needs to generate leads in 2026",
+    excerpt:
+      "The features that turn a property website from an online brochure into a lead source: fast listing search, strong property pages, seller valuation capture, area guides, CRM integration and speed with heavy photography.",
+    category: "Strategy",
+    date: "Oct 2026",
+    dateISO: "2026-10-14",
+    read: "7 min read",
+    cover: cover("real-estate-website-lead-generation"),
+    content: [
+      {
+        type: "p",
+        text: "A real estate website generates leads when it does two jobs well: it lets buyers and tenants find and compare properties without friction, and it gives sellers and landlords an obvious reason to get in touch. Most agency sites only do the first job, and often slowly. The features that make the difference are fast search and filtering, property pages built to convert, a dedicated valuation route for sellers, local area content the big portals cannot match, a proper connection to your CRM, and performance that holds up under heavy photography. This guide goes through each one and what good looks like.",
+      },
+      { type: "h2", text: "1. Accept that you will not beat the portals at their own game" },
+      {
+        type: "p",
+        text: "The major property portals have enormous inventories, huge brand recognition and a lot of search authority. Trying to outrank them for broad searches like \"houses for sale\" in a big city is usually a waste of budget. That is fine, because your website has a different job. Buyers often see a property on a portal first, then come to your site to check you out, see your other listings, or contact you directly. Sellers, in particular, research agents before choosing one. Your site wins by being the best place to learn about you, your listings and your area — not by being a smaller portal.",
+      },
+      { type: "h2", text: "2. Listing search that stays fast" },
+      {
+        type: "p",
+        text: "Search is the most-used feature on any property site, so it has to feel instant. Visitors should be able to filter by the things they actually care about and see results update without waiting for full page reloads.",
+      },
+      {
+        type: "ul",
+        items: [
+          "Filters for price range, property type, bedrooms, bathrooms, area and whether it is for sale or rent.",
+          "Sorting by newest, price and, where relevant, distance.",
+          "A map view alongside the list view, because location is often the first question.",
+          "Results that keep their filters when a visitor goes into a property and comes back.",
+          "Shareable URLs for searches, so a couple can send each other the same set of results.",
+        ],
+      },
+      {
+        type: "p",
+        text: "Under the hood, this means a properly indexed database and pagination or lazy loading, so the site does not slow down as your portfolio grows from twenty listings to two hundred.",
+      },
+      { type: "h2", text: "3. Property pages built to convert" },
+      {
+        type: "p",
+        text: "The property page is where interest turns into an enquiry, so every one should answer the obvious questions and make the next step easy. A gallery of large, sharp photos is essential, but so is everything around it.",
+      },
+      {
+        type: "ul",
+        items: [
+          "Key facts at the top: price, size, bedrooms, bathrooms, tenure or lease details, and availability.",
+          "A floor plan and, where you have them, a video walkthrough or virtual tour.",
+          "A map with nearby schools, transport and amenities.",
+          "A clear, short enquiry form or viewing request on the page itself — not a link to a generic contact page.",
+          "Enquiries routed to the agent responsible for that property, with the property reference attached.",
+          "Similar properties at the bottom, so a visitor who is not quite convinced keeps browsing.",
+        ],
+      },
+      { type: "h2", text: "4. A dedicated path for sellers and landlords" },
+      {
+        type: "p",
+        text: "Here is the part most agency websites miss. Buyers are plentiful; instructions to sell or let are what keep an agency in business. Yet sellers often land on a site built entirely around listings, with nothing but a general contact form for them. Give them their own route: a clear \"What is my property worth?\" call to action on the homepage and in the navigation, leading to a short valuation request form. Ask only what you need to book the appraisal — address, property type, a rough timeline and contact details. An instant online estimate can be a useful hook if your data supports it, but the real goal is a booked valuation appointment.",
+      },
+      {
+        type: "quote",
+        text: "Treat every seller who visits your site as the most valuable lead you will get that week — because they usually are.",
+      },
+      { type: "h2", text: "5. Area guides: where you can genuinely outrank the portals" },
+      {
+        type: "p",
+        text: "Local knowledge is the one thing the big portals cannot replicate at scale, and it is exactly what buyers moving to a new area are searching for. Well-written area guides — covering neighbourhoods, schools, transport links, typical property types, what it is like to live there and recent market activity you can speak to — attract people early in their search and position you as the local expert. They also give sellers confidence that you understand their area. Link each guide to your current listings in that area, and keep the guides updated; a guide that mentions a school or development that changed years ago does more harm than good.",
+      },
+      { type: "h2", text: "6. Connect to your CRM and listing feeds" },
+      {
+        type: "p",
+        text: "If your team has to enter each property twice — once in the agency software and again on the website — listings will eventually drift out of sync, and sold properties will stay online. Most property CRMs offer a feed or an API. A well-built website pulls listings from that source automatically, so price changes and status updates appear without anyone touching the site. In the other direction, enquiries from the website should land in the CRM with the property reference and source attached, so nothing gets lost in a shared inbox and you can see which listings and pages actually produce leads.",
+      },
+      { type: "h2", text: "7. Speed, even with heavy photography" },
+      {
+        type: "p",
+        text: "Property sites are image-heavy by nature, which makes them easy to slow down. A slow site loses visitors on mobile, where many property searches happen during a commute or in the evening on the sofa. The fixes are well established.",
+      },
+      {
+        type: "ul",
+        items: [
+          "Serve images in modern formats like WebP or AVIF, at the size each screen actually needs.",
+          "Lazy-load gallery images below the first one, so the page appears quickly.",
+          "Use a content delivery network so photos load fast wherever the visitor is.",
+          "Keep third-party scripts — chat widgets, trackers, embedded maps — under control and load them only where needed.",
+        ],
+      },
+      { type: "h2", text: "8. Give buyers a reason to come back" },
+      {
+        type: "p",
+        text: "Most people do not buy or rent the first property they look at. If they leave your site with no way to hear about new listings, they will go back to the portals. Saved searches and email alerts for new properties matching their criteria solve this, and they turn an anonymous visitor into a contact you can follow up with. Even a simple \"register for new listings\" form, with a few preferences, is better than nothing.",
+      },
+      { type: "h2", text: "9. Structured data and the SEO basics" },
+      {
+        type: "p",
+        text: "Search engines understand listings better when they are marked up with structured data describing the property, price and location, and your agency with organisation and local business details. Each property and area page should have a clear, unique title and description, and sold or let properties should be handled deliberately — either kept as a record with a clear status or redirected sensibly — rather than left to return errors.",
+      },
+      { type: "h2", text: "Developments and project sites" },
+      {
+        type: "p",
+        text: "If you are a developer or work with one, a single housing scheme or project often deserves its own site or section, separate from general listings: masterplans, phases, plot or unit availability, specifications, payment plans, progress updates and a dedicated enquiry flow. I built this kind of site for DHA Bahawalpur, a housing authority, where residents and buyers needed project details and information in one clear place.",
+      },
+      { type: "h2", text: "Putting it together" },
+      {
+        type: "p",
+        text: "A property website that generates leads is not about flashy animation. It is fast search, convincing property pages, a clear path for sellers, local content you can own, a clean connection to your CRM, and speed that survives a gallery of photos. Get those right and the site becomes a working part of your agency rather than an online brochure.",
+      },
+      {
+        type: "p",
+        text: "If you are planning a new property website or want to improve the one you have, get in touch. Tell me how your agency works and which CRM you use, and I will come back with a clear plan and a fixed quote.",
+      },
+    ],
+  },
+  {
+    slug: "laravel-vs-wordpress-custom-web-app",
+    title: "Laravel vs WordPress: when your business needs a custom web app",
+    excerpt:
+      "WordPress is great for content sites, but bookings, portals, dashboards and multi-role logins can outgrow it. Here is how to tell when a custom Laravel application is the better choice, and what it costs in time and upkeep.",
+    category: "Development",
+    date: "Oct 2026",
+    dateISO: "2026-10-06",
+    read: "7 min read",
+    cover: cover("laravel-vs-wordpress-custom-web-app"),
+    content: [
+      {
+        type: "p",
+        text: "If your website mainly publishes content — pages about your services, a blog, a portfolio, a contact form — WordPress is usually the right choice. It is quick to build, easy for your team to edit, and has an enormous ecosystem. When the site has to run part of your business — bookings with rules, customer portals, dashboards, several user roles, complex integrations or custom workflows — a custom application built with a framework like Laravel is usually the better long-term choice. Both are built on PHP, but they solve different problems. This guide explains how to tell which one your project needs.",
+      },
+      { type: "h2", text: "What WordPress is genuinely good at" },
+      {
+        type: "p",
+        text: "WordPress started as a blogging platform and grew into a content management system that powers a huge share of the web. Its strengths are real and they matter for most business websites.",
+      },
+      {
+        type: "ul",
+        items: [
+          "Your team can add pages, edit text and publish posts without a developer.",
+          "A large library of themes and plugins covers common needs like forms, SEO and simple e-commerce.",
+          "It is quick to launch — a well-built business site can go live in a few weeks.",
+          "Plenty of developers know it, so you are never locked to one person.",
+        ],
+      },
+      {
+        type: "p",
+        text: "For a services business, a clinic, a consultancy, a local trade or a content-led brand, those strengths usually outweigh everything else. I build plenty of WordPress sites for exactly that reason.",
+      },
+      { type: "h2", text: "Signs you are outgrowing WordPress" },
+      {
+        type: "p",
+        text: "The trouble starts when a website is asked to behave like software. You can bend WordPress a long way with plugins, but each plugin brings its own code, its own update cycle and its own assumptions about how things should work. Past a certain point, the site becomes a fragile stack of add-ons held together by workarounds. Watch for these signs.",
+      },
+      {
+        type: "ul",
+        items: [
+          "You need several kinds of users — customers, staff, managers, partners — each seeing and doing different things.",
+          "Bookings, quotes or orders follow your own rules: availability, approvals, pricing logic, deposits, cancellations.",
+          "Customers need a portal to log in, track jobs, download documents or pay invoices.",
+          "Your team wants dashboards and reports built from the data the site collects.",
+          "The site has to sync with other systems — accounting, CRM, inventory, shipping, an internal tool — reliably, in both directions.",
+          "You are already paying for many premium plugins and every update makes you nervous.",
+        ],
+      },
+      {
+        type: "p",
+        text: "If two or three of those describe your plans, it is worth seriously considering a custom application.",
+      },
+      { type: "h2", text: "What Laravel gives you instead" },
+      {
+        type: "p",
+        text: "Laravel is a PHP framework for building web applications. Rather than starting from a finished website and adding features through plugins, you start from a solid foundation and build exactly the features your business needs. It comes with well-tested building blocks for the hard parts of application development.",
+      },
+      {
+        type: "ul",
+        items: [
+          "Authentication, user roles and permissions, so each type of user sees only what they should.",
+          "A clean way to model your data — customers, jobs, bookings, invoices — and the relationships between them.",
+          "Queues and scheduled tasks for things that happen in the background, like sending reminders or syncing with another system overnight.",
+          "Solid tools for building APIs, so a mobile app or another system can talk to your platform.",
+          "Built-in protection against common security issues and a mature testing setup.",
+        ],
+      },
+      {
+        type: "p",
+        text: "The result is software shaped around how your business actually works, instead of a business process bent to fit whatever a plugin allows.",
+      },
+      { type: "h2", text: "The honest trade-offs: time, cost and editing" },
+      {
+        type: "p",
+        text: "A custom application is not the right answer for everyone, and it is worth being clear about what it costs. It takes longer to build than a WordPress site because the features are designed and written for you rather than installed. It usually costs more up front for the same reason. A simple content site might be weeks of work; a custom platform with portals and dashboards is often a matter of months, typically delivered in phases so you can start using the core features early.",
+      },
+      {
+        type: "p",
+        text: "Content editing also works differently. In WordPress, editing is built in. In a Laravel application, the admin panel is built for your specific data, which makes it excellent for managing bookings or customers but means a general page builder is not there by default. Many businesses solve this by keeping a WordPress or headless content site for marketing pages and running the application alongside it.",
+      },
+      {
+        type: "quote",
+        text: "The question is not which platform is better. It is whether your website mainly publishes information or mainly runs a process.",
+      },
+      { type: "h2", text: "Maintenance and security over the long run" },
+      {
+        type: "p",
+        text: "Both options need looking after. A WordPress site needs regular core, theme and plugin updates, and the more plugins it has, the more can go wrong — conflicts, abandoned plugins and security issues are the most common reasons a WordPress site breaks. A Laravel application has fewer moving parts from third parties, but it is your own codebase, so it needs a developer who understands it for updates and new features. Good documentation, clean code and automated tests matter a great deal here; they are what let you hand the project to another developer one day without starting again.",
+      },
+      { type: "h2", text: "You do not always have to choose one" },
+      {
+        type: "p",
+        text: "Many of the best setups use both. A fast WordPress site handles the marketing pages, blog and SEO, where easy editing matters most. A Laravel application runs behind a login for the parts that are really software: the customer portal, booking engine or internal dashboard. Each tool does what it is best at, and visitors move between them without noticing.",
+      },
+      { type: "h2", text: "A quick decision checklist" },
+      {
+        type: "ul",
+        items: [
+          "Mostly pages, posts and a contact form? WordPress.",
+          "An online shop with standard checkout? Shopify or WooCommerce, not a custom build.",
+          "Logins with different roles, custom booking or pricing rules, portals or dashboards? Laravel or another application framework.",
+          "Heavy integrations with other business systems that must stay in sync? A custom application.",
+          "A content site now, with software features planned later? Start with WordPress, and plan the application as a separate phase.",
+        ],
+      },
+      { type: "h2", text: "Choosing for your business" },
+      {
+        type: "p",
+        text: "I work with both. I recently built Discover Times, a website for a home decoration studio, on Laravel and PHP, and I build WordPress sites regularly for businesses whose needs are mainly content. The right choice depends on what the site has to do, how your team will use it, and where the business is heading over the next few years — not on which tool a developer happens to prefer.",
+      },
+      {
+        type: "p",
+        text: "If you are not sure which side of the line your project falls on, send me a short description of what you want the site to do. I will tell you honestly whether WordPress will cover it or whether a custom application is worth the investment, and give you a fixed quote either way.",
+      },
+    ],
+  },
+  {
     slug: "how-to-build-business-website-usa",
     title: "How to build a business website in the USA (a practical 2026 guide)",
     excerpt:

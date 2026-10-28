@@ -5,7 +5,7 @@ const DATA: ServiceDetail = {
   slug: "web-apps",
   name: "Web App Development",
   meta: {
-    title: "Web App Development | MERN & Next.js Developer | Asif.dev",
+    title: "Web App Development | MERN & Next.js Developer",
     description:
       "Custom web app development on the MERN stack and Next.js. Admin dashboards, SaaS platforms, internal tools, and APIs built to scale. Fixed quote in 24 hours.",
   },

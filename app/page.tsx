@@ -37,15 +37,15 @@ import { JsonLd } from "@/components/seo/json-ld";
 import { personSchema, businessSchema, websiteSchema, faqSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
-  title: "Full-Stack Developer | MERN, WordPress & Shopify | Asif.dev",
+  title: "Full-Stack Developer | Web Apps, Laravel, WordPress & Shopify | Asif.dev",
   description:
-    "Full-stack developer building web apps, online stores, and business sites. MERN stack, WordPress, and Shopify — fast, SEO-ready builds that convert and scale. Fixed quotes, 24h replies.",
+    "Full-stack developer building custom web apps, online stores, and business websites with MERN, Laravel, WordPress, and Shopify. Fast, SEO-ready builds with fixed quotes and 24h replies.",
   alternates: { canonical: "/" },
   openGraph: {
     images: ["/og.jpg"],
     title: "Full-Stack Developer for Web Apps, E-commerce & Websites",
     description:
-      "Full-stack developer building web apps, online stores, and business sites. MERN stack, WordPress, and Shopify — fast, SEO-ready builds that convert and scale.",
+      "Custom web apps, online stores, and business websites built with MERN, Laravel, WordPress, and Shopify — fast, SEO-ready, and built to bring in clients.",
   },
 };
 
@@ -77,21 +77,21 @@ const PILLARS: {
     icon: LayoutDashboard,
     eyebrow: "Custom Software",
     title: "Web Applications",
-    desc: "Products with logins, data, and real business logic behind them — not brochure pages.",
+    desc: "Real software with logins, data, and business logic — built around how your team actually works.",
     points: [
-      "Admin dashboards and analytics panels",
-      "Multi-tenant SaaS platforms with billing",
-      "Booking, CRM, and internal tools",
-      "REST APIs and third-party integrations",
+      "Admin dashboards and reporting panels",
+      "SaaS platforms with subscriptions and billing",
+      "Booking systems, CRMs, and client portals",
+      "APIs and third-party integrations",
     ],
-    stack: "MongoDB · Express · React · Node · Next.js",
+    stack: "React · Node · Next.js · Laravel · MongoDB",
     href: "/services/web-apps",
   },
   {
     icon: ShoppingBag,
     eyebrow: "Selling Online",
     title: "E-commerce",
-    desc: "Stores built around the checkout, then tuned until the numbers move.",
+    desc: "Stores designed around the checkout, then tuned until more visitors become customers.",
     points: [
       "Shopify themes coded in Liquid",
       "WooCommerce stores and migrations",
@@ -105,14 +105,14 @@ const PILLARS: {
     icon: Globe,
     eyebrow: "Marketing Sites",
     title: "WordPress",
-    desc: "Business sites that load fast, stay editable, and are built to rank from day one.",
+    desc: "Fast, easy-to-edit business websites built to rank on Google and bring in enquiries.",
     points: [
       "Custom themes without plugin bloat",
-      "Landing pages built to convert",
+      "Service and landing pages built to convert",
       "Speed and Core Web Vitals tuning",
       "Redesigns and migrations, rankings intact",
     ],
-    stack: "WordPress · PHP · Elementor · Laravel",
+    stack: "WordPress · PHP · Laravel · Elementor",
     href: "/services/web-development",
   },
 ];
@@ -126,7 +126,7 @@ const QUALIFY: { img: string; n: string; title: string; parts: Part[] }[] = [
     parts: [
       { t: "You want a " },
       { t: "custom app or platform", hl: true },
-      { t: " — dashboards, logins, payments — built properly instead of stitched together from plugins." },
+      { t: " — dashboards, logins, payments — engineered properly instead of patched together from plugins." },
     ],
   },
   {
@@ -136,7 +136,7 @@ const QUALIFY: { img: string; n: string; title: string; parts: Part[] }[] = [
     parts: [
       { t: "You want a site or store that turns visitors into " },
       { t: "real clients and sales", hl: true },
-      { t: " — consistently, every single month, with results you can measure." },
+      { t: " — month after month, with numbers you can actually track." },
     ],
   },
   {
@@ -146,7 +146,7 @@ const QUALIFY: { img: string; n: string; title: string; parts: Part[] }[] = [
     parts: [
       { t: "You want a " },
       { t: "complete end-to-end build", hl: true },
-      { t: " — design, development, SEO, and ongoing support — all handled by one person." },
+      { t: " — design, development, SEO, and support after launch — from one person who owns the result." },
     ],
   },
 ];
@@ -155,19 +155,19 @@ const OFFER: { n: string; title: [string, string]; desc: string; href: string }[
   {
     n: "01",
     title: ["Web App", "Development"],
-    desc: "Custom MERN and Next.js platforms — dashboards, SaaS tools, client portals, and APIs — engineered around your exact workflow, secure and ready to scale.",
+    desc: "Custom platforms on MERN, Next.js, and Laravel — dashboards, SaaS tools, client portals, and APIs — shaped around your workflow, secure, and ready to grow with you.",
     href: "/services/web-apps",
   },
   {
     n: "02",
     title: ["E-commerce", "& Automation"],
-    desc: "High-converting Shopify and WooCommerce stores with smooth checkout, payments, and automation that handles orders and follow-ups for you.",
+    desc: "Shopify and WooCommerce stores with a smooth checkout, reliable payments, and automation that handles orders and follow-ups while you sleep.",
     href: "/services/ecommerce",
   },
   {
     n: "03",
     title: ["Website", "Development"],
-    desc: "Fast, SEO-ready WordPress and Next.js business websites — custom, mobile-first, and built to turn visitors into enquiries, not a bloated template.",
+    desc: "Fast, SEO-ready business websites on WordPress, Laravel, or Next.js — custom, mobile-first, and built to turn visitors into enquiries instead of bouncing off a template.",
     href: "/services/web-development",
   },
 ];
@@ -176,32 +176,32 @@ const WHY: { icon: typeof Code2; title: string; desc: string }[] = [
   {
     icon: Code2,
     title: "One developer, full stack",
-    desc: "Front-end, back-end, database, and deployment handled by the same person. No handoffs, no finger-pointing.",
+    desc: "Design, front-end, back-end, and deployment handled by the same person. No handoffs, no lost details, no finger-pointing.",
   },
   {
     icon: Zap,
     title: "Built for performance",
-    desc: "Sub-second loads and strong Core Web Vitals are the baseline on every build, never a paid extra.",
+    desc: "Fast loads and strong Core Web Vitals are the starting point on every build — never an upsell.",
   },
   {
     icon: ShieldCheck,
     title: "Clean, maintainable code",
-    desc: "Readable, documented code you or the next developer can pick up without a rewrite.",
+    desc: "Readable, documented code that you — or any developer after me — can work with without a rewrite.",
   },
   {
     icon: MessageSquare,
     title: "Straight communication",
-    desc: "Fixed quotes before work starts, replies within 24 hours, and progress you can actually see.",
+    desc: "A fixed quote before work starts, replies within 24 hours, and progress you can see every week.",
   },
   {
     icon: Rocket,
     title: "Business-first decisions",
-    desc: "I pick the stack that fits your goals and budget, not the one that pads an invoice.",
+    desc: "I recommend the stack that fits your goals and budget — not the one that makes the invoice bigger.",
   },
   {
     icon: Headphones,
     title: "Support after launch",
-    desc: "Updates, backups, monitoring, and small changes handled so launch day is not the finish line.",
+    desc: "Updates, backups, monitoring, and small changes taken care of, so launch day is the start, not the end.",
   },
 ];
 
@@ -209,22 +209,22 @@ const PROCESS: ProcessStep[] = [
   {
     icon: Search,
     title: "Discovery",
-    desc: "We talk through your goals, users, and must-have features. You leave with a clear scope and a fixed quote.",
+    desc: "A short call about your goals, customers, and must-have features. You leave with a clear scope and a fixed quote.",
   },
   {
     icon: Layers,
     title: "Plan & Stack",
-    desc: "I choose the right stack for the job — MERN, Next.js, WordPress, or Shopify — and map the architecture.",
+    desc: "I pick the right stack — MERN, Next.js, Laravel, WordPress, or Shopify — and map out pages, data, and integrations.",
   },
   {
     icon: Hammer,
     title: "Build",
-    desc: "Development in visible increments. You see progress as it happens instead of waiting for a big reveal.",
+    desc: "Built in visible stages on a live preview link, so you see progress as it happens instead of waiting for a big reveal.",
   },
   {
     icon: CheckCircle2,
     title: "Test & Launch",
-    desc: "Cross-device testing, speed and SEO checks, then launch and handover with everything documented.",
+    desc: "Cross-device testing, speed and SEO checks, then launch and a full handover with everything documented.",
   },
 ];
 
@@ -282,7 +282,7 @@ const POSTS = getSortedPosts().slice(0, 3);
 const FAQS = [
   {
     q: "What kind of projects do you take on?",
-    a: "Three main types: custom web applications on the MERN stack and Next.js, online stores in Shopify and WooCommerce, and fast WordPress business sites. If your project spans more than one of those, that is normal — it is why I work full stack.",
+    a: "Three main types: custom web applications on MERN, Next.js, or Laravel; online stores on Shopify and WooCommerce; and fast business websites on WordPress. If your project spans more than one of those, that is normal — it is exactly why I work full stack.",
   },
   {
     q: "How long does a project take?",
@@ -324,21 +324,22 @@ export default function HireMePage() {
           <div className="flex flex-col justify-center">
             <p className="inline-flex w-fit items-center gap-2.5 rounded-full border border-[#1a6b3d]/30 bg-[#1a6b3d]/8 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.16em] text-[#1a6b3d] dark:border-[#86e0a3]/35 dark:bg-[#86e0a3]/10 dark:text-[#86e0a3]">
               <span className="h-1.5 w-1.5 rounded-full bg-[#1a6b3d] dark:bg-[#c8e659]" />
-              Web Development &amp; Digital Solutions
+              Full-Stack Developer · Open for New Projects
             </p>
 
             <h1 className="mt-7 text-[2.6rem] font-extrabold leading-[1.02] tracking-tight text-neutral-950 dark:text-white sm:text-5xl lg:text-[3.4rem]">
               Full-Stack Developer for{" "}
               <span className="text-[#1a6b3d] dark:text-[#86e0a3]">Web Apps</span>{" "}
-              &amp; E-commerce
+              &amp; Online Stores
             </h1>
 
             <h2 className="mt-7 text-xl font-bold leading-snug text-neutral-900 dark:text-white sm:text-2xl">
-              MERN, WordPress &amp; Shopify — end to end.
+              MERN, Laravel, WordPress &amp; Shopify — one developer, end to end.
             </h2>
             <p className="mt-3 max-w-md text-sm leading-relaxed text-neutral-600 dark:text-white/70 sm:text-base">
-              I build high-performance digital products for growing businesses: custom dashboards
-              and SaaS platforms, online stores that sell, and websites that rank on Google.
+              I design, build, and launch fast digital products for growing businesses — custom
+              dashboards and SaaS platforms, online stores that convert, and websites that rank on
+              Google and bring in enquiries.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
@@ -436,14 +437,14 @@ export default function HireMePage() {
               What I Do
             </p>
             <h2 className="mt-5 text-4xl font-extrabold leading-[1.02] tracking-tight sm:text-5xl">
-              Three lanes.
+              Three ways I help.
               <br />
-              Pick the one you&apos;re in.
+              Find the one you need.
             </h2>
           </div>
           <p className="text-muted-foreground lg:pb-2 lg:ml-auto lg:max-w-sm lg:text-right">
-            Most developers do one of these. I do all three, which means the right tool gets picked
-            for your problem instead of the only tool available.
+            Most freelancers stick to one platform. I work across all three, so your project gets the
+            stack that actually fits it — not the only one I happen to know.
           </p>
         </div>
 
@@ -504,8 +505,8 @@ export default function HireMePage() {
           </div>
           <div className="lg:pb-2 lg:text-right">
             <p className="text-muted-foreground lg:ml-auto lg:max-w-sm">
-              Every build is designed with one goal in mind — getting you the results you came here
-              for. No fluff, no filler.
+              Every build starts with one question: what result do you need? Design, code, and SEO
+              are all pointed at that answer. No fluff, no filler.
             </p>
             <Link
               href="/services"
@@ -560,15 +561,15 @@ export default function HireMePage() {
             Hi, I&apos;m <span className="text-[#1a6b3d]">Asif</span>, a developer who ships.
           </h2>
           <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground">
-            For the past 5+ years I have built web apps, online stores, and business websites for
-            clients across the US, UK, UAE, and Pakistan. I work full stack — React and Node on the
-            product side, WordPress and Shopify on the commerce side — so I can pick the right stack
-            for the job instead of forcing every project into the same one.
+            For 5+ years I have built web apps, online stores, and business websites for clients in
+            the US, UK, Australia, the UAE, and Pakistan. I work across the full stack — React, Node,
+            and Laravel for custom products; WordPress and Shopify for content and commerce — so every
+            project gets the right tool instead of being forced into the same one.
           </p>
           <p className="mt-4 max-w-xl text-base leading-relaxed text-muted-foreground">
-            I care about the things that move the needle: clean code, real speed, search rankings,
-            and interfaces that turn visitors into clients. No bloated templates, no handing your
-            project into a black box. Just clear communication and results you can measure.
+            I focus on what moves your numbers: fast pages, solid search rankings, clean code, and
+            interfaces that turn visitors into clients. You always know what is being built, why,
+            and what it costs — no black box, no bloated templates.
           </p>
 
           <div className="mt-8 flex flex-wrap gap-x-10 gap-y-5">
@@ -615,33 +616,33 @@ export default function HireMePage() {
       </div>
     </section>
 
-    {/* ===== WORK, SEGMENTED BY BUILD TYPE ===== */}
-    <section className="bg-background px-6 py-20 text-foreground lg:px-10 lg:py-28">
+    {/* ===== WORK — pinned, one card per scroll step ===== */}
+    <section className="bg-background px-6 text-foreground lg:px-10">
       <div className="mx-auto max-w-[1440px]">
-        <div className="flex flex-wrap items-end justify-between gap-6">
-          <div>
-            <p className="flex items-center gap-2.5 text-xs font-bold uppercase tracking-[0.2em] text-[#1a6b3d]">
-              <span className="h-2 w-2 rounded-full bg-[#1a6b3d]" />
-              Selected Work
-            </p>
-            <h2 className="mt-5 max-w-2xl text-4xl font-extrabold leading-[1.04] tracking-tight sm:text-5xl">
-              Work that ships and <span className="text-[#1a6b3d]">performs</span>
-            </h2>
-          </div>
-          <Link
-            href="/projects"
-            className="group inline-flex items-center gap-3 rounded-full bg-gradient-to-r from-[#15703a] to-[#4cb45a] py-2 pl-6 pr-2 text-xs font-bold uppercase tracking-[0.16em] text-white"
-          >
-            All Work
-            <span className="grid h-8 w-8 place-items-center rounded-full bg-black/85 ring-1 ring-white/15">
-              <ArrowUpRight className="h-4 w-4 transition-transform group-hover:rotate-45" />
-            </span>
-          </Link>
-        </div>
-
-        <div className="mt-12">
-          <HomeWork />
-        </div>
+        <HomeWork
+          header={
+            <div className="flex flex-wrap items-end justify-between gap-6">
+              <div>
+                <p className="flex items-center gap-2.5 text-xs font-bold uppercase tracking-[0.2em] text-[#1a6b3d]">
+                  <span className="h-2 w-2 rounded-full bg-[#1a6b3d]" />
+                  Selected Work
+                </p>
+                <h2 className="mt-5 max-w-2xl text-4xl font-extrabold leading-[1.04] tracking-tight sm:text-5xl">
+                  Work that ships and <span className="text-[#1a6b3d]">performs</span>
+                </h2>
+              </div>
+              <Link
+                href="/projects"
+                className="group inline-flex items-center gap-3 rounded-full bg-gradient-to-r from-[#15703a] to-[#4cb45a] py-2 pl-6 pr-2 text-xs font-bold uppercase tracking-[0.16em] text-white"
+              >
+                All Work
+                <span className="grid h-8 w-8 place-items-center rounded-full bg-black/85 ring-1 ring-white/15">
+                  <ArrowUpRight className="h-4 w-4 transition-transform group-hover:rotate-45" />
+                </span>
+              </Link>
+            </div>
+          }
+        />
       </div>
     </section>
 
@@ -657,8 +658,8 @@ export default function HireMePage() {
             Multi-stack, <span className="text-[#1a6b3d]">single point of contact</span>
           </h2>
           <p className="mt-4 text-muted-foreground">
-            You brief one person and get the whole thing built — no agency layers, no waiting on
-            someone else&apos;s subcontractor.
+            You brief one person and get the whole thing built — no agency layers, no account
+            managers, and no waiting on someone else&apos;s subcontractor.
           </p>
         </div>
 
@@ -689,7 +690,7 @@ export default function HireMePage() {
       eyebrow="Process"
       title="A 4-Step Process That Removes the"
       titleAccent="Mystery From Your Project"
-      intro="Four steps, no mystery. You know what happens next at every stage, and what it costs before anything starts."
+      intro="Four clear steps. At every stage you know what happens next — and you know the full cost before any work begins."
       steps={PROCESS}
       footnote="Every stage is visible, and the price is agreed before a single line is written."
       cta={{ label: "Start your project", href: "/contact" }}
@@ -760,8 +761,8 @@ export default function HireMePage() {
             Simple pricing, <span className="text-[#1a6b3d]">no surprises</span>
           </h2>
           <p className="mt-4 text-muted-foreground">
-            Starting prices for each service. Every project gets a fixed quote after a quick chat, so
-            you know the full cost before any work begins.
+            Starting prices for each service. After a short chat you get a fixed quote, so the price
+            you agree is the price you pay.
           </p>
         </div>
 
@@ -918,8 +919,8 @@ export default function HireMePage() {
             I&apos;ve got answers.
           </h2>
           <p className="mt-4 max-w-md text-muted-foreground">
-            Everything you need to know before we start working together. Still unsure about
-            something? Just reach out — I reply within 24 hours.
+            The questions clients ask most before we start. Anything else on your mind? Send a
+            message — I reply within 24 hours.
           </p>
           <Image
             src="/desk-code.png"
@@ -970,8 +971,8 @@ export default function HireMePage() {
             your project
           </h2>
           <p className="mt-5 max-w-md text-muted-foreground">
-            Tell me about what you need and I&apos;ll get back to you within 24 hours — with a clear
-            plan and a fixed quote. No obligation, just an honest next step.
+            Tell me what you want to build and I&apos;ll reply within 24 hours with a clear plan and a
+            fixed quote. No obligation — just an honest next step.
           </p>
           <ul className="mt-8 space-y-3">
             {[

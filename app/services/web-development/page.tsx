@@ -5,7 +5,7 @@ const DATA: ServiceDetail = {
   slug: "web-development",
   name: "Web Development",
   meta: {
-    title: "Web Development Services | Asif.dev",
+    title: "Web Development Services",
     description:
       "Fast, SEO-ready web development. WordPress, Shopify, and Next.js developer building custom web apps that load fast and rank from day one. Get a fixed quote.",
   },

@@ -5,7 +5,7 @@ const DATA: ServiceDetail = {
   slug: "ecommerce",
   name: "E-commerce and Automation",
   meta: {
-    title: "E-commerce and Automation | Asif.dev",
+    title: "E-commerce and Automation",
     description:
       "Shopify development and WooCommerce stores that convert, plus CRM automation and Zapier workflows that follow up with leads while you sleep. Sell more, do less.",
   },

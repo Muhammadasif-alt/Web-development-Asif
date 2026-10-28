@@ -5,7 +5,7 @@ const DATA: ServiceDetail = {
   slug: "mobile-apps",
   name: "Mobile App Development",
   meta: {
-    title: "Mobile App Development | React Native Developer | Asif.dev",
+    title: "Mobile App Development | React Native Developer",
     description:
       "Cross-platform mobile app development with React Native. One codebase for iOS and Android, connected to your existing web app or store. Fixed quote in 24 hours.",
   },

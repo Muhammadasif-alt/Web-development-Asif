@@ -10,7 +10,7 @@ import { portfolioSchema, breadcrumbSchema } from "@/lib/schema";
 import { IntroSplit } from "@/components/portfolio/intro-split";
 
 export const metadata: Metadata = {
-  title: "Projects and Portfolio | Web Developer Asif.dev",
+  title: "Projects and Portfolio | Web Developer",
   description:
     "A portfolio of fast, SEO-ready websites, online stores, and web apps built in WordPress, Shopify, Laravel, and Next.js. See real projects and the results they delivered.",
   alternates: { canonical: "/projects" },

@@ -5,7 +5,7 @@ const DATA: ServiceDetail = {
   slug: "support-maintenance",
   name: "Support and Maintenance",
   meta: {
-    title: "Website Support and Maintenance | Asif.dev",
+    title: "Website Support and Maintenance",
     description: "Website maintenance and support plans that keep your site fast, secure, and online. Speed optimization, Core Web Vitals, backups, and 24h replies. Stay worry-free.",
   },
   hero: {
